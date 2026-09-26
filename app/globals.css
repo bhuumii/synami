@@ -1,26 +1,207 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ---------------------------------------------------------------
+   SYNAMI DESIGN TOKENS — v2
+
+   Change from v1: navy is no longer a BACKGROUND colour. It survives
+   only as heading text, where it came from the logo wordmark.
+
+   Every surface on the site is now one of four greens:
+     field   pale, the page default
+     paper   white, the raised/alternate surface
+     sage    slightly deeper pale green, the footer
+     forest  deep green, used for exactly one section
+
+   Blue next to green reads as two unrelated palettes fighting. Staying
+   inside one hue family means the page can still have rhythm without
+   any transition feeling like a jolt.
+   --------------------------------------------------------------- */
+
+@theme {
+  /* Surfaces — light to dark, all green */
+  --color-field: #f1f6f2; /* page default */
+  --color-paper: #ffffff; /* raised surface, alternate sections */
+  --color-sage: #e3ede5; /* footer, quiet blocks */
+  --color-forest: #123d28; /* the one dark section */
+  --color-forest-deep: #0c2c1d; /* hero overlay */
+
+  /* Brand greens */
+  --color-leaf: #0a7a35; /* logo "AGRISCIENCE" — primary action */
+  --color-leaf-bright: #2fb14c; /* logo leaf highlight — accents */
+  --color-leaf-deep: #065526; /* pressed states */
+
+  /* Navy — TEXT ONLY */
+  --color-navy: #152b5e;
+  --color-ink: #16223f;
+
+  --color-straw: #c9a227;
+
+  /* Text */
+  --color-stone: #4d565c;
+  --color-slate: #7b858b;
+  --color-line: #dde7df; /* hairlines, green-tinted not grey */
+  --color-line-dark: rgb(255 255 255 / 0.12);
+
+  /* Type */
+  --font-display: "General Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-body: "Switzer", ui-sans-serif, system-ui, sans-serif;
+
+  --text-xs: 0.8125rem;
+  --text-sm: 0.9375rem;
+  --text-base: 1.0625rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.5rem;
+  --text-2xl: 2rem;
+  --text-3xl: 2.75rem;
+  --text-4xl: 4rem;
+  --text-hero: clamp(2.5rem, 6.5vw, 5.5rem);
+
+  --container-site: 1240px;
+
+  --radius-pill: 999px;
+  --radius-card: 14px;
+  --radius-image: 6px;
+
+  /* Elevation — shadows are GREEN-TINTED, never neutral grey.
+     A grey shadow on a green surface reads as dirty; tinting it to the
+     surface hue is the difference between "shadow" and "depth". */
+  --shadow-rest: 0 1px 2px rgb(18 61 40 / 0.04), 0 4px 14px rgb(18 61 40 / 0.05);
+  --shadow-lift: 0 2px 4px rgb(18 61 40 / 0.05), 0 14px 34px rgb(18 61 40 / 0.1);
+  --shadow-deep: 0 20px 56px rgb(18 61 40 / 0.14);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+/* ---------------------------------------------------------------
+   BASE
+   --------------------------------------------------------------- */
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    /* NOTE: scroll-behavior is deliberately NOT set here.
+       It fights GSAP ScrollTrigger's pin and causes stutter. */
+  }
+
+  body {
+    /* The pale green is the page default now, not white */
+    background-color: var(--color-field);
+    color: var(--color-stone);
+    font-family: var(--font-body);
+    font-size: var(--text-base);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    color: var(--color-ink);
+    font-weight: 600;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  p {
+    max-width: 68ch;
+    text-wrap: pretty;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-leaf);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-leaf-bright);
+    color: #fff;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------------------------------------------------------------
+   UTILITIES
+   --------------------------------------------------------------- */
+
+@layer utilities {
+  /* Accent rule under a hero headline. Once per page. */
+  .rule-straw::after {
+    content: "";
+    display: block;
+    width: 84px;
+    height: 3px;
+    margin-top: 1.75rem;
+    background-color: var(--color-straw);
+  }
+
+  /* Hero overlay — deep forest green, not navy */
+  .overlay-forest {
+    background: linear-gradient(
+      100deg,
+      rgb(12 44 29 / 0.9) 0%,
+      rgb(12 44 29 / 0.66) 46%,
+      rgb(12 44 29 / 0.34) 100%
+    );
+  }
+
+  /* Card elevation. Rests low, lifts on hover.
+     The transform is 3px, not 8px — a card that jumps is distracting;
+     a card that breathes feels responsive. */
+  .lift {
+    box-shadow: var(--shadow-rest);
+    transition:
+      box-shadow 380ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 380ms cubic-bezier(0.22, 1, 0.36, 1),
+      border-color 280ms ease;
+  }
+  .lift:hover {
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-3px);
+  }
+
+  /* Link that grows an underline from the left on hover */
+  .link-wipe {
+    position: relative;
+  }
+  .link-wipe::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1.5px;
+    width: 100%;
+    background-color: currentColor;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 380ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-wipe:hover::after {
+    transform: scaleX(1);
+  }
+
+  .gutter-label {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    letter-spacing: 0.22em;
+    font-size: var(--text-sm);
+  }
+}
+
+/* ---------------------------------------------------------------
+   MOTION
+   --------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .lift:hover {
+    transform: none;
+  }
 }
