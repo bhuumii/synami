@@ -8,28 +8,27 @@ import { AnimatePresence, motion } from "motion/react";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
-import { mainNav, productMenu, capabilitiesMenu } from "@/lib/navigation";
+import { capabilitiesMenu } from "@/lib/navigation";
+import type { NavSegment } from "@/lib/nav-types";
 
 /**
  * Sticky pill header.
  *
- * Over the hero it is translucent with a blur, so the video reads through it.
- * After ~40px of scroll it becomes solid white with a hairline and a soft
- * shadow, and the pill tightens slightly. That shift is the only thing that
- * animates on scroll in the chrome.
+ * The Products mega menu is now generated from `segments`, which the layout
+ * fetches from Sanity. One column per Main Category, its categories listed
+ * beneath. Add a Main Category in the Studio and a column appears here with
+ * no code change.
  *
- * Why top-anchored rather than the reference site's bottom-floating bar:
- * a bottom bar overlaps body copy on desktop and sits in the thumb zone on
- * mobile. Same pill shape, none of the collision.
+ * The grid adapts to the count, so 2, 3, 5 or 6 main categories all lay out
+ * sensibly rather than assuming four.
  */
-export function Header() {
+export function Header({ segments }: { segments: NavSegment[] }) {
   const [scrolled, setScrolled] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const pathname = usePathname();
 
-  // Solid state after a short scroll
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
     onScroll();
@@ -37,13 +36,11 @@ export function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Any navigation closes everything
   useEffect(() => {
     setOpenMenu(null);
     setMobileOpen(false);
   }, [pathname]);
 
-  // Escape closes the open dropdown — keyboard users need a way out
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
@@ -55,7 +52,6 @@ export function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  // Lock body scroll while the mobile drawer is open
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
@@ -63,10 +59,6 @@ export function Header() {
     };
   }, [mobileOpen]);
 
-  /**
-   * A short delay before closing on mouse-out. Without it, the gap between
-   * the trigger and the panel closes the menu as the cursor travels down.
-   */
   const open = (name: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpenMenu(name);
@@ -78,6 +70,24 @@ export function Header() {
 
   const dark = scrolled || openMenu !== null;
 
+  const nav = [
+    { title: "Home", href: "/" },
+    { title: "About Us", href: "/about" },
+    { title: "Products", href: "/products", menu: "products" },
+    { title: "Insights", href: "/capabilities", menu: "capabilities" },
+    { title: "Contact Us", href: "/contact" },
+  ];
+
+  /* Column count follows the data instead of assuming four. */
+  const segCols =
+    segments.length >= 4
+      ? "grid-cols-4"
+      : segments.length === 3
+        ? "grid-cols-3"
+        : segments.length === 2
+          ? "grid-cols-2"
+          : "grid-cols-1";
+
   return (
     <header className="fixed inset-x-0 top-0 z-50" onMouseLeave={scheduleClose}>
       <Container className="pt-4 md:pt-5">
@@ -85,34 +95,31 @@ export function Header() {
           className={cn(
             "flex items-center justify-between rounded-pill pl-4 pr-3 transition-all duration-300",
             dark
-              ? "border border-line bg-white/95 py-2 shadow-[0_4px_24px_rgb(13_28_64/0.08)] backdrop-blur-md"
+              ? "border border-line bg-white/95 py-2 shadow-[var(--shadow-rest)] backdrop-blur-md"
               : "border border-white/25 bg-white/10 py-2.5 backdrop-blur-md"
           )}
         >
-          {/* Logo */}
-        <Link
-  href="/"
-  className={cn(
-    "flex items-center rounded-pill py-1 transition-all",
-    !dark && "bg-white px-3 py-1.5"
-  )}
-  aria-label="Synami Agriscience, home"
->
-  <Image
-    src="/logo.jpg"
-    alt="Synami Agriscience"
-    width={600}
-    height={228}
-    priority
-    className="h-8 w-auto"
-  />
-</Link>
+          <Link
+            href="/"
+            className={cn(
+              "flex items-center rounded-pill py-1 transition-all",
+              !dark && "bg-white px-3 py-1.5"
+            )}
+            aria-label="Synami Agriscience, home"
+          >
+            <Image
+              src="/logo.jpg"
+              alt="Synami Agriscience"
+              width={600}
+              height={228}
+              priority
+              className="h-8 w-auto"
+            />
+          </Link>
 
-          {/* Desktop nav */}
           <nav className="hidden items-center gap-1 lg:flex">
-            {mainNav.map((item) => {
-              const hasMenu = "menu" in item && item.menu;
-              const isOpen = hasMenu && openMenu === item.menu;
+            {nav.map((item) => {
+              const isOpen = item.menu && openMenu === item.menu;
               const active = pathname === item.href;
 
               const base = cn(
@@ -121,7 +128,7 @@ export function Header() {
                 active && (dark ? "text-leaf" : "text-white")
               );
 
-              if (!hasMenu) {
+              if (!item.menu) {
                 return (
                   <Link key={item.title} href={item.href} className={base}>
                     {item.title}
@@ -129,12 +136,15 @@ export function Header() {
                 );
               }
 
+              /* Hide the Products menu entirely if nothing is published yet */
+              if (item.menu === "products" && segments.length === 0) return null;
+
               return (
                 <button
                   key={item.title}
                   type="button"
                   className={cn(base, "inline-flex items-center gap-1")}
-                  aria-expanded={isOpen}
+                  aria-expanded={!!isOpen}
                   aria-haspopup="true"
                   onMouseEnter={() => open(item.menu!)}
                   onFocus={() => open(item.menu!)}
@@ -149,18 +159,18 @@ export function Header() {
             })}
           </nav>
 
-          {/* Desktop CTA */}
           <Link
             href="/contact"
             className={cn(
-              "ml-2 hidden rounded-pill px-5 py-2.5 font-display text-sm font-medium transition-colors lg:inline-flex",
-              dark ? "bg-leaf text-white hover:bg-leaf-deep" : "bg-white text-navy hover:bg-field"
+              "ml-2 hidden rounded-pill px-5 py-2.5 font-display text-sm font-medium transition-all duration-300 lg:inline-flex",
+              dark
+                ? "bg-leaf text-white hover:bg-leaf-deep"
+                : "bg-white text-forest hover:bg-field"
             )}
           >
             Send enquiry
           </Link>
 
-          {/* Mobile toggle */}
           <button
             type="button"
             className={cn("rounded-pill p-2.5 lg:hidden", dark ? "text-navy" : "text-white")}
@@ -185,29 +195,34 @@ export function Header() {
             onMouseEnter={() => open(openMenu)}
           >
             <Container className="pt-2">
-              <div className="overflow-hidden rounded-card border border-line bg-white shadow-[0_18px_50px_rgb(13_28_64/0.12)]">
+              <div className="overflow-hidden rounded-card border border-line bg-white shadow-[var(--shadow-deep)]">
                 {openMenu === "products" ? (
-                  <div className="grid grid-cols-4 divide-x divide-line">
-                    {productMenu.map((col) => (
-                      <div key={col.title} className="p-7">
+                  <div className={cn("grid divide-x divide-line", segCols)}>
+                    {segments.map((seg) => (
+                      <div key={seg._id} className="p-7">
                         <Link
-                          href={col.href}
-                          className="font-display text-sm font-semibold text-navy hover:text-leaf"
+                          href={`/products/${seg.slug}`}
+                          className="link-wipe inline-block font-display text-sm font-semibold text-navy hover:text-leaf"
                         >
-                          {col.title}
+                          {seg.title}
                         </Link>
-                        <ul className="mt-4 space-y-2.5">
-                          {col.items.map((sub) => (
-                            <li key={sub.title}>
-                              <Link
-                                href={sub.href}
-                                className="text-sm text-stone transition-colors hover:text-leaf"
-                              >
-                                {sub.title}
-                              </Link>
-                            </li>
-                          ))}
-                        </ul>
+
+                        {seg.categories.length > 0 ? (
+                          <ul className="mt-4 space-y-2.5">
+                            {seg.categories.map((cat) => (
+                              <li key={cat._id}>
+                                <Link
+                                  href={`/products/${seg.slug}/${cat.slug}`}
+                                  className="text-sm text-stone transition-colors hover:text-leaf"
+                                >
+                                  {cat.title}
+                                </Link>
+                              </li>
+                            ))}
+                          </ul>
+                        ) : (
+                          <p className="mt-4 text-sm text-slate">Coming soon</p>
+                        )}
                       </div>
                     ))}
                   </div>
@@ -241,8 +256,8 @@ export function Header() {
           >
             <Container className="pb-16">
               <nav className="divide-y divide-line">
-                {mainNav
-                  .filter((i) => !("menu" in i && i.menu))
+                {nav
+                  .filter((i) => !i.menu)
                   .map((item) => (
                     <Link
                       key={item.title}
@@ -254,27 +269,37 @@ export function Header() {
                   ))}
               </nav>
 
-              <div className="mt-8">
-                <p className="font-display text-xs uppercase tracking-[0.18em] text-slate">
-                  Products
-                </p>
-                {productMenu.map((col) => (
-                  <div key={col.title} className="mt-6">
-                    <Link href={col.href} className="font-display font-semibold text-navy">
-                      {col.title}
-                    </Link>
-                    <ul className="mt-3 space-y-2.5 border-l border-line pl-4">
-                      {col.items.map((sub) => (
-                        <li key={sub.title}>
-                          <Link href={sub.href} className="text-stone">
-                            {sub.title}
-                          </Link>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                ))}
-              </div>
+              {segments.length > 0 && (
+                <div className="mt-8">
+                  <p className="font-display text-xs uppercase tracking-[0.18em] text-slate">
+                    Products
+                  </p>
+                  {segments.map((seg) => (
+                    <div key={seg._id} className="mt-6">
+                      <Link
+                        href={`/products/${seg.slug}`}
+                        className="font-display font-semibold text-navy"
+                      >
+                        {seg.title}
+                      </Link>
+                      {seg.categories.length > 0 && (
+                        <ul className="mt-3 space-y-2.5 border-l border-line pl-4">
+                          {seg.categories.map((cat) => (
+                            <li key={cat._id}>
+                              <Link
+                                href={`/products/${seg.slug}/${cat.slug}`}
+                                className="text-stone"
+                              >
+                                {cat.title}
+                              </Link>
+                            </li>
+                          ))}
+                        </ul>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              )}
 
               <div className="mt-10">
                 <p className="font-display text-xs uppercase tracking-[0.18em] text-slate">
