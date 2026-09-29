@@ -29,7 +29,7 @@ export default async function Home() {
         secondaryCta={home?.heroSecondaryCta}
       />
 
-      <section className="bg-field py-24 md:py-32">
+      <section className="bg-field py-16 md:py-24 lg:py-32">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[0.45fr_1fr] lg:gap-24">
             <Reveal>

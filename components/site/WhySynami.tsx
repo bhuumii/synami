@@ -19,7 +19,7 @@ export function WhySynami({
   if (items.length === 0) return null;
 
   return (
-    <section className="bg-paper py-24 md:py-32">
+    <section className="bg-paper py-16 md:py-24 lg:py-32">
       <Container>
         <div className="grid gap-14 lg:grid-cols-[0.8fr_1.2fr] lg:gap-24">
           <div className="lg:sticky lg:top-32 lg:self-start">

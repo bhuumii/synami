@@ -173,7 +173,7 @@ export default async function ProductPage({
         </Container>
       </section>
 
-      <section className="bg-paper py-20 md:py-28">
+      <section className="bg-paper py-14 md:py-20 lg:py-28">
         <Container>
           <div className="grid gap-14 lg:grid-cols-[1.4fr_1fr] lg:gap-20">
             <div>
@@ -220,7 +220,7 @@ export default async function ProductPage({
       </section>
 
       {data.related?.length ? (
-        <section className="bg-field py-20 md:py-28">
+        <section className="bg-field py-14 md:py-20 lg:py-28">
           <Container>
             <div className="flex items-baseline justify-between gap-6">
               <h2 className="text-2xl">More in {data.category.title}</h2>

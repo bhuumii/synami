@@ -62,7 +62,7 @@ export default async function CategoryPage({
 
   return (
     <>
-      <section className="relative flex min-h-[58vh] items-end overflow-hidden pb-16 pt-40">
+      <section className="relative flex min-h-[62vh] items-end overflow-hidden pb-12 pt-32 md:min-h-[58vh] md:pb-16 md:pt-40">
         {data.heroImage ? (
           <Image
             src={urlFor(data.heroImage as never).width(2400).height(1100).fit("crop").url()}
@@ -109,14 +109,14 @@ export default async function CategoryPage({
       </section>
 
       {data.description ? (
-        <section className="bg-field py-20 md:py-28">
+        <section className="bg-field py-14 md:py-20 lg:py-28">
           <Container width="narrow">
             <RichText value={data.description} />
           </Container>
         </section>
       ) : null}
 
-      <section className="bg-paper py-20 md:py-28">
+      <section className="bg-paper py-14 md:py-20 lg:py-28">
         <Container>
           <div className="flex items-baseline justify-between gap-6">
             <h2 className="text-2xl">Products</h2>

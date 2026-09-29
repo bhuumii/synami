@@ -148,7 +148,7 @@ export default async function ContactPage() {
             </div>
 
             {/* ---- Form ---- */}
-            <div className="rounded-card border border-line bg-field p-8 md:p-10">
+            <div className="rounded-card border border-line bg-field p-6 sm:p-8 md:p-10">
               <h2 className="text-2xl">Send us a message</h2>
               <p className="mt-3 text-stone">
                 The more detail you give us, the more useful our reply will be.

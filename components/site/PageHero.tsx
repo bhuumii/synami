@@ -69,7 +69,7 @@ export function PageHero({
   }
 
   return (
-    <section className="relative flex min-h-[54vh] items-end overflow-hidden pb-16 pt-40">
+    <section className="relative flex min-h-[58vh] items-end overflow-hidden pb-12 pt-32 md:min-h-[54vh] md:pb-16 md:pt-40">
       <Image
         src={urlFor(image as never).width(2400).height(1100).fit("crop").url()}
         alt={image.alt || title}

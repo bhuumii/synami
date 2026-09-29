@@ -18,10 +18,14 @@ export function Approach({
 
   /* Grid follows the step count rather than assuming four. */
   const cols =
-    steps.length >= 4 ? "md:grid-cols-4" : steps.length === 3 ? "md:grid-cols-3" : "md:grid-cols-2";
+  steps.length >= 4
+    ? "sm:grid-cols-2 lg:grid-cols-4"
+    : steps.length === 3
+      ? "sm:grid-cols-2 lg:grid-cols-3"
+      : "sm:grid-cols-2";
 
   return (
-    <section className="bg-field py-24 md:py-32">
+    <section className="bg-field py-16 md:py-24 lg:py-32">
       <Container>
         {eyebrow ? (
           <p className="font-display text-xs uppercase tracking-[0.2em] text-leaf">
@@ -31,7 +35,7 @@ export function Approach({
         <h2 className="mt-4 max-w-[20ch] text-3xl">{heading}</h2>
 
         <div className="relative mt-20">
-          <div className="absolute left-0 right-0 top-[9px] hidden h-px bg-line md:block">
+          <div className="absolute left-0 right-0 top-[9px] hidden h-px bg-line lg:block">
             <motion.div
               initial={{ scaleX: 0 }}
               whileInView={{ scaleX: 1 }}

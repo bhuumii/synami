@@ -36,7 +36,7 @@ export function PageBody({
 
         if (!s.image) {
           return (
-            <section key={i} className={`${tone} py-20 md:py-28`}>
+            <section key={i} className={`${tone} py-14 md:py-20 lg:py-28`}>
               <Container width="narrow">
                 {s.heading ? <h2 className="text-2xl">{s.heading}</h2> : null}
                 <div className="mt-7">
@@ -48,7 +48,7 @@ export function PageBody({
         }
 
         return (
-          <section key={i} className={`${tone} py-20 md:py-28`}>
+          <section key={i} className={`${tone} py-14 md:py-20 lg:py-28`}>
             <Container>
               <div className="grid items-center gap-12 lg:grid-cols-2 lg:gap-20">
                 <div className={flip ? "lg:order-2" : undefined}>
@@ -79,7 +79,7 @@ export function PageBody({
 
       {highlights.length > 0 ? (
         <section
-          className={`${sections.length % 2 === 0 ? "bg-paper" : "bg-field"} py-20 md:py-28`}
+          className={`${sections.length % 2 === 0 ? "bg-paper" : "bg-field"} py-14 md:py-20 lg:py-28`}
         >
           <Container>
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

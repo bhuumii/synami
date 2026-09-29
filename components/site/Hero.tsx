@@ -6,7 +6,16 @@ import { Button } from "@/components/ui/Button";
 
 type Cta = { label?: string; href?: string };
 
-/** All text comes from Sanity. Fallbacks keep the page sane before content exists. */
+/**
+ * Hero.
+ *
+ * NOTE on the max-width: it sits on the <h1>, NOT on the wrapper.
+ * `ch` resolves against the element's own font-size, so putting `20ch` on
+ * the wrapper measured it against inherited 17px body text — about 170px —
+ * and crushed the 88px headline into a narrow column. On the h1 itself,
+ * 13ch measures against the headline's own size and gives a sane line
+ * length at every viewport.
+ */
 export function Hero({
   heading,
   subheading,
@@ -38,9 +47,8 @@ export function Hero({
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-          className="max-w-[20ch]"
         >
-          <h1 className="rule-straw font-display text-[length:var(--text-hero)] font-semibold text-white">
+          <h1 className="rule-straw max-w-[13ch] font-display text-[length:var(--text-hero)] font-semibold text-white">
             {heading ?? "Advancing agriculture, enabling growth"}
           </h1>
         </motion.div>

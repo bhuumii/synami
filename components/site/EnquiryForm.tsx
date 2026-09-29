@@ -111,7 +111,7 @@ export function EnquiryForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} noValidate className="space-y-6">
-      <div className="grid gap-6 sm:grid-cols-2">
+      <div className="grid gap-5 md:grid-cols-2 md:gap-6">
         <div>
           <label htmlFor="name" className={label}>
             Name <span className="text-leaf">*</span>

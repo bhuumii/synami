@@ -1,36 +1,31 @@
 @import "tailwindcss";
 
 /* ---------------------------------------------------------------
-   SYNAMI DESIGN TOKENS — v2
+   SYNAMI DESIGN TOKENS — v3
 
-   Change from v1: navy is no longer a BACKGROUND colour. It survives
-   only as heading text, where it came from the logo wordmark.
+   Change from v2: the type scale is now FLUID. Every heading size is a
+   clamp() that scales with viewport width, so a 64px desktop headline
+   becomes 36px on a phone instead of overflowing the screen.
 
-   Every surface on the site is now one of four greens:
-     field   pale, the page default
-     paper   white, the raised/alternate surface
-     sage    slightly deeper pale green, the footer
-     forest  deep green, used for exactly one section
-
-   Blue next to green reads as two unrelated palettes fighting. Staying
-   inside one hue family means the page can still have rhythm without
-   any transition feeling like a jolt.
+   This was the single cause of the broken mobile layout. Fixed pixel
+   headings are the most common responsive bug there is, because they look
+   perfect on the machine you build on.
    --------------------------------------------------------------- */
 
 @theme {
   /* Surfaces — light to dark, all green */
-  --color-field: #f1f6f2; /* page default */
-  --color-paper: #ffffff; /* raised surface, alternate sections */
-  --color-sage: #e3ede5; /* footer, quiet blocks */
-  --color-forest: #123d28; /* the one dark section */
-  --color-forest-deep: #0c2c1d; /* hero overlay */
+  --color-field: #f1f6f2;
+  --color-paper: #ffffff;
+  --color-sage: #e3ede5;
+  --color-forest: #123d28;
+  --color-forest-deep: #0c2c1d;
 
   /* Brand greens */
-  --color-leaf: #0a7a35; /* logo "AGRISCIENCE" — primary action */
-  --color-leaf-bright: #2fb14c; /* logo leaf highlight — accents */
-  --color-leaf-deep: #065526; /* pressed states */
+  --color-leaf: #0a7a35;
+  --color-leaf-bright: #2fb14c;
+  --color-leaf-deep: #065526;
 
-  /* Navy — TEXT ONLY */
+  /* Navy — TEXT ONLY, never a background */
   --color-navy: #152b5e;
   --color-ink: #16223f;
 
@@ -39,22 +34,28 @@
   /* Text */
   --color-stone: #4d565c;
   --color-slate: #7b858b;
-  --color-line: #dde7df; /* hairlines, green-tinted not grey */
-  --color-line-dark: rgb(255 255 255 / 0.12);
+  --color-line: #dde7df;
 
   /* Type */
   --font-display: "General Sans", ui-sans-serif, system-ui, sans-serif;
   --font-body: "Switzer", ui-sans-serif, system-ui, sans-serif;
 
+  /* Body sizes stay fixed — readable text should not shrink on a phone,
+     which is exactly where it matters most. */
   --text-xs: 0.8125rem;
   --text-sm: 0.9375rem;
   --text-base: 1.0625rem;
-  --text-lg: 1.25rem;
-  --text-xl: 1.5rem;
-  --text-2xl: 2rem;
-  --text-3xl: 2.75rem;
-  --text-4xl: 4rem;
-  --text-hero: clamp(2.5rem, 6.5vw, 5.5rem);
+
+  /* Headings scale with the viewport.
+     The middle value is the growth rate; the first and last are the floor
+     and ceiling. Floors are set so nothing drops below comfortable
+     reading size on a 360px screen. */
+  --text-lg: clamp(1.125rem, 0.6vw + 1rem, 1.25rem);      /* 18 → 20 */
+  --text-xl: clamp(1.25rem, 1.4vw + 1rem, 1.5rem);        /* 20 → 24 */
+  --text-2xl: clamp(1.5rem, 2.6vw + 0.9rem, 2rem);        /* 24 → 32 */
+  --text-3xl: clamp(1.75rem, 4vw + 0.8rem, 2.75rem);      /* 28 → 44 */
+  --text-4xl: clamp(2rem, 6vw + 0.7rem, 4rem);            /* 32 → 64 */
+  --text-hero: clamp(2.25rem, 7vw + 0.5rem, 5.5rem);      /* 36 → 88 */
 
   --container-site: 1240px;
 
@@ -62,9 +63,8 @@
   --radius-card: 14px;
   --radius-image: 6px;
 
-  /* Elevation — shadows are GREEN-TINTED, never neutral grey.
-     A grey shadow on a green surface reads as dirty; tinting it to the
-     surface hue is the difference between "shadow" and "depth". */
+  /* Elevation — green-tinted, never neutral grey. A grey shadow on a
+     green surface reads as dirty. */
   --shadow-rest: 0 1px 2px rgb(18 61 40 / 0.04), 0 4px 14px rgb(18 61 40 / 0.05);
   --shadow-lift: 0 2px 4px rgb(18 61 40 / 0.05), 0 14px 34px rgb(18 61 40 / 0.1);
   --shadow-deep: 0 20px 56px rgb(18 61 40 / 0.14);
@@ -75,14 +75,28 @@
    --------------------------------------------------------------- */
 
 @layer base {
+  :root {
+    /* Tells the browser this site is light-themed.
+       Without it, Chrome and Safari apply their own dark styling to form
+       inputs, textareas and scrollbars when the OS is in dark mode — so a
+       visitor sees dark input boxes inside a white card. This one line is
+       the entire dark-mode fix this site needs. */
+    color-scheme: light;
+  }
+
   html {
     -webkit-text-size-adjust: 100%;
-    /* NOTE: scroll-behavior is deliberately NOT set here.
-       It fights GSAP ScrollTrigger's pin and causes stutter. */
+
+    /* `clip`, not `hidden`. Both stop sideways scroll, but `hidden`
+       creates a scroll container and silently breaks every
+       position: sticky element on the site. */
+    overflow-x: clip;
+
+    /* NOTE: scroll-behavior is deliberately unset — it fights
+       GSAP ScrollTrigger's pin and causes stutter. */
   }
 
   body {
-    /* The pale green is the page default now, not white */
     background-color: var(--color-field);
     color: var(--color-stone);
     font-family: var(--font-body);
@@ -90,6 +104,7 @@
     line-height: 1.65;
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: clip;
   }
 
   h1,
@@ -99,14 +114,37 @@
     font-family: var(--font-display);
     color: var(--color-ink);
     font-weight: 600;
-    line-height: 1.1;
+    line-height: 1.12;
     letter-spacing: -0.02em;
     text-wrap: balance;
+
+    /* Headings wrap between words only. Breaking mid-word is never right for
+   a headline — it turns "agriculture" into "agric / ultur / e". */
+h1, h2, h3, h4 {
+  overflow-wrap: normal;
+  word-break: normal;
+  hyphens: none;
+}
+
+/* Long unbroken strings DO need to break, but only where they occur:
+   chemical names in product cards and breadcrumbs. Add `break-anywhere`
+   to those elements if one ever overflows. */
+.break-anywhere {
+  overflow-wrap: anywhere;
+}
   }
 
   p {
     max-width: 68ch;
     text-wrap: pretty;
+    overflow-wrap: break-word;
+  }
+
+  /* Images never exceed their container, whatever the markup says */
+  img,
+  video,
+  iframe {
+    max-width: 100%;
   }
 
   :focus-visible {
@@ -115,9 +153,20 @@
     border-radius: 2px;
   }
 
+  /* Soft wash rather than a bright slab. Text keeps its normal colour so
+     it stays readable while selected. */
   ::selection {
-    background-color: var(--color-leaf-bright);
-    color: #fff;
+    background-color: rgb(10 122 53 / 0.16);
+    color: var(--color-ink);
+  }
+
+  /* iOS zooms the page in when a focused input is under 16px. Our base is
+     17px so this is already safe, but forms are where it bites hardest —
+     stated explicitly so a future edit can't reintroduce it. */
+  input,
+  textarea,
+  select {
+    font-size: max(16px, 1rem);
   }
 }
 
@@ -126,17 +175,15 @@
    --------------------------------------------------------------- */
 
 @layer utilities {
-  /* Accent rule under a hero headline. Once per page. */
   .rule-straw::after {
     content: "";
     display: block;
     width: 84px;
     height: 3px;
-    margin-top: 1.75rem;
+    margin-top: 1.5rem;
     background-color: var(--color-straw);
   }
 
-  /* Hero overlay — deep forest green, not navy */
   .overlay-forest {
     background: linear-gradient(
       100deg,
@@ -146,9 +193,20 @@
     );
   }
 
-  /* Card elevation. Rests low, lifts on hover.
-     The transform is 3px, not 8px — a card that jumps is distracting;
-     a card that breathes feels responsive. */
+  /* On a phone the gradient's transparent end leaves white text over a
+     bright image. Vertical and heavier at the bottom works better where
+     the content sits low in the frame. */
+  @media (max-width: 767px) {
+    .overlay-forest {
+      background: linear-gradient(
+        180deg,
+        rgb(12 44 29 / 0.72) 0%,
+        rgb(12 44 29 / 0.82) 55%,
+        rgb(12 44 29 / 0.92) 100%
+      );
+    }
+  }
+
   .lift {
     box-shadow: var(--shadow-rest);
     transition:
@@ -161,7 +219,6 @@
     transform: translateY(-3px);
   }
 
-  /* Link that grows an underline from the left on hover */
   .link-wipe {
     position: relative;
   }
@@ -203,5 +260,23 @@
   }
   .lift:hover {
     transform: none;
+  }
+}
+
+/* ---------------------------------------------------------------
+   HOVER-CAPABLE DEVICES ONLY
+
+   A touch device fires :hover on tap and leaves it stuck until the next
+   tap elsewhere — so a card can sit permanently lifted after being
+   touched. Gating the hover effects keeps mobile clean.
+   --------------------------------------------------------------- */
+
+@media (hover: none) {
+  .lift:hover {
+    transform: none;
+    box-shadow: var(--shadow-rest);
+  }
+  .link-wipe:hover::after {
+    transform: scaleX(0);
   }
 }

@@ -28,7 +28,7 @@ export default async function CapabilitiesPage() {
         intro="How we work, what we hold ourselves to, and where we're going."
       />
 
-      <section className="bg-paper py-20 md:py-28">
+      <section className="bg-paper py-14 md:py-20 lg:py-28">
         <Container>
           {items.length > 0 ? (
             <ul className="border-t border-line">

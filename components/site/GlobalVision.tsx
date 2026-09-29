@@ -22,7 +22,7 @@ export function GlobalVision({
   cta?: Cta;
 }) {
   return (
-    <section className="bg-paper py-24 md:py-32">
+    <section className="bg-paper py-16 md:py-24 lg:py-32">
       <Container>
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-24">
           <div>

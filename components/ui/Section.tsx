@@ -12,7 +12,7 @@ const tones: Record<Tone, string> = {
 
 const sizes = {
   sm: "py-14 md:py-20",
-  md: "py-20 md:py-28",
+  md: "py-14 md:py-20 lg:py-28",
   lg: "py-24 md:py-36",
 };
 

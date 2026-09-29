@@ -95,8 +95,7 @@ export function BusinessSegments({
             {segments.map((seg, i) => (
               <article
                 key={seg._id}
-                className="group relative flex flex-col overflow-hidden rounded-card border border-white/10 bg-white/[0.05] p-8 transition-all duration-500 hover:border-white/25 hover:bg-white/[0.09] lg:h-[min(52vh,420px)] lg:w-[420px] lg:p-10"
-              >
+className="group relative flex flex-col overflow-hidden rounded-card border border-white/10 bg-white/[0.05] p-7 transition-all duration-500 hover:border-white/25 hover:bg-white/[0.09] md:max-w-[560px] md:p-8 lg:h-[min(52vh,420px)] lg:w-[420px] lg:max-w-none lg:p-10"              >
                 <span
                   aria-hidden
                   className="absolute inset-y-0 left-0 w-[3px] origin-top scale-y-0 bg-leaf-bright transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100"
