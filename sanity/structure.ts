@@ -30,4 +30,5 @@ export const structure: StructureResolver = (S) =>
 
       S.documentTypeListItem("infoPage").title("Pages"),
       S.documentTypeListItem("lead").title("Enquiries"),
+      S.documentTypeListItem("jobApplication").title("Job Applications"),
     ]);

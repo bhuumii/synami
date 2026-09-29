@@ -1,9 +1,13 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Header } from "@/components/site/Header";
+import { Header, type CapabilityLink } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { client } from "@/sanity/lib/client";
-import { productNavQuery, siteSettingsQuery } from "@/sanity/lib/queries";
+import {
+  productNavQuery,
+  siteSettingsQuery,
+  capabilityNavQuery,
+} from "@/sanity/lib/queries";
 import type { NavSegment } from "@/lib/nav-types";
 
 export const metadata: Metadata = {
@@ -20,18 +24,18 @@ export const metadata: Metadata = {
 
 /**
  * The layout fetches navigation ONCE and passes it to Header and Footer.
- *
- * This is why nothing is hardcoded: Sanity is the single source, and every
- * place that lists products reads from the same result.
+ * Sanity is the single source; every place that lists products or Insights
+ * pages reads from the same result.
  */
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [segments, settings] = await Promise.all([
+  const [segments, settings, capabilities] = await Promise.all([
     client.fetch<NavSegment[]>(productNavQuery),
     client.fetch(siteSettingsQuery),
+    client.fetch<CapabilityLink[]>(capabilityNavQuery),
   ]);
 
   return (
@@ -51,9 +55,13 @@ export default async function RootLayout({
         >
           Skip to content
         </a>
-        <Header segments={segments ?? []} />
+        <Header segments={segments ?? []} capabilities={capabilities ?? []} />
         <main id="main">{children}</main>
-        <Footer segments={segments ?? []} settings={settings} />
+        <Footer
+          segments={segments ?? []}
+          capabilities={capabilities ?? []}
+          settings={settings}
+        />
       </body>
     </html>
   );

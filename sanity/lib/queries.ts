@@ -1,21 +1,32 @@
 import { groq } from "next-sanity";
 
-/* ---------------- Site-wide ---------------- */
+/**
+ * All GROQ queries in one place.
+ *
+ * Each asks for exactly the fields the page renders — never `...`.
+ * Over-fetching is the main reason CMS-driven pages get slow, and it makes
+ * it impossible to tell later which fields are actually in use.
+ */
+
+/* ============================================================
+   SITE-WIDE
+   ============================================================ */
 
 export const siteSettingsQuery = groq`
   *[_type == "siteSettings"][0]{
-    generalEmail, salesEmail, exportEmail, phone, address,
+    generalEmail, salesEmail, exportEmail,
+    phone, phoneAlt, address,
+    mapEmbedUrl, mapLinkUrl,
     linkedin, facebook, instagram, youtube, footerTagline
   }
 `;
 
 /**
- * THE NAVIGATION QUERY.
+ * PRODUCT NAVIGATION.
  *
  * Drives the mega menu, the mobile drawer, the homepage cards and the
- * footer — all from one fetch. Every one of those places is now generated
- * from this, so adding a Main Category in the Studio makes it appear in all
- * four without anyone touching code.
+ * footer — all from one fetch. Add a Main Category in the Studio and it
+ * appears in all four with no code change.
  */
 export const productNavQuery = groq`
   *[_type == "productSegment"] | order(order asc){
@@ -30,7 +41,16 @@ export const productNavQuery = groq`
   }
 `;
 
-/* ---------------- Home ---------------- */
+/** Insights menu — header dropdown, mobile drawer, footer, /capabilities. */
+export const capabilityNavQuery = groq`
+  *[_type == "infoPage" && section == "capabilities"] | order(order asc){
+    _id, title, "slug": slug.current, menuBlurb
+  }
+`;
+
+/* ============================================================
+   HOME
+   ============================================================ */
 
 export const homePageQuery = groq`
   *[_type == "homePage"][0]{
@@ -46,7 +66,9 @@ export const homePageQuery = groq`
   }
 `;
 
-/* ---------------- P1: Main category ---------------- */
+/* ============================================================
+   P1 — MAIN CATEGORY
+   ============================================================ */
 
 export const segmentSlugsQuery = groq`
   *[_type == "productSegment" && defined(slug.current)]{ "slug": slug.current }
@@ -67,7 +89,9 @@ export const segmentBySlugQuery = groq`
   }
 `;
 
-/* ---------------- P2: Category ---------------- */
+/* ============================================================
+   P2 — CATEGORY
+   ============================================================ */
 
 export const categoryPathsQuery = groq`
   *[_type == "productCategory" && defined(slug.current)
@@ -94,7 +118,9 @@ export const categoryBySlugQuery = groq`
   }
 `;
 
-/* ---------------- P3: Product ---------------- */
+/* ============================================================
+   P3 — PRODUCT
+   ============================================================ */
 
 export const productPathsQuery = groq`
   *[_type == "product" && defined(slug.current)
@@ -130,16 +156,41 @@ export const productBySlugQuery = groq`
   }
 `;
 
-/* ---------------- Info pages ---------------- */
+/* ============================================================
+   CONTENT PAGES
+   ============================================================ */
 
-export const infoPageSlugsQuery = groq`
-  *[_type == "infoPage" && defined(slug.current)]{ "slug": slug.current }
+/** The About page — there is only one, so no slug needed. */
+export const aboutPageQuery = groq`
+  *[_type == "infoPage" && section == "about"][0]{
+    title, eyebrow, intro,
+    heroImage{ ..., alt },
+    sections[]{ heading, body, image{ ..., alt } },
+    highlights[]{ title, text },
+    seo
+  }
 `;
 
-export const infoPageBySlugQuery = groq`
-  *[_type == "infoPage" && slug.current == $slug][0]{
-    title, "slug": slug.current, eyebrow, intro,
+export const capabilitySlugsQuery = groq`
+  *[_type == "infoPage" && section == "capabilities" && defined(slug.current)]{
+    "slug": slug.current
+  }
+`;
+
+export const capabilityBySlugQuery = groq`
+  *[_type == "infoPage" && section == "capabilities" && slug.current == $slug][0]{
+    title, eyebrow, intro,
     heroImage{ ..., alt },
+    sections[]{ heading, body, image{ ..., alt } },
+    highlights[]{ title, text },
+    seo
+  }
+`;
+
+/** Privacy, Terms. */
+export const legalPageBySlugQuery = groq`
+  *[_type == "infoPage" && section == "legal" && slug.current == $slug][0]{
+    title, eyebrow, intro,
     sections[]{ heading, body },
     seo
   }

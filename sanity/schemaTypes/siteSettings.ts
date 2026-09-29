@@ -3,7 +3,6 @@ import { defineField, defineType } from "sanity";
 /**
  * SITE SETTINGS — singleton.
  * Contact details and social links, used in the header, footer and contact page.
- * Changing an email here changes it everywhere at once.
  */
 export const siteSettings = defineType({
   name: "siteSettings",
@@ -11,6 +10,7 @@ export const siteSettings = defineType({
   type: "document",
   groups: [
     { name: "contact", title: "Contact", default: true },
+    { name: "location", title: "Location & map" },
     { name: "social", title: "Social links" },
     { name: "footer", title: "Footer" },
   ],
@@ -44,11 +44,35 @@ export const siteSettings = defineType({
       description: "Include the country code, e.g. +91 98765 43210",
     }),
     defineField({
+      name: "phoneAlt",
+      title: "Second phone (optional)",
+      type: "string",
+      group: "contact",
+    }),
+
+    defineField({
       name: "address",
       title: "Address",
       type: "text",
-      rows: 3,
-      group: "contact",
+      rows: 4,
+      group: "location",
+      description: "Put each line on its own line — it displays exactly as typed.",
+    }),
+    defineField({
+      name: "mapEmbedUrl",
+      title: "Google Maps embed link",
+      type: "url",
+      group: "location",
+      description:
+        'In Google Maps: find the place → Share → Embed a map → copy ONLY the src="..." address from the code. Leave blank to hide the map.',
+    }),
+    defineField({
+      name: "mapLinkUrl",
+      title: "Google Maps share link",
+      type: "url",
+      group: "location",
+      description:
+        'In Google Maps: Share → Copy link. This powers the "Open in Maps" button.',
     }),
 
     defineField({
@@ -68,7 +92,6 @@ export const siteSettings = defineType({
       type: "text",
       rows: 3,
       group: "footer",
-      description: "The short paragraph under the logo in the footer.",
     }),
   ],
   preview: { prepare: () => ({ title: "Site Settings" }) },

@@ -9,12 +9,14 @@ import { productCategory } from "./productCategory";
 import { product } from "./product";
 import { infoPage } from "./infoPage";
 import { lead } from "./lead";
+import { jobApplication } from "./jobApplication";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
     seo,
     cta,
     siteSettings,
+    jobApplication,
     homePage,
     productSegment,
     productCategory,
