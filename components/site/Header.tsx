@@ -107,23 +107,20 @@ export function Header({
               : "border border-white/25 bg-white/10 py-2.5 backdrop-blur-md"
           )}
         >
-          <Link
-            href="/"
-            className={cn(
-              "flex items-center rounded-pill py-1 transition-all",
-              !dark && "bg-white px-3 py-1.5"
-            )}
-            aria-label="Synami Agriscience, home"
-          >
-            <Image
-              src="/logo.jpg"
-              alt="Synami Agriscience"
-              width={600}
-              height={228}
-              priority
-              className="h-8 w-auto"
-            />
-          </Link>
+        <Link
+  href="/"
+  className="flex items-center py-1"
+  aria-label="Synami Agriscience, home"
+>
+  <Image
+    src={dark ? "/logo.png" : "/logo-white.png"}
+    alt="Synami Agriscience"
+    width={1357}
+    height={351}
+    priority
+    className="h-9 w-auto"
+  />
+</Link>
 
           <nav className="hidden items-center gap-0.5 xl:flex">
             {nav.map((item) => {
@@ -280,10 +277,10 @@ export function Header({
               ) : (
                 <Link href="/" className="flex items-center">
                   <Image
-                    src="/logo.jpg"
+                    src="/logo.png"
                     alt="Synami Agriscience"
-                    width={600}
-                    height={228}
+                    width={1357}
+                    height={351}
                     className="h-7 w-auto"
                   />
                 </Link>

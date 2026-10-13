@@ -68,11 +68,11 @@ export function Footer({
           {/* Identity */}
           <div>
             <Image
-              src="/logo.jpg"
+              src="/logo.png"
               alt="Synami Agriscience"
-              width={600}
-              height={228}
-              className="h-10 w-auto rounded-image"
+              width={1357}
+              height={351}
+              className="h-10 w-auto"
             />
 
             {settings?.footerTagline ? (
