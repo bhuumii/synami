@@ -12,7 +12,7 @@ import type { NavSegment } from "@/lib/nav-types";
 export const metadata: Metadata = {
   title: "Products",
   description:
-    "Crop protection, fertilizers, biostimulants and customized solutions from Synami Agriscience.",
+    "Crop protection, fertilizers, biologicals and customized solutions from Synami Agriscience.",
 };
 
 export const revalidate = 3600;

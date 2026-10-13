@@ -13,11 +13,11 @@ import type { NavSegment } from "@/lib/nav-types";
 export const metadata: Metadata = {
   metadataBase: new URL("https://synamiagriscience.com"),
   title: {
-    default: "Synami Agriscience — Crop protection, fertilizers and biostimulants",
+    default: "Synami Agriscience Private Limited",
     template: "%s | Synami Agriscience",
   },
   description:
-    "Synami Agriscience develops and supplies crop protection, fertilizer and biostimulant solutions for agricultural businesses in India and international markets.",
+    "Synami Agriscience develops and supplies crop protection, biologicals and fertilizers for agricultural businesses in India and international markets.",
   openGraph: { type: "website", siteName: "Synami Agriscience", locale: "en_IN" },
   robots: { index: true, follow: true },
 };
