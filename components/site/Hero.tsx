@@ -28,7 +28,7 @@ export function Hero({
   secondaryCta?: Cta;
 }) {
   return (
-    <section className="relative flex min-h-[88vh] items-center overflow-hidden">
+    <section data-hero="dark" className="relative flex min-h-[88vh] items-center overflow-hidden">
       <video
         className="absolute inset-0 h-full w-full object-cover"
         src="/hero.mp4"

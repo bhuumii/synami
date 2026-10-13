@@ -62,7 +62,7 @@ export default async function SegmentPage({
 
   return (
     <>
-      <section className="relative flex min-h-[62vh] items-end overflow-hidden pb-12 pt-32 md:min-h-[58vh] md:pb-16 md:pt-40">
+      <section data-hero="dark" className="relative flex min-h-[62vh] items-end overflow-hidden pb-12 pt-32 md:min-h-[58vh] md:pb-16 md:pt-40">
         {data.heroImage ? (
           <Image
             src={urlFor(data.heroImage as never).width(2400).height(1100).fit("crop").url()}

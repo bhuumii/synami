@@ -3,6 +3,7 @@ import { Mail, Phone, MapPin, ExternalLink } from "lucide-react";
 import { client } from "@/sanity/lib/client";
 import { siteSettingsQuery } from "@/sanity/lib/queries";
 import { Container } from "@/components/ui/Container";
+import { PageHero } from "@/components/site/PageHero";
 import { EnquiryForm } from "@/components/site/EnquiryForm";
 
 export const metadata: Metadata = {
@@ -22,6 +23,7 @@ type Settings = {
   address?: string;
   mapEmbedUrl?: string;
   mapLinkUrl?: string;
+  contactImage?: { alt?: string };
 };
 
 export default async function ContactPage() {
@@ -37,30 +39,17 @@ export default async function ContactPage() {
 
   return (
     <>
-      <section className="bg-field pb-14 pt-36 md:pb-16 md:pt-44">
-        <Container>
-          <p className="font-display text-xs uppercase tracking-[0.2em] text-leaf">
-            Contact us
-          </p>
-          <h1 className="mt-4 max-w-[18ch] font-display text-4xl font-semibold text-ink">
-            Let&apos;s start a conversation
-          </h1>
-          <p className="mt-6 max-w-[58ch] text-lg">
-            For product enquiries, distribution opportunities, private-label
-            requirements, bulk supply and international partnerships — tell us
-            what you need and our team will get back to you.
-          </p>
-        </Container>
-      </section>
+      <PageHero
+        title="Let's start a conversation"
+        eyebrow="Contact us"
+        intro="For product enquiries, distribution opportunities, private-label requirements, bulk supply and international partnerships — tell us what you need and our team will get back to you."
+        image={settings?.contactImage}
+      />
 
-      {/* Two columns, details left and form right, matching the reference
-          layout — but as two distinct blocks on the page rather than one
-          floating white card, which sits better with the band rhythm the
-          rest of the site uses. */}
-      <section className="bg-paper py-16 md:py-24">
+      <section className="bg-paper py-14 md:py-20 lg:py-28">
         <Container>
           <div className="grid gap-14 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
-            {/* ---- Get in touch ---- */}
+            {/* ---- Details ---- */}
             <div>
               <h2 className="text-2xl">Get in touch</h2>
 
@@ -131,8 +120,6 @@ export default async function ContactPage() {
                 )}
               </ul>
 
-              {/* Map. Rendered only when the client has added an embed URL,
-                  so the page never shows a broken grey rectangle. */}
               {settings?.mapEmbedUrl && (
                 <div className="mt-10 overflow-hidden rounded-card border border-line">
                   <iframe

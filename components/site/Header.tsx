@@ -17,6 +17,15 @@ export type CapabilityLink = {
   menuBlurb?: string;
 };
 
+/**
+ * Pages that open with a full-bleed dark hero. Used as the FIRST GUESS so
+ * the header doesn't flash the wrong style before the DOM check below runs.
+ * The DOM check is what actually decides.
+ */
+function guessDarkHero(pathname: string) {
+  return pathname === "/" || /^\/products\/[^/]+(\/[^/]+)?$/.test(pathname);
+}
+
 export function Header({
   segments,
   capabilities,
@@ -24,17 +33,37 @@ export function Header({
   segments: NavSegment[];
   capabilities: CapabilityLink[];
 }) {
+  const pathname = usePathname();
+
   const [scrolled, setScrolled] = useState(false);
+  const [hasDarkHero, setHasDarkHero] = useState(() => guessDarkHero(pathname));
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-
-  /** Which top-level drawer row is expanded: "products" | "insights" | null */
   const [drawerOpen, setDrawerOpen] = useState<string | null>(null);
-  /** Which main category inside Products is expanded */
   const [openSegment, setOpenSegment] = useState<string | null>(null);
-
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const pathname = usePathname();
+
+  /**
+   * THE FIX.
+   *
+   * The header used to be translucent with white text until you scrolled.
+   * That works over a dark hero and is invisible over a light page — on
+   * Careers and Contact the navigation simply vanished.
+   *
+   * Rather than hardcoding a list of routes (which breaks the moment the
+   * client removes a hero image in Sanity), the header asks the page
+   * directly: is there an element marked as a dark hero? If not, it stays
+   * solid from the top.
+   *
+   * requestAnimationFrame gives the new page a frame to paint before we
+   * look, otherwise we'd read the previous route's DOM on navigation.
+   */
+  useEffect(() => {
+    const check = () =>
+      setHasDarkHero(!!document.querySelector('[data-hero="dark"]'));
+    const id = requestAnimationFrame(check);
+    return () => cancelAnimationFrame(id);
+  }, [pathname]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -77,7 +106,8 @@ export function Header({
     closeTimer.current = setTimeout(() => setOpenMenu(null), 140);
   };
 
-  const dark = scrolled || openMenu !== null;
+  /* Solid whenever there's no dark hero, once scrolled, or with a menu open */
+  const dark = !hasDarkHero || scrolled || openMenu !== null;
 
   const nav: { title: string; href: string; menu: string | null }[] = [
     { title: "Home", href: "/", menu: null },
@@ -91,8 +121,6 @@ export function Header({
   const gridCols = (n: number) =>
     n >= 4 ? "grid-cols-4" : n === 3 ? "grid-cols-3" : n === 2 ? "grid-cols-2" : "grid-cols-1";
 
-  /** Shared row style for the drawer's top level. Products and Insights
-      look identical to Home and About Us — they just carry a chevron. */
   const drawerRow =
     "flex w-full items-center justify-between py-4 text-left font-display text-xl text-navy";
 
@@ -107,20 +135,20 @@ export function Header({
               : "border border-white/25 bg-white/10 py-2.5 backdrop-blur-md"
           )}
         >
-        <Link
-  href="/"
-  className="flex items-center py-1"
-  aria-label="Synami Agriscience, home"
->
-  <Image
-    src={dark ? "/logo.png" : "/logo-white.png"}
-    alt="Synami Agriscience"
-    width={1357}
-    height={351}
-    priority
-    className="h-9 w-auto"
-  />
-</Link>
+          <Link
+            href="/"
+            className="flex items-center py-1"
+            aria-label="Synami Agriscience, home"
+          >
+            <Image
+              src={dark ? "/logo.png" : "/logo-white.png"}
+              alt="Synami Agriscience"
+              width={1357}
+              height={351}
+              priority
+              className="h-9 w-auto"
+            />
+          </Link>
 
           <nav className="hidden items-center gap-0.5 xl:flex">
             {nav.map((item) => {
@@ -258,9 +286,6 @@ export function Header({
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-[60] overflow-y-auto bg-white xl:hidden"
           >
-            {/* The drawer owns its own bar, so there is always a visible way
-                out. Previously the only close button was in the header
-                underneath, which was easy to miss. */}
             <div className="sticky top-0 z-10 flex items-center justify-between border-b border-line bg-white/95 px-6 py-4 backdrop-blur">
               {drawerOpen ? (
                 <button
@@ -299,7 +324,6 @@ export function Header({
             <Container className="pb-20 pt-4">
               <nav className="divide-y divide-line">
                 {nav.map((item) => {
-                  /* Plain links */
                   if (item.menu === null) {
                     return (
                       <Link
@@ -320,8 +344,6 @@ export function Header({
 
                   return (
                     <div key={item.title}>
-                      {/* Same size and weight as the plain links — only the
-                          chevron distinguishes them. */}
                       <button
                         type="button"
                         className={drawerRow}

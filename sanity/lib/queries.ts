@@ -17,6 +17,8 @@ export const siteSettingsQuery = groq`
     generalEmail, salesEmail, exportEmail,
     phone, phoneAlt, address,
     mapEmbedUrl, mapLinkUrl,
+    contactImage{ ..., alt },
+    careersImage{ ..., alt },
     linkedin, facebook, instagram, youtube, footerTagline
   }
 `;

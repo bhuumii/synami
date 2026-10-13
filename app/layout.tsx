@@ -1,15 +1,20 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { Header, type CapabilityLink } from "@/components/site/Header";
-import { Footer } from "@/components/site/Footer";
-import { client } from "@/sanity/lib/client";
-import {
-  productNavQuery,
-  siteSettingsQuery,
-  capabilityNavQuery,
-} from "@/sanity/lib/queries";
-import type { NavSegment } from "@/lib/nav-types";
 
+/**
+ * ROOT LAYOUT — chrome-free.
+ *
+ * Header and Footer have moved to app/(site)/layout.tsx. They were here
+ * before, which meant they also wrapped /studio — the site header rendered
+ * on top of Sanity Studio and covered its sidebar.
+ *
+ * A root layout wraps every route including /studio, and a child layout
+ * cannot remove an ancestor. The only clean fix is to move the chrome down
+ * one level into a route group that Studio isn't part of.
+ *
+ * Parentheses make (site) a ROUTE GROUP: it organises files without
+ * appearing in any URL. /about stays /about.
+ */
 export const metadata: Metadata = {
   metadataBase: new URL("https://synamiagriscience.com"),
   title: {
@@ -22,22 +27,11 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
 };
 
-/**
- * The layout fetches navigation ONCE and passes it to Header and Footer.
- * Sanity is the single source; every place that lists products or Insights
- * pages reads from the same result.
- */
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const [segments, settings, capabilities] = await Promise.all([
-    client.fetch<NavSegment[]>(productNavQuery),
-    client.fetch(siteSettingsQuery),
-    client.fetch<CapabilityLink[]>(capabilityNavQuery),
-  ]);
-
   return (
     <html lang="en">
       <head>
@@ -48,21 +42,7 @@ export default async function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>
-        <a
-          href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-navy focus:px-4 focus:py-2 focus:text-white"
-        >
-          Skip to content
-        </a>
-        <Header segments={segments ?? []} capabilities={capabilities ?? []} />
-        <main id="main">{children}</main>
-        <Footer
-          segments={segments ?? []}
-          capabilities={capabilities ?? []}
-          settings={settings}
-        />
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
