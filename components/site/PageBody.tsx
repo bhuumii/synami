@@ -64,7 +64,7 @@ function AlternatingRow({ s, i }: { s: PageSection; i: number }) {
 
   if (!s.image) {
     return (
-      <section className={`${tone} py-14 md:py-20 lg:py-28`}>
+      <section ref={ref} className={`${tone} py-14 md:py-20 lg:py-28`}>
         <Container width="narrow">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
