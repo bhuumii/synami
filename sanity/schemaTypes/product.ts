@@ -73,10 +73,10 @@ export const product = defineType({
           name: "alt",
           title: "Image description",
           type: "string",
-          validation: (r) => r.required(),
+          validation: (r) => r.warning("Add a short description when you upload an image."),
         }),
       ],
-      validation: (r) => r.required(),
+     
     }),
 
     defineField({
