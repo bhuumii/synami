@@ -29,17 +29,19 @@ export function Hero({
 }) {
   return (
     <section data-hero="dark" className="relative flex min-h-[88vh] items-center overflow-hidden">
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        src="/hero.mp4"
-        poster="/hero-poster.jpg"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="metadata"
-        aria-hidden="true"
-      />
+     <video
+  className="absolute inset-0 h-full w-full object-cover"
+  poster="/hero-poster.jpg"
+  autoPlay
+  muted
+  loop
+  playsInline
+  preload="metadata"
+  aria-hidden="true"
+>
+  <source src="/hero-mobile.mp4" type="video/mp4" media="(max-width: 767px)" />
+  <source src="/hero.mp4" type="video/mp4" />
+</video>
       <div className="overlay-forest absolute inset-0" />
 
       <Container className="relative z-10">
