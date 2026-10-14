@@ -153,16 +153,41 @@ export const infoPage = defineType({
       ],
     }),
 
-    defineField({
+ defineField({
       name: "highlights",
       title: "Highlight cards",
       type: "array",
       description:
-        "Optional. A grid of short cards shown below the sections — good for listing capabilities or quality steps.",
+        "Optional. A grid of short cards shown below the sections. Each card gets an icon.",
       of: [
         {
           type: "object",
           fields: [
+            {
+              name: "icon",
+              title: "Icon",
+              type: "string",
+              description: "Shown in the circle at the top of the card.",
+              options: {
+                list: [
+                  { title: "Lightbulb — ideas, innovation", value: "lightbulb" },
+                  { title: "Flask — research, formulation", value: "flask" },
+                  { title: "Microscope — science, testing", value: "microscope" },
+                  { title: "Shield — quality, safety", value: "shield" },
+                  { title: "Sprout — growth, crops", value: "sprout" },
+                  { title: "Leaf — sustainability", value: "leaf" },
+                  { title: "Globe — international", value: "globe" },
+                  { title: "Handshake — partnership", value: "handshake" },
+                  { title: "Truck — supply, logistics", value: "truck" },
+                  { title: "Target — focus, precision", value: "target" },
+                  { title: "Users — team, customers", value: "users" },
+                  { title: "Award — standards", value: "award" },
+                  { title: "Recycle — responsibility", value: "recycle" },
+                  { title: "Chart — performance, scale", value: "chart" },
+                ],
+              },
+              initialValue: "leaf",
+            },
             { name: "title", title: "Title", type: "string" },
             { name: "text", title: "Description", type: "text", rows: 3 },
           ],

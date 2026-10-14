@@ -168,7 +168,7 @@ export const aboutPageQuery = groq`
     title, eyebrow, intro,
     heroImage{ ..., alt },
     sections[]{ heading, body, image{ ..., alt } },
-    highlights[]{ title, text },
+    highlights[]{ icon, title, text },
     seo
   }
 `;
@@ -184,7 +184,7 @@ export const capabilityBySlugQuery = groq`
     title, eyebrow, intro,
     heroImage{ ..., alt },
     sections[]{ heading, body, image{ ..., alt } },
-    highlights[]{ title, text },
+    highlights[]{ icon,  title, text },
     seo
   }
 `;
