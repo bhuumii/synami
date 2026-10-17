@@ -111,13 +111,13 @@ export function Footer({
         <div className="grid gap-x-10 gap-y-12 py-16 sm:grid-cols-2 lg:grid-cols-12 lg:py-20">
           {/* ---------- Brand ---------- */}
           <div className="sm:col-span-2 lg:col-span-3">
-            <Image
-              src="/logo.png"
-              alt="Synami Agriscience"
-              width={1357}
-              height={351}
-              className="h-11 w-auto lg:h-[68px]"
-            />
+          <Image
+  src="/logo-tagline.png"
+  alt="Synami Agriscience"
+  width={2713}
+  height={830}
+  className="h-14 w-auto lg:h-[82px]"
+/>
 
             {settings?.footerTagline ? (
               <p className="mt-7 max-w-[36ch] text-[15px] leading-relaxed">
