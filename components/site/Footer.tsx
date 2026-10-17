@@ -1,6 +1,8 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
-import { Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone, ArrowUp } from "lucide-react";
 import {
   LinkedinIcon,
   FacebookIcon,
@@ -33,13 +35,44 @@ const ABOUT_LINKS = [
   { href: "/about/founders-message", title: "Founder's Message" },
 ];
 
+const COMPANY_LINKS = [
+  { href: "/careers", title: "Careers" },
+  { href: "/contact", title: "Contact Us" },
+];
+
+/** Column heading: rule plus a dot, borrowed from the reference footer. */
+function ColHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <h3 className="font-display text-base font-semibold text-navy">
+      {children}
+      <span aria-hidden className="mt-3 flex items-center gap-1.5">
+        <span className="h-[2px] w-9 bg-leaf" />
+        <span className="h-[5px] w-[5px] rounded-pill bg-leaf/50" />
+      </span>
+    </h3>
+  );
+}
+
+function FooterLink({ href, children }: { href: string; children: React.ReactNode }) {
+  return (
+    <Link
+      href={href}
+      className="link-wipe inline-block text-[15px] leading-snug text-stone transition-colors duration-200 hover:text-leaf"
+    >
+      {children}
+    </Link>
+  );
+}
+
 /**
- * Footer on sage — a soft green rather than a dark slab, so the page ends
- * without a thud and stays inside one hue family.
+ * Footer.
  *
- * Products and Insights come from Sanity. About is fixed, matching the
- * Header. Social icons render only when a URL exists; an icon pointing at
- * "#" reads as an unfinished site.
+ * Runs to a wider container than the rest of the site — 1460px rather
+ * than 1240px. A footer is a directory, not prose: the extra width lets
+ * the address sit in three lines instead of nine, and stops five columns
+ * squeezing into the middle of a large screen.
+ *
+ * Brand block on the left, four link columns, contact on the right.
  */
 export function Footer({
   segments,
@@ -60,117 +93,121 @@ export function Footer({
   ].filter((s) => !!s.href);
 
   const emails = [
-    settings?.generalEmail,
-    settings?.salesEmail,
-    settings?.exportEmail,
-  ].filter(Boolean) as string[];
+    { label: "General", value: settings?.generalEmail },
+    { label: "Sales", value: settings?.salesEmail },
+    { label: "Export", value: settings?.exportEmail },
+  ].filter((e) => !!e.value);
 
   const phones = [settings?.phone, settings?.phoneAlt].filter(Boolean) as string[];
 
-  const linkClass = "link-wipe inline-block transition-colors hover:text-leaf";
-
   return (
-    <footer className="bg-sage text-stone">
-      <Container className="py-20">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
-          {/* Identity */}
-          <div>
+    <footer className="relative overflow-hidden bg-sage-deep text-stone">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute -left-40 -top-40 h-[520px] w-[520px] rounded-pill bg-leaf/[0.07] blur-3xl"
+      />
+
+      <Container className="relative max-w-[1460px]">
+        <div className="grid gap-x-10 gap-y-12 py-16 sm:grid-cols-2 lg:grid-cols-12 lg:py-20">
+          {/* ---------- Brand ---------- */}
+          <div className="sm:col-span-2 lg:col-span-3">
             <Image
               src="/logo.png"
               alt="Synami Agriscience"
               width={1357}
               height={351}
-              className="h-10 w-auto"
+              className="h-11 w-auto lg:h-[68px]"
             />
 
             {settings?.footerTagline ? (
-              <p className="mt-6 max-w-[34ch] text-sm">{settings.footerTagline}</p>
+              <p className="mt-7 max-w-[36ch] text-[15px] leading-relaxed">
+                {settings.footerTagline}
+              </p>
             ) : null}
 
             {socials.length > 0 ? (
-              <div className="mt-7 flex gap-3">
-                {socials.map(({ icon: Icon, href, label }) => (
-                  <a
-                    key={label}
-                    href={href as string}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={label}
-                    className="rounded-pill border border-leaf/20 p-2.5 text-leaf transition-all duration-300 hover:border-leaf hover:bg-leaf hover:text-white"
-                  >
-                    <Icon className="h-4 w-4" />
-                  </a>
-                ))}
+              <div className="mt-8">
+                <p className="font-display text-sm font-semibold text-navy">
+                  Follow us
+                </p>
+                <div className="mt-4 flex gap-3">
+                  {socials.map(({ icon: Icon, href, label }) => (
+                    <a
+                      key={label}
+                      href={href as string}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={label}
+                      className="rounded-pill border border-leaf/25 p-3 text-leaf transition-all duration-300 hover:-translate-y-0.5 hover:border-leaf hover:bg-leaf hover:text-white"
+                    >
+                      <Icon className="h-4 w-4" />
+                    </a>
+                  ))}
+                </div>
               </div>
             ) : null}
           </div>
 
-          {/* Products */}
-          <div>
-            <h3 className="font-display text-xs uppercase tracking-[0.18em] text-navy">
-              Products
-            </h3>
-            <ul className="mt-5 space-y-3 text-sm">
+          {/* ---------- Products ---------- */}
+          <div className="lg:col-span-2">
+            <ColHeading>Products</ColHeading>
+            <ul className="mt-6 space-y-3.5">
               {segments.map((seg) => (
                 <li key={seg._id}>
-                  <Link href={`/products/${seg.slug}`} className={linkClass}>
-                    {seg.title}
-                  </Link>
+                  <FooterLink href={`/products/${seg.slug}`}>{seg.title}</FooterLink>
                 </li>
               ))}
+              <li>
+                <FooterLink href="/products">All products</FooterLink>
+              </li>
             </ul>
           </div>
 
-          {/* Company */}
-          <div>
-            <h3 className="font-display text-xs uppercase tracking-[0.18em] text-navy">
-              Company
-            </h3>
-            <ul className="mt-5 space-y-3 text-sm">
+          {/* ---------- About ---------- */}
+          <div className="lg:col-span-2">
+            <ColHeading>About Us</ColHeading>
+            <ul className="mt-6 space-y-3.5">
               {ABOUT_LINKS.map((a) => (
                 <li key={a.href}>
-                  <Link href={a.href} className={linkClass}>
-                    {a.title}
-                  </Link>
+                  <FooterLink href={a.href}>{a.title}</FooterLink>
                 </li>
               ))}
-              {capabilities.map((item) => (
-                <li key={item._id}>
-                  <Link href={`/capabilities/${item.slug}`} className={linkClass}>
-                    {item.title}
-                  </Link>
-                </li>
-              ))}
-              <li>
-                <Link href="/careers" className={linkClass}>
-                  Careers
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" className={linkClass}>
-                  Contact Us
-                </Link>
-              </li>
             </ul>
           </div>
 
-          {/* Contact */}
-          <div>
-            <h3 className="font-display text-xs uppercase tracking-[0.18em] text-navy">
-              Contact
-            </h3>
-            <ul className="mt-5 space-y-4 text-sm">
+          {/* ---------- Insights ---------- */}
+          <div className="lg:col-span-2">
+            <ColHeading>Insights</ColHeading>
+            <ul className="mt-6 space-y-3.5">
+              {capabilities.map((item) => (
+                <li key={item._id}>
+                  <FooterLink href={`/capabilities/${item.slug}`}>{item.title}</FooterLink>
+                </li>
+              ))}
+              {COMPANY_LINKS.map((c) => (
+                <li key={c.href}>
+                  <FooterLink href={c.href}>{c.title}</FooterLink>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* ---------- Contact ---------- */}
+          <div className="sm:col-span-2 lg:col-span-3">
+            <ColHeading>Contact</ColHeading>
+
+            <ul className="mt-6 space-y-5">
               {emails.length > 0 ? (
                 <li className="flex gap-3">
-                  <Mail className="mt-1 h-4 w-4 shrink-0 text-leaf" />
+                  <Mail className="mt-[3px] h-4 w-4 shrink-0 text-leaf" />
                   <div className="space-y-1.5">
                     {emails.map((e) => (
                       <a
-                        key={e}
-                        href={`mailto:${e}`}
-                        className="block transition-colors hover:text-leaf"
+                        key={e.value}
+                        href={`mailto:${e.value}`}
+                        className="block text-[15px] text-stone transition-colors hover:text-leaf"
                       >
-                        {e}
+                        {e.value}
                       </a>
                     ))}
                   </div>
@@ -179,13 +216,13 @@ export function Footer({
 
               {phones.length > 0 ? (
                 <li className="flex gap-3">
-                  <Phone className="mt-1 h-4 w-4 shrink-0 text-leaf" />
+                  <Phone className="mt-[3px] h-4 w-4 shrink-0 text-leaf" />
                   <div className="space-y-1.5">
                     {phones.map((p) => (
                       <a
                         key={p}
                         href={`tel:${p.replace(/\s/g, "")}`}
-                        className="block transition-colors hover:text-leaf"
+                        className="block text-[15px] text-stone transition-colors hover:text-leaf"
                       >
                         {p}
                       </a>
@@ -196,23 +233,38 @@ export function Footer({
 
               {settings?.address ? (
                 <li className="flex gap-3">
-                  <MapPin className="mt-1 h-4 w-4 shrink-0 text-leaf" />
-                  <span className="whitespace-pre-line">{settings.address}</span>
+                  <MapPin className="mt-[3px] h-4 w-4 shrink-0 text-leaf" />
+                  <p className="whitespace-pre-line text-[15px] leading-relaxed">
+                    {settings.address}
+                  </p>
                 </li>
               ) : null}
             </ul>
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-4 border-t border-leaf/15 pt-8 text-xs sm:flex-row sm:items-center sm:justify-between">
+        {/* ---------- Bottom bar ---------- */}
+        <div className="flex flex-col gap-4 border-t border-leaf/15 py-7 text-[13px] sm:flex-row sm:items-center sm:justify-between">
           <p>© {year} Synami Agriscience Private Limited. All rights reserved.</p>
-          <div className="flex gap-6">
+
+          <div className="flex items-center gap-6">
             <Link href="/privacy" className="transition-colors hover:text-leaf">
               Privacy Policy
             </Link>
             <Link href="/terms" className="transition-colors hover:text-leaf">
               Terms &amp; Conditions
             </Link>
+
+            <button
+              type="button"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+              className="group inline-flex items-center gap-2 font-display font-medium text-leaf"
+            >
+              Go to top
+              <span className="rounded-pill bg-leaf p-2 text-white transition-transform duration-300 group-hover:-translate-y-0.5">
+                <ArrowUp className="h-3.5 w-3.5" />
+              </span>
+            </button>
           </div>
         </div>
       </Container>
