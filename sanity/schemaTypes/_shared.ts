@@ -1,3 +1,5 @@
+import { defineField } from "sanity";
+
 /** Shared bits used by several schemas. Not a document type. */
 
 export const ICON_LIST = [
@@ -39,11 +41,11 @@ export const richText = {
   },
 };
 
-export const heroImageField = {
+export const heroImageField = defineField({
   name: "heroImage",
   title: "Hero image (landscape)",
-  type: "image" as const,
+  type: "image",
   description: "Optional. Leave blank for a plain green header with dark text.",
   options: { hotspot: true },
-  fields: [{ name: "alt", title: "Image description", type: "string" }],
-};
+  fields: [defineField({ name: "alt", title: "Image description", type: "string" })],
+});

@@ -1,12 +1,45 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 import { ICON_LIST, richText, heroImageField } from "./_shared";
 
+const sectionMember = defineArrayMember({
+  type: "object",
+  name: "pageSection",
+  fields: [
+    defineField({ name: "heading", title: "Heading", type: "string" }),
+    defineField({ name: "body", title: "Text", type: "array", of: [richText] }),
+    defineField({
+      name: "image",
+      title: "Image",
+      type: "image",
+      options: { hotspot: true },
+      fields: [defineField({ name: "alt", title: "Image description", type: "string" })],
+    }),
+  ],
+  preview: { select: { title: "heading", media: "image" } },
+});
+
+const highlightMember = defineArrayMember({
+  type: "object",
+  name: "highlight",
+  fields: [
+    defineField({
+      name: "icon",
+      title: "Icon",
+      type: "string",
+      options: { list: ICON_LIST },
+      initialValue: "leaf",
+    }),
+    defineField({ name: "title", title: "Title", type: "string" }),
+    defineField({ name: "text", title: "Description", type: "text", rows: 3 }),
+  ],
+  preview: { select: { title: "title", subtitle: "text" } },
+});
+
 /**
- * A content page — Insights pages and legal pages ONLY.
+ * A content page — Insights pages and legal pages only.
  *
- * The About pages used to live here too, which meant every Insights page
- * showed Core Values and Founder's Message tabs it had no use for. They
- * now have their own types, so this one is back to a single clear job.
+ * The About pages have their own dedicated types, so this one is back to
+ * a single clear job and no longer shows fields it has no use for.
  */
 export const infoPage = defineType({
   name: "infoPage",
@@ -39,7 +72,8 @@ export const infoPage = defineType({
       name: "slug",
       title: "URL",
       type: "slug",
-      description: 'Click Generate. Just the name, no slashes — "quality" becomes /capabilities/quality',
+      description:
+        'Click Generate. Just the name, no slashes — "quality" becomes /capabilities/quality',
       options: { source: "title", maxLength: 96 },
       validation: (r) =>
         r.required().custom((slug) =>
@@ -67,31 +101,14 @@ export const infoPage = defineType({
 
     defineField({ name: "eyebrow", title: "Small label above the title", type: "string" }),
     defineField({ name: "intro", title: "Intro paragraph", type: "text", rows: 3 }),
-    defineField(heroImageField),
+    heroImageField,
 
     defineField({
       name: "sections",
       title: "Sections",
       type: "array",
       description: "Sections with an image alternate left and right down the page.",
-      of: [
-        {
-          type: "object",
-          name: "pageSection",
-          fields: [
-            { name: "heading", title: "Heading", type: "string" },
-            { name: "body", title: "Text", type: "array", of: [richText] },
-            {
-              name: "image",
-              title: "Image",
-              type: "image",
-              options: { hotspot: true },
-              fields: [{ name: "alt", title: "Image description", type: "string" }],
-            },
-          ],
-          preview: { select: { title: "heading", media: "image" } },
-        },
-      ],
+      of: [sectionMember],
     }),
 
     defineField({
@@ -99,23 +116,7 @@ export const infoPage = defineType({
       title: "Highlight cards",
       type: "array",
       description: "Optional. A grid of short cards with an icon at the top.",
-      of: [
-        {
-          type: "object",
-          fields: [
-            {
-              name: "icon",
-              title: "Icon",
-              type: "string",
-              options: { list: ICON_LIST },
-              initialValue: "leaf",
-            },
-            { name: "title", title: "Title", type: "string" },
-            { name: "text", title: "Description", type: "text", rows: 3 },
-          ],
-          preview: { select: { title: "title", subtitle: "text" } },
-        },
-      ],
+      of: [highlightMember],
     }),
 
     defineField({ name: "seo", title: "SEO", type: "seo" }),

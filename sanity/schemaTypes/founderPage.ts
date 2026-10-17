@@ -1,9 +1,7 @@
 import { defineField, defineType } from "sanity";
 import { richText, heroImageField } from "./_shared";
 
-/**
- * FOUNDER'S MESSAGE — singleton, serves /about/founders-message.
- */
+/** FOUNDER'S MESSAGE — singleton, serves /about/founders-message. */
 export const founderPage = defineType({
   name: "founderPage",
   title: "Founder's Message",
@@ -18,7 +16,7 @@ export const founderPage = defineType({
     }),
     defineField({ name: "eyebrow", title: "Small label above the title", type: "string" }),
     defineField({ name: "intro", title: "Intro paragraph", type: "text", rows: 3 }),
-    defineField(heroImageField),
+    heroImageField,
 
     defineField({
       name: "founderName",
@@ -33,7 +31,7 @@ export const founderPage = defineType({
       type: "image",
       description: "Portrait orientation works best.",
       options: { hotspot: true },
-      fields: [{ name: "alt", title: "Image description", type: "string" }],
+      fields: [defineField({ name: "alt", title: "Image description", type: "string" })],
     }),
     defineField({
       name: "pullQuote",

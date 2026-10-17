@@ -1,29 +1,47 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
 import { richText, heroImageField } from "./_shared";
 
-const pointFields = [
-  {
-    name: "heading",
-    title: "Heading",
-    type: "string",
-    validation: (r: { required: () => unknown }) => r.required(),
-  },
-  { name: "body", title: "Description", type: "array", of: [richText] },
-  {
-    name: "image",
-    title: "Image",
-    type: "image",
-    options: { hotspot: true },
-    fields: [{ name: "alt", title: "Image description", type: "string" }],
-  },
-];
+/**
+ * A single Vision or Mission point: heading, description, image.
+ *
+ * Built with defineArrayMember/defineField rather than plain objects.
+ * A hand-typed `validation` callback does not satisfy Sanity's
+ * SchemaValidationValue — it passes in dev, where Turbopack skips type
+ * checking, and fails the production build. Letting Sanity's own helpers
+ * infer the types avoids that entirely.
+ */
+const pointMember = defineArrayMember({
+  type: "object",
+  name: "point",
+  fields: [
+    defineField({
+      name: "heading",
+      title: "Heading",
+      type: "string",
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: "body",
+      title: "Description",
+      type: "array",
+      of: [richText],
+    }),
+    defineField({
+      name: "image",
+      title: "Image",
+      type: "image",
+      options: { hotspot: true },
+      fields: [defineField({ name: "alt", title: "Image description", type: "string" })],
+    }),
+  ],
+  preview: { select: { title: "heading", media: "image" } },
+});
 
 /**
  * VISION & MISSION — singleton, serves /about/vision-mission.
  *
- * Two labelled groups, each a list of points. Every point is a heading,
- * a description and an image, rendered as an alternating row with the
- * same shaped frame and parallax used on the About page.
+ * Two labelled groups, each a list of points rendered as alternating rows
+ * with the shaped frame and parallax used on the About page.
  */
 export const visionMissionPage = defineType({
   name: "visionMissionPage",
@@ -44,8 +62,19 @@ export const visionMissionPage = defineType({
       initialValue: "Our Vision & Mission",
       validation: (r) => r.required(),
     }),
-    defineField({ name: "eyebrow", title: "Small label above the title", type: "string", group: "page" }),
-    defineField({ name: "intro", title: "Intro paragraph", type: "text", rows: 3, group: "page" }),
+    defineField({
+      name: "eyebrow",
+      title: "Small label above the title",
+      type: "string",
+      group: "page",
+    }),
+    defineField({
+      name: "intro",
+      title: "Intro paragraph",
+      type: "text",
+      rows: 3,
+      group: "page",
+    }),
     defineField({ ...heroImageField, group: "page" }),
 
     defineField({
@@ -69,13 +98,7 @@ export const visionMissionPage = defineType({
       type: "array",
       group: "vision",
       description: "Three or four works well. Each needs an image.",
-      of: [
-        {
-          type: "object",
-          fields: pointFields,
-          preview: { select: { title: "heading", media: "image" } },
-        },
-      ],
+      of: [pointMember],
     }),
 
     defineField({
@@ -97,13 +120,7 @@ export const visionMissionPage = defineType({
       title: "Mission points",
       type: "array",
       group: "mission",
-      of: [
-        {
-          type: "object",
-          fields: pointFields,
-          preview: { select: { title: "heading", media: "image" } },
-        },
-      ],
+      of: [pointMember],
     }),
 
     defineField({ name: "seo", title: "SEO", type: "seo", group: "meta" }),
