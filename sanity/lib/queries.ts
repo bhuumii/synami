@@ -220,7 +220,8 @@ export const capabilityBySlugQuery = groq`
     title, eyebrow, intro,
     heroImage{ ..., alt },
     sections[]{ heading, body, image{ ..., alt } },
-    highlights[]{ icon, title, text },
+    highlightsLayout, highlightsHeading, highlightsIntro,
+    highlights[]{ icon, title, text, image{ ..., alt } },
     seo
   }
 `;

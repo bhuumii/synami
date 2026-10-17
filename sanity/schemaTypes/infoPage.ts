@@ -31,8 +31,16 @@ const highlightMember = defineArrayMember({
     }),
     defineField({ name: "title", title: "Title", type: "string" }),
     defineField({ name: "text", title: "Description", type: "text", rows: 3 }),
+       defineField({
+      name: "image",
+      title: "Image",
+      type: "image",
+      description: "Only needed for the Image grid layout. Square or portrait works best.",
+      options: { hotspot: true },
+      fields: [defineField({ name: "alt", title: "Image description", type: "string" })],
+    }),
   ],
-  preview: { select: { title: "title", subtitle: "text" } },
+ preview: { select: { title: "title", subtitle: "text", media: "image" } },
 });
 
 /**
@@ -110,6 +118,37 @@ export const infoPage = defineType({
       description: "Sections with an image alternate left and right down the page.",
       of: [sectionMember],
     }),
+
+ defineField({
+      name: "highlightsLayout",
+      title: "How should the points below be shown?",
+      type: "string",
+      options: {
+        list: [
+          { title: "Cards — icon, title, text", value: "cards" },
+          { title: "Image grid — checkerboard, needs an image per point", value: "grid" },
+          { title: "Route map — for places and regions", value: "map" },
+        ],
+        layout: "radio",
+      },
+      initialValue: "cards",
+    }),
+
+    defineField({
+      name: "highlightsHeading",
+      title: "Heading above the points",
+      type: "string",
+      description: 'For example "Our approach to quality" or "Our international focus".',
+    }),
+
+    defineField({
+      name: "highlightsIntro",
+      title: "Intro above the points",
+      type: "text",
+      rows: 3,
+      description: "Only shown with the Route map layout.",
+    }),
+
 
     defineField({
       name: "highlights",
