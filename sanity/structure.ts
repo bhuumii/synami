@@ -3,13 +3,9 @@ import type { StructureResolver } from "sanity/structure";
 /**
  * Studio sidebar.
  *
- * Grouped the way the client thinks about the site rather than the way the
- * schemas happen to be defined: the pages they edit, then the product tree
- * in the order it must be filled, then the things the site collects.
- *
- * Products keep their numbers because the order is a real dependency — a
- * Category can't be saved without a Main Category, and a Product can't be
- * saved without a Category. The numbers tell the client where to start.
+ * The four About pages are singletons grouped in one folder, mirroring
+ * the site's own About menu. Each opens straight into its own editor with
+ * only the fields that page uses.
  */
 export const structure: StructureResolver = (S) =>
   S.list()
@@ -18,11 +14,52 @@ export const structure: StructureResolver = (S) =>
       S.listItem()
         .title("Home Page")
         .id("homePage")
+        .child(S.document().schemaType("homePage").documentId("homePage").title("Home Page")),
+
+      S.listItem()
+        .title("About")
+        .id("aboutGroup")
         .child(
-          S.document().schemaType("homePage").documentId("homePage").title("Home Page")
+          S.list()
+            .title("About")
+            .items([
+              S.listItem()
+                .title("About Synami")
+                .id("aboutPage")
+                .child(
+                  S.document().schemaType("aboutPage").documentId("aboutPage").title("About Synami")
+                ),
+              S.listItem()
+                .title("Vision & Mission")
+                .id("visionMissionPage")
+                .child(
+                  S.document()
+                    .schemaType("visionMissionPage")
+                    .documentId("visionMissionPage")
+                    .title("Vision & Mission")
+                ),
+              S.listItem()
+                .title("Core Values")
+                .id("coreValuesPage")
+                .child(
+                  S.document()
+                    .schemaType("coreValuesPage")
+                    .documentId("coreValuesPage")
+                    .title("Core Values")
+                ),
+              S.listItem()
+                .title("Founder's Message")
+                .id("founderPage")
+                .child(
+                  S.document()
+                    .schemaType("founderPage")
+                    .documentId("founderPage")
+                    .title("Founder's Message")
+                ),
+            ])
         ),
 
-      S.documentTypeListItem("infoPage").title("Pages"),
+      S.documentTypeListItem("infoPage").title("Insights & Legal Pages"),
 
       S.divider(),
 
@@ -41,9 +78,6 @@ export const structure: StructureResolver = (S) =>
         .title("Site Settings")
         .id("siteSettings")
         .child(
-          S.document()
-            .schemaType("siteSettings")
-            .documentId("siteSettings")
-            .title("Site Settings")
+          S.document().schemaType("siteSettings").documentId("siteSettings").title("Site Settings")
         ),
     ]);

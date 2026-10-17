@@ -25,12 +25,21 @@ type Settings = {
   footerTagline?: string;
 };
 
+/** Matches the Header's fixed About menu. */
+const ABOUT_LINKS = [
+  { href: "/about", title: "About Synami" },
+  { href: "/about/vision-mission", title: "Vision & Mission" },
+  { href: "/about/core-values", title: "Core Values" },
+  { href: "/about/founders-message", title: "Founder's Message" },
+];
+
 /**
  * Footer on sage — a soft green rather than a dark slab, so the page ends
  * without a thud and stays inside one hue family.
  *
- * Every link and detail comes from Sanity. Social icons render ONLY when a
- * URL exists; an icon pointing at "#" reads as an unfinished site.
+ * Products and Insights come from Sanity. About is fixed, matching the
+ * Header. Social icons render only when a URL exists; an icon pointing at
+ * "#" reads as an unfinished site.
  */
 export function Footer({
   segments,
@@ -58,13 +67,12 @@ export function Footer({
 
   const phones = [settings?.phone, settings?.phoneAlt].filter(Boolean) as string[];
 
-  const linkClass =
-    "link-wipe inline-block transition-colors hover:text-leaf";
+  const linkClass = "link-wipe inline-block transition-colors hover:text-leaf";
 
   return (
     <footer className="bg-sage text-stone">
       <Container className="py-20">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
+        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-[1.3fr_1fr_1fr_1.2fr]">
           {/* Identity */}
           <div>
             <Image
@@ -119,11 +127,13 @@ export function Footer({
               Company
             </h3>
             <ul className="mt-5 space-y-3 text-sm">
-              <li>
-                <Link href="/about" className={linkClass}>
-                  About Us
-                </Link>
-              </li>
+              {ABOUT_LINKS.map((a) => (
+                <li key={a.href}>
+                  <Link href={a.href} className={linkClass}>
+                    {a.title}
+                  </Link>
+                </li>
+              ))}
               {capabilities.map((item) => (
                 <li key={item._id}>
                   <Link href={`/capabilities/${item.slug}`} className={linkClass}>

@@ -43,7 +43,7 @@ export const productNavQuery = groq`
   }
 `;
 
-/** Insights menu — header dropdown, mobile drawer, footer, /capabilities. */
+/** Insights dropdown — header, mobile drawer, footer, /capabilities. */
 export const capabilityNavQuery = groq`
   *[_type == "infoPage" && section == "capabilities"] | order(order asc){
     _id, title, "slug": slug.current, menuBlurb
@@ -159,12 +159,11 @@ export const productBySlugQuery = groq`
 `;
 
 /* ============================================================
-   CONTENT PAGES
+   ABOUT — four singletons
    ============================================================ */
 
-/** The About page — there is only one, so no slug needed. */
 export const aboutPageQuery = groq`
-  *[_type == "infoPage" && section == "about"][0]{
+  *[_type == "aboutPage"][0]{
     title, eyebrow, intro,
     heroImage{ ..., alt },
     sections[]{ heading, body, image{ ..., alt } },
@@ -172,6 +171,43 @@ export const aboutPageQuery = groq`
     seo
   }
 `;
+
+export const visionMissionQuery = groq`
+  *[_type == "visionMissionPage"][0]{
+    title, eyebrow, intro,
+    heroImage{ ..., alt },
+    visionHeading, visionIntro,
+    visionPoints[]{ heading, body, image{ ..., alt } },
+    missionHeading, missionIntro,
+    missionPoints[]{ heading, body, image{ ..., alt } },
+    seo
+  }
+`;
+
+export const coreValuesQuery = groq`
+  *[_type == "coreValuesPage"][0]{
+    title, eyebrow, intro,
+    heroImage{ ..., alt },
+    gridHeading,
+    values[]{ icon, title, text, image{ ..., alt } },
+    seo
+  }
+`;
+
+export const founderQuery = groq`
+  *[_type == "founderPage"][0]{
+    title, eyebrow, intro,
+    heroImage{ ..., alt },
+    founderName, founderRole,
+    founderPhoto{ ..., alt },
+    pullQuote, message, signature,
+    seo
+  }
+`;
+
+/* ============================================================
+   INSIGHTS
+   ============================================================ */
 
 export const capabilitySlugsQuery = groq`
   *[_type == "infoPage" && section == "capabilities" && defined(slug.current)]{
@@ -184,12 +220,15 @@ export const capabilityBySlugQuery = groq`
     title, eyebrow, intro,
     heroImage{ ..., alt },
     sections[]{ heading, body, image{ ..., alt } },
-    highlights[]{ icon,  title, text },
+    highlights[]{ icon, title, text },
     seo
   }
 `;
 
-/** Privacy, Terms. */
+/* ============================================================
+   LEGAL
+   ============================================================ */
+
 export const legalPageBySlugQuery = groq`
   *[_type == "infoPage" && section == "legal" && slug.current == $slug][0]{
     title, eyebrow, intro,

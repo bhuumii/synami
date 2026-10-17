@@ -12,10 +12,11 @@ import type { NavSegment } from "@/lib/nav-types";
  * SITE LAYOUT — everything the public sees.
  *
  * Fetches navigation once and passes it to Header and Footer. /studio sits
- * outside this group, so it gets none of this.
+ * outside this route group, so it gets none of this chrome.
  *
- * No <html> or <body> here — those belong to the root layout. A nested
- * layout that repeats them produces invalid HTML.
+ * No About query here: the About menu is a fixed four-page structure
+ * defined in the Header, because each of those pages is its own route with
+ * its own layout.
  */
 export default async function SiteLayout({
   children,

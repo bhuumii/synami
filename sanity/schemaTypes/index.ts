@@ -4,6 +4,10 @@ import { seo } from "./objects/seo";
 import { cta } from "./objects/cta";
 import { siteSettings } from "./siteSettings";
 import { homePage } from "./homePage";
+import { aboutPage } from "./aboutPage";
+import { visionMissionPage } from "./visionMissionPage";
+import { coreValuesPage } from "./coreValuesPage";
+import { founderPage } from "./founderPage";
 import { productSegment } from "./productSegment";
 import { productCategory } from "./productCategory";
 import { product } from "./product";
@@ -16,12 +20,16 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     seo,
     cta,
     siteSettings,
-    jobApplication,
     homePage,
+    aboutPage,
+    visionMissionPage,
+    coreValuesPage,
+    founderPage,
     productSegment,
     productCategory,
     product,
     infoPage,
     lead,
+    jobApplication,
   ],
 };

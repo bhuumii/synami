@@ -18,10 +18,20 @@ export type CapabilityLink = {
 };
 
 /**
- * Pages that open with a full-bleed dark hero. Used as the FIRST GUESS so
- * the header doesn't flash the wrong style before the DOM check below runs.
- * The DOM check is what actually decides.
+ * The About menu is a FIXED four-page structure, not CMS-driven.
+ * Each one is its own route with its own layout, so adding a fifth would
+ * mean adding a route file anyway — a Sanity-driven list would only be
+ * able to produce links to pages that don't exist.
  */
+const ABOUT_MENU = [
+  { href: "/about", title: "About Synami", blurb: "Who we are and how we work" },
+  { href: "/about/vision-mission", title: "Vision & Mission", blurb: "Where we're going and why" },
+  { href: "/about/core-values", title: "Core Values", blurb: "What we hold ourselves to" },
+  { href: "/about/founders-message", title: "Founder's Message", blurb: "A note from our founder" },
+];
+
+/** First guess, so the header doesn't flash the wrong style before the
+ *  DOM check below runs. The DOM check is what actually decides. */
 function guessDarkHero(pathname: string) {
   return pathname === "/" || /^\/products\/[^/]+(\/[^/]+)?$/.test(pathname);
 }
@@ -43,21 +53,8 @@ export function Header({
   const [openSegment, setOpenSegment] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  /**
-   * THE FIX.
-   *
-   * The header used to be translucent with white text until you scrolled.
-   * That works over a dark hero and is invisible over a light page — on
-   * Careers and Contact the navigation simply vanished.
-   *
-   * Rather than hardcoding a list of routes (which breaks the moment the
-   * client removes a hero image in Sanity), the header asks the page
-   * directly: is there an element marked as a dark hero? If not, it stays
-   * solid from the top.
-   *
-   * requestAnimationFrame gives the new page a frame to paint before we
-   * look, otherwise we'd read the previous route's DOM on navigation.
-   */
+  /* Is there a dark hero on this page? If not, the header stays solid from
+     the top — otherwise white text on a light page is invisible. */
   useEffect(() => {
     const check = () =>
       setHasDarkHero(!!document.querySelector('[data-hero="dark"]'));
@@ -97,6 +94,8 @@ export function Header({
     };
   }, [mobileOpen]);
 
+  /* Short delay before closing, so the cursor can cross the gap between
+     the trigger and the panel without the menu snapping shut. */
   const open = (name: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpenMenu(name);
@@ -106,12 +105,11 @@ export function Header({
     closeTimer.current = setTimeout(() => setOpenMenu(null), 140);
   };
 
-  /* Solid whenever there's no dark hero, once scrolled, or with a menu open */
   const dark = !hasDarkHero || scrolled || openMenu !== null;
 
   const nav: { title: string; href: string; menu: string | null }[] = [
     { title: "Home", href: "/", menu: null },
-    { title: "About Us", href: "/about", menu: null },
+    { title: "About Us", href: "/about", menu: "about" },
     { title: "Products", href: "/products", menu: "products" },
     { title: "Insights", href: "/capabilities", menu: "capabilities" },
     { title: "Careers", href: "/careers", menu: null },
@@ -135,11 +133,7 @@ export function Header({
               : "border border-white/25 bg-white/10 py-2.5 backdrop-blur-md"
           )}
         >
-          <Link
-            href="/"
-            className="flex items-center py-1"
-            aria-label="Synami Agriscience, home"
-          >
+          <Link href="/" className="flex items-center py-1" aria-label="Synami Agriscience, home">
             <Image
               src={dark ? "/logo.png" : "/logo-white.png"}
               alt="Synami Agriscience"
@@ -171,6 +165,7 @@ export function Header({
 
               if (item.menu === "products" && segments.length === 0) return null;
               if (item.menu === "capabilities" && capabilities.length === 0) return null;
+              /* About always has at least "About Synami", so it never hides */
 
               return (
                 <button
@@ -214,7 +209,7 @@ export function Header({
         </div>
       </Container>
 
-      {/* ---------------- Desktop mega menu ---------------- */}
+      {/* ================= Desktop mega menu ================= */}
       <AnimatePresence>
         {openMenu && (
           <motion.div
@@ -227,7 +222,8 @@ export function Header({
           >
             <Container className="pt-2">
               <div className="overflow-hidden rounded-card border border-line bg-white shadow-[var(--shadow-deep)]">
-                {openMenu === "products" ? (
+                {/* ---- Products ---- */}
+                {openMenu === "products" && (
                   <div className={cn("grid divide-x divide-line", gridCols(segments.length))}>
                     {segments.map((seg) => (
                       <div key={seg._id} className="p-7">
@@ -256,7 +252,24 @@ export function Header({
                       </div>
                     ))}
                   </div>
-                ) : (
+                )}
+
+                {/* ---- About ---- */}
+                {openMenu === "about" && (
+                  <div className="grid grid-cols-4 divide-x divide-line">
+                    {ABOUT_MENU.map((item) => (
+                      <Link key={item.href} href={item.href} className="group p-7">
+                        <span className="font-display text-sm font-semibold text-navy transition-colors group-hover:text-leaf">
+                          {item.title}
+                        </span>
+                        <p className="mt-2 text-sm text-slate">{item.blurb}</p>
+                      </Link>
+                    ))}
+                  </div>
+                )}
+
+                {/* ---- Insights ---- */}
+                {openMenu === "capabilities" && (
                   <div className={cn("grid divide-x divide-line", gridCols(capabilities.length))}>
                     {capabilities.map((item) => (
                       <Link key={item._id} href={`/capabilities/${item.slug}`} className="group p-7">
@@ -276,7 +289,7 @@ export function Header({
         )}
       </AnimatePresence>
 
-      {/* ---------------- Mobile drawer ---------------- */}
+      {/* ================= Mobile drawer ================= */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -339,7 +352,6 @@ export function Header({
                   if (item.menu === "products" && segments.length === 0) return null;
                   if (item.menu === "capabilities" && capabilities.length === 0) return null;
 
-                  const isProducts = item.menu === "products";
                   const expanded = drawerOpen === item.menu;
 
                   return (
@@ -372,7 +384,8 @@ export function Header({
                             className="overflow-hidden"
                           >
                             <div className="pb-4 pl-1">
-                              {isProducts ? (
+                              {/* ---- Products: two levels ---- */}
+                              {item.menu === "products" && (
                                 <>
                                   <Link
                                     href="/products"
@@ -446,7 +459,26 @@ export function Header({
                                     );
                                   })}
                                 </>
-                              ) : (
+                              )}
+
+                              {/* ---- About ---- */}
+                              {item.menu === "about" && (
+                                <ul className="border-l-2 border-leaf/20 pl-4">
+                                  {ABOUT_MENU.map((p) => (
+                                    <li key={p.href}>
+                                      <Link
+                                        href={p.href}
+                                        className="block py-2.5 text-sm text-stone"
+                                      >
+                                        {p.title}
+                                      </Link>
+                                    </li>
+                                  ))}
+                                </ul>
+                              )}
+
+                              {/* ---- Insights ---- */}
+                              {item.menu === "capabilities" && (
                                 <ul className="border-l-2 border-leaf/20 pl-4">
                                   {capabilities.map((c) => (
                                     <li key={c._id}>

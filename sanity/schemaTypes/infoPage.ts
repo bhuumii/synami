@@ -1,14 +1,12 @@
 import { defineField, defineType } from "sanity";
+import { ICON_LIST, richText, heroImageField } from "./_shared";
 
 /**
- * A content page: About, Quality, Solutions, Global Business, Privacy, Terms.
+ * A content page — Insights pages and legal pages ONLY.
  *
- * One flexible type rather than six near-identical ones. `section` decides
- * where the page lives and which menu it appears in, so the client can add a
- * new Insights page and have it show up in the navigation automatically.
- *
- * Sections alternate left/right automatically when they carry an image, so a
- * long page reads as a designed sequence rather than a wall of text.
+ * The About pages used to live here too, which meant every Insights page
+ * showed Core Values and Founder's Message tabs it had no use for. They
+ * now have their own types, so this one is back to a single clear job.
  */
 export const infoPage = defineType({
   name: "infoPage",
@@ -26,13 +24,10 @@ export const infoPage = defineType({
       name: "section",
       title: "Where does this page live?",
       type: "string",
-      description:
-        "Decides the web address and which menu it appears in. Pick carefully — changing it changes the URL.",
       options: {
         list: [
-          { title: "About  →  /about", value: "about" },
           { title: "Insights menu  →  /capabilities/...", value: "capabilities" },
-          { title: "Legal (privacy, terms)  →  /...", value: "legal" },
+          { title: "Legal  →  /privacy, /terms", value: "legal" },
         ],
         layout: "radio",
       },
@@ -44,8 +39,7 @@ export const infoPage = defineType({
       name: "slug",
       title: "URL",
       type: "slug",
-      description:
-        'Click Generate. Just the name, no slashes — "quality" becomes /capabilities/quality',
+      description: 'Click Generate. Just the name, no slashes — "quality" becomes /capabilities/quality',
       options: { source: "title", maxLength: 96 },
       validation: (r) =>
         r.required().custom((slug) =>
@@ -59,8 +53,7 @@ export const infoPage = defineType({
       name: "menuBlurb",
       title: "Menu description",
       type: "string",
-      description:
-        "One short line shown under the page name in the Insights dropdown.",
+      description: "One short line shown under the page name in the dropdown.",
       validation: (r) => r.max(90).warning("Keep it to a few words."),
     }),
 
@@ -72,80 +65,28 @@ export const infoPage = defineType({
       initialValue: 1,
     }),
 
-    defineField({
-      name: "eyebrow",
-      title: "Small label above the title",
-      type: "string",
-    }),
-
-    defineField({
-      name: "intro",
-      title: "Intro paragraph",
-      type: "text",
-      rows: 3,
-      description: "The larger text directly under the page title.",
-    }),
-
-    defineField({
-      name: "heroImage",
-      title: "Hero image (landscape)",
-      type: "image",
-      description:
-        "Optional. Wide image behind the page title. Leave blank for a plain green header.",
-      options: { hotspot: true },
-      fields: [
-        defineField({ name: "alt", title: "Image description", type: "string" }),
-      ],
-    }),
+    defineField({ name: "eyebrow", title: "Small label above the title", type: "string" }),
+    defineField({ name: "intro", title: "Intro paragraph", type: "text", rows: 3 }),
+    defineField(heroImageField),
 
     defineField({
       name: "sections",
       title: "Sections",
       type: "array",
-      description:
-        "Each section is a heading, text, and an optional image. Drag to reorder.",
+      description: "Sections with an image alternate left and right down the page.",
       of: [
         {
           type: "object",
           name: "pageSection",
           fields: [
             { name: "heading", title: "Heading", type: "string" },
-            {
-              name: "body",
-              title: "Text",
-              type: "array",
-              of: [
-                {
-                  type: "block",
-                  styles: [{ title: "Paragraph", value: "normal" }],
-                  lists: [{ title: "Bullet list", value: "bullet" }],
-                  marks: {
-                    decorators: [
-                      { title: "Bold", value: "strong" },
-                      { title: "Italic", value: "em" },
-                    ],
-                    annotations: [
-                      {
-                        name: "link",
-                        type: "object",
-                        title: "Link",
-                        fields: [{ name: "href", type: "url", title: "URL" }],
-                      },
-                    ],
-                  },
-                },
-              ],
-            },
+            { name: "body", title: "Text", type: "array", of: [richText] },
             {
               name: "image",
               title: "Image",
               type: "image",
-              description:
-                "Optional. Sections with an image alternate left and right down the page.",
               options: { hotspot: true },
-              fields: [
-                { name: "alt", title: "Image description", type: "string" },
-              ],
+              fields: [{ name: "alt", title: "Image description", type: "string" }],
             },
           ],
           preview: { select: { title: "heading", media: "image" } },
@@ -153,12 +94,11 @@ export const infoPage = defineType({
       ],
     }),
 
- defineField({
+    defineField({
       name: "highlights",
       title: "Highlight cards",
       type: "array",
-      description:
-        "Optional. A grid of short cards shown below the sections. Each card gets an icon.",
+      description: "Optional. A grid of short cards with an icon at the top.",
       of: [
         {
           type: "object",
@@ -167,25 +107,7 @@ export const infoPage = defineType({
               name: "icon",
               title: "Icon",
               type: "string",
-              description: "Shown in the circle at the top of the card.",
-              options: {
-                list: [
-                  { title: "Lightbulb — ideas, innovation", value: "lightbulb" },
-                  { title: "Flask — research, formulation", value: "flask" },
-                  { title: "Microscope — science, testing", value: "microscope" },
-                  { title: "Shield — quality, safety", value: "shield" },
-                  { title: "Sprout — growth, crops", value: "sprout" },
-                  { title: "Leaf — sustainability", value: "leaf" },
-                  { title: "Globe — international", value: "globe" },
-                  { title: "Handshake — partnership", value: "handshake" },
-                  { title: "Truck — supply, logistics", value: "truck" },
-                  { title: "Target — focus, precision", value: "target" },
-                  { title: "Users — team, customers", value: "users" },
-                  { title: "Award — standards", value: "award" },
-                  { title: "Recycle — responsibility", value: "recycle" },
-                  { title: "Chart — performance, scale", value: "chart" },
-                ],
-              },
+              options: { list: ICON_LIST },
               initialValue: "leaf",
             },
             { name: "title", title: "Title", type: "string" },
@@ -207,12 +129,7 @@ export const infoPage = defineType({
     select: { title: "title", subtitle: "section", media: "heroImage" },
     prepare: ({ title, subtitle, media }) => ({
       title,
-      subtitle:
-        subtitle === "about"
-          ? "/about"
-          : subtitle === "legal"
-            ? "Legal"
-            : "Insights menu",
+      subtitle: subtitle === "legal" ? "Legal" : "Insights menu",
       media,
     }),
   },
