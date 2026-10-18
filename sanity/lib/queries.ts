@@ -140,8 +140,11 @@ export const productBySlugQuery = groq`
     _id, title, brandName, "slug": slug.current,
     heroImage{ ..., alt },
     shortDescription, description,
-    formulationType, keyFeatures, targetCrops, targetPests,
-    dosage, packSizes,
+    formulationType,
+    modeOfAction,
+    featuresBenefits[]{ title, text },
+    cropRecommendations[]{ crop, target, dosage },
+    packSizes,
     "brochureUrl": brochure.asset->url,
     seo,
     category->{

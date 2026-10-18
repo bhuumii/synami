@@ -1,15 +1,65 @@
-import { defineField, defineType } from "sanity";
+import { defineArrayMember, defineField, defineType } from "sanity";
+import { richText } from "./_shared";
+
+const featureMember = defineArrayMember({
+  type: "object",
+  name: "feature",
+  fields: [
+    defineField({
+      name: "title",
+      title: "Feature",
+      type: "string",
+      description: 'The bold lead-in. For example "Selective & systemic herbicide".',
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: "text",
+      title: "Explanation",
+      type: "text",
+      rows: 2,
+      description: "The sentence that follows it.",
+    }),
+  ],
+  preview: { select: { title: "title", subtitle: "text" } },
+});
+
+const cropRowMember = defineArrayMember({
+  type: "object",
+  name: "cropRow",
+  fields: [
+    defineField({
+      name: "crop",
+      title: "Crop",
+      type: "string",
+      validation: (r) => r.required(),
+    }),
+    defineField({
+      name: "target",
+      title: "Target pest / disease",
+      type: "text",
+      rows: 2,
+      description: "Separate several with commas.",
+    }),
+    defineField({
+      name: "dosage",
+      title: "Dosage",
+      type: "string",
+      description: 'For example "60 g/acre".',
+    }),
+  ],
+  preview: {
+    select: { title: "crop", subtitle: "target" },
+  },
+});
 
 /**
  * P3 — an individual product.
  *
- * For example "Azoxystrobin 11% + Tebuconazole 18.3% SC", sitting inside the
- * Fungicides category. Page lives at /products/[category]/[product].
- *
- * The page needs only hero image + description, so everything below that is
- * optional. Optional fields render only when filled, which means the client
- * can start with the bare minimum today and enrich products later without
- * anyone touching code.
+ * Restructured: the old flat `keyFeatures`, `targetCrops`, `targetPests`
+ * and `dosage` fields have been replaced by `featuresBenefits` and
+ * `cropRecommendations`. The old shape couldn't express "this dosage, for
+ * this pest, on this crop" — three loose lists can't be read as a table,
+ * and a table is what a distributor actually wants.
  */
 export const product = defineType({
   name: "product",
@@ -17,7 +67,8 @@ export const product = defineType({
   type: "document",
   groups: [
     { name: "main", title: "Main", default: true },
-    { name: "technical", title: "Technical details" },
+    { name: "technical", title: "Technical" },
+    { name: "crops", title: "Crops & dosage" },
     { name: "meta", title: "SEO" },
   ],
   fields: [
@@ -26,8 +77,7 @@ export const product = defineType({
       title: "Product name",
       type: "string",
       group: "main",
-      description:
-        'The full name, e.g. "Azoxystrobin 11% + Tebuconazole 18.3% SC".',
+      description: 'The full name, e.g. "Pyroxasulfone 85% WG".',
       validation: (r) => r.required(),
     }),
 
@@ -36,8 +86,7 @@ export const product = defineType({
       title: "Brand name",
       type: "string",
       group: "main",
-      description:
-        "Optional. The trade name, if this product is sold under one. Shown above the product name.",
+      description: "Optional trade name, shown above the product name.",
     }),
 
     defineField({
@@ -45,9 +94,13 @@ export const product = defineType({
       title: "URL",
       type: "slug",
       group: "main",
-      description: "Click Generate. Appears in the web address.",
       options: { source: "title", maxLength: 96 },
-      validation: (r) => r.required(),
+      validation: (r) =>
+        r.required().custom((slug) =>
+          slug?.current?.includes("/")
+            ? "Remove the slashes — enter only the name."
+            : true
+        ),
     }),
 
     defineField({
@@ -55,28 +108,18 @@ export const product = defineType({
       title: "Category",
       type: "reference",
       group: "main",
-      description:
-        "Which category this belongs to. Decides where it appears and its web address.",
       to: [{ type: "productCategory" }],
       validation: (r) => r.required(),
     }),
 
     defineField({
       name: "heroImage",
-      title: "Hero image",
+      title: "Product image",
       type: "image",
       group: "main",
-      description: "Main image for this product. At least 1600px wide.",
+      description: "A pack shot works best. Portrait or square.",
       options: { hotspot: true },
-      fields: [
-        defineField({
-          name: "alt",
-          title: "Image description",
-          type: "string",
-          validation: (r) => r.warning("Add a short description when you upload an image."),
-        }),
-      ],
-     
+      fields: [defineField({ name: "alt", title: "Image description", type: "string" })],
     }),
 
     defineField({
@@ -85,8 +128,8 @@ export const product = defineType({
       type: "text",
       rows: 2,
       group: "main",
-      description: "One or two lines. Shown on the category page listing.",
-      validation: (r) => r.required().max(200),
+      description: "One or two lines. Shown on the category listing and under the title.",
+      validation: (r) => r.required().max(220),
     }),
 
     defineField({
@@ -94,76 +137,33 @@ export const product = defineType({
       title: "Full description",
       type: "array",
       group: "main",
-      description: "The main text on the product page.",
-      of: [
-        {
-          type: "block",
-          styles: [
-            { title: "Paragraph", value: "normal" },
-            { title: "Heading", value: "h3" },
-          ],
-          lists: [{ title: "Bullet list", value: "bullet" }],
-          marks: {
-            decorators: [
-              { title: "Bold", value: "strong" },
-              { title: "Italic", value: "em" },
-            ],
-            annotations: [
-              {
-                name: "link",
-                type: "object",
-                title: "Link",
-                fields: [{ name: "href", type: "url", title: "URL" }],
-              },
-            ],
-          },
-        },
-      ],
+      of: [richText],
     }),
-
-    /* ---- Optional technical fields. Render only when filled. ---- */
 
     defineField({
       name: "formulationType",
       title: "Formulation type",
       type: "string",
       group: "technical",
-      description: "Optional. SC, EC, WG, SL, OD, WP and so on.",
+      description: "SC, EC, WG, SL, OD, WP and so on. Shown as a badge.",
     }),
 
     defineField({
-      name: "keyFeatures",
-      title: "Key features",
+      name: "modeOfAction",
+      title: "Mode of action",
       type: "array",
       group: "technical",
-      description: "Optional. Short bullet points shown as a list.",
-      of: [{ type: "string" }],
+      description: "How the product works. One or two paragraphs.",
+      of: [richText],
     }),
 
     defineField({
-      name: "targetCrops",
-      title: "Target crops",
+      name: "featuresBenefits",
+      title: "Features & benefits",
       type: "array",
       group: "technical",
-      of: [{ type: "string" }],
-      options: { layout: "tags" },
-    }),
-
-    defineField({
-      name: "targetPests",
-      title: "Target pests / diseases",
-      type: "array",
-      group: "technical",
-      of: [{ type: "string" }],
-      options: { layout: "tags" },
-    }),
-
-    defineField({
-      name: "dosage",
-      title: "Dosage",
-      type: "string",
-      group: "technical",
-      description: "Optional. Recommended rate of application.",
+      description: "Four to six works well. Each has a bold lead-in and a sentence.",
+      of: [featureMember],
     }),
 
     defineField({
@@ -173,7 +173,7 @@ export const product = defineType({
       group: "technical",
       of: [{ type: "string" }],
       options: { layout: "tags" },
-      description: 'Optional. For example "100 ml", "1 L", "5 L".',
+      description: 'Type one and press Enter. For example "100 g", "500 g", "1 kg".',
     }),
 
     defineField({
@@ -181,7 +181,16 @@ export const product = defineType({
       title: "Brochure / datasheet",
       type: "file",
       group: "technical",
-      description: "Optional PDF. Adds a download button to the product page.",
+      description: "Optional PDF. Adds a download button.",
+    }),
+
+    defineField({
+      name: "cropRecommendations",
+      title: "Crop recommendations",
+      type: "array",
+      group: "crops",
+      description: "One row per crop. Renders as a table.",
+      of: [cropRowMember],
     }),
 
     defineField({
@@ -207,10 +216,6 @@ export const product = defineType({
   ],
 
   preview: {
-    select: {
-      title: "title",
-      subtitle: "category.title",
-      media: "heroImage",
-    },
+    select: { title: "title", subtitle: "category.title", media: "heroImage" },
   },
 });
