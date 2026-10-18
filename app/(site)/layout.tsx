@@ -7,6 +7,7 @@ import {
   capabilityNavQuery,
 } from "@/sanity/lib/queries";
 import type { NavSegment } from "@/lib/nav-types";
+import { WhatsAppButton } from "@/components/site/WhatsAppButton";
 
 /**
  * SITE LAYOUT — everything the public sees.
@@ -39,10 +40,14 @@ export default async function SiteLayout({
       </a>
       <Header segments={segments ?? []} capabilities={capabilities ?? []} />
       <main id="main">{children}</main>
-      <Footer
+     <Footer
         segments={segments ?? []}
         capabilities={capabilities ?? []}
         settings={settings}
+      />
+      <WhatsAppButton
+        number={settings?.whatsappNumber}
+        message={settings?.whatsappMessage}
       />
     </>
   );

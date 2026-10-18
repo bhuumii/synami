@@ -19,7 +19,7 @@ export const siteSettingsQuery = groq`
     mapEmbedUrl, mapLinkUrl,
     contactImage{ ..., alt },
     careersImage{ ..., alt },
-    linkedin, facebook, instagram, youtube, footerTagline
+    linkedin, facebook, instagram, youtube, footerTagline, whatsappNumber, whatsappMessage,
   }
 `;
 

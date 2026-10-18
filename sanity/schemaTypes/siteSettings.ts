@@ -14,6 +14,7 @@ export const siteSettings = defineType({
     { name: "images", title: "Page images" },
     { name: "social", title: "Social links" },
     { name: "footer", title: "Footer" },
+    { name: "whatsapp", title: "WhatsApp button" },
   ],
   fields: [
     defineField({
@@ -73,6 +74,25 @@ export const siteSettings = defineType({
       type: "url",
       group: "location",
       description: 'Google Maps → Share → Copy link. Powers the "Open in Maps" button.',
+    }),
+
+      defineField({
+      name: "whatsappNumber",
+      title: "WhatsApp number",
+      type: "string",
+      group: "whatsapp",
+      description:
+        "Include the country code, e.g. +91 98765 43210. Spaces and dashes are fine — they're stripped automatically. Leave blank to hide the button.",
+    }),
+    defineField({
+      name: "whatsappMessage",
+      title: "Pre-filled message",
+      type: "text",
+      rows: 2,
+      group: "whatsapp",
+      description:
+        "Optional. Appears already typed in the visitor's WhatsApp, so they only have to press send.",
+      initialValue: "Hello, I'd like to know more about Synami Agriscience products.",
     }),
 
     /* ---------- Page images ---------- */
