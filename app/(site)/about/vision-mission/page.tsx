@@ -2,8 +2,10 @@ import type { Metadata } from "next";
 import { client } from "@/sanity/lib/client";
 import { visionMissionQuery } from "@/sanity/lib/queries";
 import { PageHero } from "@/components/site/PageHero";
-import { GroupHeading } from "@/components/site/GroupHeading";
-import { AlternatingRow, type RowItem } from "@/components/site/AlternatingRow";
+import {
+  VisionMissionGroup,
+  type VMPoint,
+} from "@/components/site/VisionMissionGroup";
 
 type Data = {
   title: string;
@@ -12,10 +14,10 @@ type Data = {
   heroImage?: { alt?: string };
   visionHeading?: string;
   visionIntro?: string;
-  visionPoints?: RowItem[];
+  visionPoints?: VMPoint[];
   missionHeading?: string;
   missionIntro?: string;
-  missionPoints?: RowItem[];
+  missionPoints?: VMPoint[];
   seo?: { title?: string; description?: string };
 };
 
@@ -30,19 +32,18 @@ export async function generateMetadata(): Promise<Metadata> {
   };
 }
 
+/**
+ * Vision & Mission.
+ *
+ * Two groups, each a sticky image beside a scrolling list of points.
+ * The second group mirrors the first — image on the right rather than
+ * the left — so the page has a change of direction without needing the
+ * five separate alternating rows it had before.
+ *
+ * No Sanity changes: it reads the same visionPoints and missionPoints.
+ */
 export default async function VisionMissionPage() {
   const d: Data | null = await client.fetch(visionMissionQuery);
-
-  const vision = d?.visionPoints ?? [];
-  const mission = d?.missionPoints ?? [];
-
-  /* The alternation continues across both groups rather than restarting,
-     so the page reads as one rhythm instead of two separate lists. */
-  let n = 0;
-  const next = () => {
-    const i = n++;
-    return { flip: i % 2 === 1, tone: i % 2 === 0 ? "bg-paper" : "bg-field" };
-  };
 
   return (
     <>
@@ -54,33 +55,22 @@ export default async function VisionMissionPage() {
         breadcrumb={[{ label: "About Us", href: "/about" }]}
       />
 
-      {vision.length > 0 ? (
-        <>
-          <GroupHeading
-            heading={d?.visionHeading ?? "Our Vision"}
-            intro={d?.visionIntro}
-            tone="bg-paper"
-          />
-          {vision.map((p, i) => {
-            const { flip, tone } = next();
-            return <AlternatingRow key={`v-${i}`} item={p} flip={flip} tone={tone} />;
-          })}
-        </>
-      ) : null}
+      <VisionMissionGroup
+        eyebrow="Where we're going"
+        heading={d?.visionHeading ?? "Our Vision"}
+        intro={d?.visionIntro}
+        points={d?.visionPoints ?? []}
+        tone="bg-paper"
+      />
 
-      {mission.length > 0 ? (
-        <>
-          <GroupHeading
-            heading={d?.missionHeading ?? "Our Mission"}
-            intro={d?.missionIntro}
-            tone={n % 2 === 0 ? "bg-paper" : "bg-field"}
-          />
-          {mission.map((p, i) => {
-            const { flip, tone } = next();
-            return <AlternatingRow key={`m-${i}`} item={p} flip={flip} tone={tone} />;
-          })}
-        </>
-      ) : null}
+      <VisionMissionGroup
+        eyebrow="How we get there"
+        heading={d?.missionHeading ?? "Our Mission"}
+        intro={d?.missionIntro}
+        points={d?.missionPoints ?? []}
+        tone="bg-field"
+        flip
+      />
     </>
   );
 }
