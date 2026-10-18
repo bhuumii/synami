@@ -62,8 +62,18 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem("infoPage").title("Insights & Legal Pages"),
 
       S.divider(),
+     S.listItem()
+        .title("Products Page")
+        .id("productsPage")
+        .child(
+          S.document()
+            .schemaType("productsPage")
+            .documentId("productsPage")
+            .title("Products Page")
+        ),
 
       S.documentTypeListItem("productSegment").title("1 · Main Categories"),
+   
       S.documentTypeListItem("productCategory").title("2 · Categories"),
       S.documentTypeListItem("product").title("3 · Products"),
 

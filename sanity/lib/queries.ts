@@ -124,6 +124,17 @@ export const categoryBySlugQuery = groq`
    P3 — PRODUCT
    ============================================================ */
 
+export const productsPageQuery = groq`
+  *[_type == "productsPage"][0]{
+    title, eyebrow, intro,
+    heroImage{ ..., alt },
+    listingHeading, body,
+    seo
+  }
+`;
+
+
+
 export const productPathsQuery = groq`
   *[_type == "product" && defined(slug.current)
       && defined(category->slug.current)

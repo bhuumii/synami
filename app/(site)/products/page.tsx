@@ -3,70 +3,88 @@ import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { client } from "@/sanity/lib/client";
-import { productNavQuery } from "@/sanity/lib/queries";
+import { productNavQuery, productsPageQuery } from "@/sanity/lib/queries";
 import { urlFor } from "@/sanity/lib/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { PageHero } from "@/components/site/PageHero";
+import { RichText } from "@/components/ui/RichText";
+import { Reveal } from "@/components/ui/Reveal";
 import type { NavSegment } from "@/lib/nav-types";
 
-export const metadata: Metadata = {
-  title: "Products",
-  description:
-    "Crop protection, fertilizers, biologicals and customized solutions from Synami Agriscience.",
+type Segment = NavSegment & { heroImage?: { alt?: string } };
+
+type PageData = {
+  title?: string;
+  eyebrow?: string;
+  intro?: string;
+  heroImage?: { alt?: string };
+  listingHeading?: string;
+  body?: unknown;
+  seo?: { title?: string; description?: string };
 };
 
 export const revalidate = 3600;
 
-type Segment = NavSegment & { heroImage?: { alt?: string } };
+export async function generateMetadata(): Promise<Metadata> {
+  const d: PageData | null = await client.fetch(productsPageQuery);
+  return {
+    title: d?.seo?.title || d?.title || "Products",
+    description:
+      d?.seo?.description ||
+      d?.intro ||
+      "Crop protection, fertilizers, biostimulants and customized solutions from Synami Agriscience.",
+  };
+}
 
 /**
  * /products — the index.
  *
- * This page was missing: the header nav and the mobile drawer both link
- * here, so every visitor who clicked "Products" in the top bar hit a 404.
- *
- * It lists main categories with their categories underneath, which makes
- * it a genuine landing page for the whole range rather than a redirect.
+ * Wrapper content comes from the Products Page singleton; the list of
+ * main categories is generated, so adding one in the Studio adds a row
+ * here with no edit.
  */
 export default async function ProductsPage() {
-  const segments: Segment[] = await client.fetch(`
-    *[_type == "productSegment"] | order(order asc){
-      _id, title, "slug": slug.current, shortDescription,
-      heroImage{ ..., alt },
-      "categories": *[_type == "productCategory" && segment._ref == ^._id]
-        | order(order asc){ _id, title, "slug": slug.current }
-    }
-  `);
+  const [page, segments] = await Promise.all([
+    client.fetch<PageData>(productsPageQuery),
+    client.fetch<Segment[]>(`
+      *[_type == "productSegment"] | order(order asc){
+        _id, title, "slug": slug.current, shortDescription,
+        heroImage{ ..., alt },
+        "categories": *[_type == "productCategory" && segment._ref == ^._id]
+          | order(order asc){ _id, title, "slug": slug.current }
+      }
+    `),
+  ]);
+
+  const list = segments ?? [];
 
   return (
     <>
-      <section className="bg-field pb-12 pt-28 md:pb-16 md:pt-36 lg:pt-44">
-        <Container>
-          <p className="font-display text-xs uppercase tracking-[0.2em] text-leaf">
-            Our products
-          </p>
-          <h1 className="mt-4 max-w-[18ch] font-display text-4xl font-semibold text-ink">
-            Everything a crop needs
-          </h1>
-          <p className="mt-6 max-w-[56ch] text-lg">
-            Crop protection, fertilizers, biostimulants and customized
-            formulations — developed with technical rigour and supplied with
-            consistency.
-          </p>
-        </Container>
-      </section>
+      <PageHero
+        title={page?.title ?? "Everything a crop needs"}
+        eyebrow={page?.eyebrow ?? "Our products"}
+        intro={page?.intro}
+        image={page?.heroImage}
+      />
 
-      <section className="bg-paper py-14 md:py-20 lg:py-28">
+      <section className="bg-paper py-14 md:py-20 lg:py-24">
         <Container>
-          {segments.length > 0 ? (
+          {page?.listingHeading ? (
+            <Reveal>
+              <h2 className="mb-10 text-2xl lg:text-3xl">{page.listingHeading}</h2>
+            </Reveal>
+          ) : null}
+
+          {list.length > 0 ? (
             <div className="space-y-5">
-              {segments.map((seg, i) => (
+              {list.map((seg, i) => (
                 <article
                   key={seg._id}
                   className="lift group overflow-hidden rounded-card border border-line bg-paper"
                 >
                   <div className="grid md:grid-cols-[0.8fr_1.2fr]">
-                    <div className="relative aspect-[16/10] overflow-hidden bg-field md:aspect-auto md:min-h-[260px]">
+                    <div className="relative aspect-[16/10] overflow-hidden bg-field md:aspect-auto md:min-h-[270px]">
                       {seg.heroImage ? (
                         <Image
                           src={urlFor(seg.heroImage as never)
@@ -89,12 +107,14 @@ export default async function ProductsPage() {
                         {String(i + 1).padStart(2, "0")}
                       </span>
 
-                      <h2 className="mt-3 font-display text-2xl font-semibold text-navy transition-colors group-hover:text-leaf">
+                      <h3 className="mt-3 font-display text-2xl font-semibold text-navy transition-colors group-hover:text-leaf">
                         {seg.title}
-                      </h2>
+                      </h3>
 
                       {seg.shortDescription ? (
-                        <p className="mt-3 text-stone">{seg.shortDescription}</p>
+                        <p className="mt-3 text-[17px] leading-relaxed text-stone">
+                          {seg.shortDescription}
+                        </p>
                       ) : null}
 
                       {seg.categories.length > 0 ? (
@@ -137,6 +157,23 @@ export default async function ProductsPage() {
           )}
         </Container>
       </section>
+
+      {page?.body ? (
+        <section className="bg-field py-14 md:py-20">
+          <Container>
+            <div className="grid gap-8 lg:grid-cols-[0.45fr_1.55fr] lg:gap-16">
+              <Reveal>
+                <span aria-hidden className="block h-[3px] w-14 bg-straw" />
+              </Reveal>
+              <Reveal delay={0.08}>
+                <div className="[&_p]:max-w-none [&_p]:text-lg [&_p]:leading-relaxed">
+                  <RichText value={page.body} />
+                </div>
+              </Reveal>
+            </div>
+          </Container>
+        </section>
+      ) : null}
     </>
   );
 }

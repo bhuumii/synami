@@ -14,6 +14,7 @@ import { product } from "./product";
 import { infoPage } from "./infoPage";
 import { lead } from "./lead";
 import { jobApplication } from "./jobApplication";
+import { productsPage } from "./productsPage";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -25,6 +26,7 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     visionMissionPage,
     coreValuesPage,
     founderPage,
+    productsPage,
     productSegment,
     productCategory,
     product,
