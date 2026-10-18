@@ -11,6 +11,7 @@ import { PartnerCTA } from "@/components/site/PartnerCTA";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 
 export const revalidate = 3600;
 
@@ -19,6 +20,8 @@ export default async function Home() {
     client.fetch(homePageQuery),
     client.fetch<NavSegment[]>(productNavQuery),
   ]);
+
+  const body: string[] = home?.whoBody ?? [];
 
   return (
     <>
@@ -29,27 +32,43 @@ export default async function Home() {
         secondaryCta={home?.heroSecondaryCta}
       />
 
-      <section className="bg-field py-16 md:py-24 lg:py-32">
+      {/* ---------------- Who we are ---------------- */}
+      <section className="bg-field py-20 md:py-28 lg:py-32">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[0.45fr_1fr] lg:gap-24">
+          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
             <Reveal>
-              <p className="font-display text-xs uppercase tracking-[0.2em] text-leaf">
-                {home?.whoEyebrow ?? "Who we are"}
-              </p>
+              <Eyebrow>{home?.whoEyebrow ?? "Who we are"}</Eyebrow>
+              <h2 className="mt-5 text-3xl lg:text-[length:var(--text-4xl)] lg:leading-[1.05]">
+                {home?.whoHeading}
+              </h2>
+              <span
+                aria-hidden
+                className="mt-6 block h-1 w-28 rounded-pill bg-straw md:w-36"
+              />
             </Reveal>
 
-            <Reveal delay={0.08}>
-              <h2 className="max-w-[22ch] text-3xl">{home?.whoHeading}</h2>
-              {(home?.whoBody ?? []).map((para: string, i: number) => (
-                <p key={i} className={i === 0 ? "mt-8" : "mt-5"}>
+            <Reveal delay={0.1}>
+              {/* First paragraph set larger — it carries the idea, the rest
+                  support it. A uniform block of body text is what made this
+                  section read as filler. */}
+              {body.map((para: string, i: number) => (
+                <p
+                  key={i}
+                  className={
+                    i === 0
+                      ? "max-w-none text-xl leading-relaxed text-navy"
+                      : "mt-5 max-w-none text-[17px] leading-relaxed"
+                  }
+                >
                   {para}
                 </p>
               ))}
+
               {home?.whoCta?.label ? (
                 <Button
                   href={home.whoCta.href || "/about"}
-                  variant="ghost"
-                  className="mt-9 px-0"
+                  variant="outline"
+                  className="mt-9"
                 >
                   {home.whoCta.label}
                 </Button>

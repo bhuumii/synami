@@ -18,7 +18,7 @@ export function PartnerCTA({
   secondaryCta?: Cta;
 }) {
   return (
-    <section className="relative overflow-hidden bg-forest py-24 text-white md:py-32">
+    <section className="relative overflow-hidden bg-forest py-20 text-white md:py-28 lg:py-32">
       <div
         aria-hidden
         className="pointer-events-none absolute -right-40 -top-40 h-[520px] w-[520px] rounded-pill bg-leaf-bright/10 blur-3xl"
@@ -26,8 +26,18 @@ export function PartnerCTA({
 
       <Container className="relative">
         <Reveal>
-          <h2 className="max-w-[16ch] text-4xl text-white">{heading}</h2>
-          {body ? <p className="mt-7 max-w-[52ch] text-white/85">{body}</p> : null}
+          <h2 className="max-w-[16ch] text-4xl text-white lg:leading-[1.05]">
+            {heading}
+          </h2>
+          <span
+            aria-hidden
+            className="mt-7 block h-1 w-28 rounded-pill bg-straw md:w-36"
+          />
+          {body ? (
+            <p className="mt-7 max-w-[54ch] text-lg leading-relaxed text-white/85">
+              {body}
+            </p>
+          ) : null}
         </Reveal>
 
         {audiences.length > 0 ? (
@@ -36,7 +46,7 @@ export function PartnerCTA({
               {audiences.map((a) => (
                 <li
                   key={a}
-                  className="rounded-pill border border-white/25 px-4 py-2 text-sm text-white/90"
+                  className="rounded-pill border border-white/25 px-4 py-2 text-sm text-white/90 transition-colors duration-300 hover:border-white/60 hover:bg-white/10"
                 >
                   {a}
                 </li>

@@ -4,22 +4,20 @@ import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import { Container } from "@/components/ui/Container";
+import { Eyebrow } from "@/components/ui/Eyebrow";
 import type { NavSegment } from "@/lib/nav-types";
 
 gsap.registerPlugin(ScrollTrigger);
 
 /**
- * PINNED HORIZONTAL SCROLL — now fully data-driven.
+ * PINNED HORIZONTAL SCROLL — one card per Main Category.
  *
- * One card per Main Category from Sanity. Add a Main Category and a card
- * appears; the track simply gets longer and the pin distance recalculates,
- * because the travel distance is measured from scrollWidth rather than
- * being a fixed number.
- *
- * Below lg the track becomes a normal vertical stack. Reduced motion
- * disables the pin entirely.
+ * Travel distance is measured from scrollWidth rather than being fixed,
+ * so adding a category in Sanity simply makes the track longer and the
+ * pin recalculates. Below lg the track becomes a vertical stack; a
+ * hijacked scroll on a touch device is unpleasant.
  */
 export function BusinessSegments({
   eyebrow,
@@ -43,7 +41,7 @@ export function BusinessSegments({
       if (!el) return;
 
       const distance = () => Math.max(0, el.scrollWidth - window.innerWidth + 120);
-      if (distance() <= 0) return; // few enough cards to fit — no pin needed
+      if (distance() <= 0) return;
 
       gsap.to(el, {
         x: () => -distance(),
@@ -76,18 +74,22 @@ export function BusinessSegments({
       />
 
       <div className="relative flex h-full flex-col justify-center">
-        <Container className="lg:pt-24">
-          {eyebrow ? (
-            <p className="font-display text-xs uppercase tracking-[0.2em] text-leaf-bright">
-              {eyebrow}
-            </p>
-          ) : null}
-          {heading ? (
-            <h2 className="mt-4 max-w-[18ch] text-3xl text-white">{heading}</h2>
-          ) : null}
+        {/* Heading and the all-products link share a row, so the band
+            doesn't open with a tall stack of text above the cards. */}
+        <Container className="lg:pt-20">
+          <div>
+            <div>
+              <Eyebrow tone="dark">{eyebrow ?? "Our products"}</Eyebrow>
+              <h2 className="mt-4 max-w-[24ch] text-3xl text-white lg:text-[length:var(--text-4xl)] lg:leading-[1.05]">
+                {heading}
+              </h2>
+            </div>
+
+            
+          </div>
         </Container>
 
-        <div className="mt-12 lg:mt-16">
+        <div className="mt-10">
           <div
             ref={track}
             className="flex flex-col gap-6 px-6 md:px-10 lg:w-max lg:flex-row lg:gap-8 lg:pl-[max(2.5rem,calc((100vw-1240px)/2+2.5rem))] lg:pr-24"
@@ -95,32 +97,47 @@ export function BusinessSegments({
             {segments.map((seg, i) => (
               <article
                 key={seg._id}
-className="group relative flex flex-col overflow-hidden rounded-card border border-white/10 bg-white/[0.05] p-7 transition-all duration-500 hover:border-white/25 hover:bg-white/[0.09] md:max-w-[560px] md:p-8 lg:h-[min(52vh,420px)] lg:w-[420px] lg:max-w-none lg:p-10"              >
+                className="group relative flex flex-col overflow-hidden rounded-card border border-white/10 bg-white/[0.05] p-7 transition-all duration-500 hover:border-white/25 hover:bg-white/[0.09] md:max-w-[560px] md:p-8 lg:h-[min(52vh,420px)] lg:w-[420px] lg:max-w-none lg:p-10"
+              >
+                {/* Left edge lights up */}
                 <span
                   aria-hidden
                   className="absolute inset-y-0 left-0 w-[3px] origin-top scale-y-0 bg-leaf-bright transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100"
                 />
 
-                <span className="font-display text-sm text-leaf-bright transition-transform duration-500 group-hover:translate-x-1">
+                {/* Oversized ghost numeral, fades up on hover */}
+                <span
+                  aria-hidden
+                  className="pointer-events-none absolute -right-2 -top-6 font-display text-[7rem] font-semibold leading-none text-white/[0.04] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1 group-hover:text-white/[0.09]"
+                >
                   {String(i + 1).padStart(2, "0")}
                 </span>
 
-                <h3 className="mt-5 text-xl text-white lg:text-2xl">{seg.title}</h3>
+              
+
+                                <h3 className="relative text-xl text-white lg:text-2xl">
+                  {seg.title}
+                </h3>
 
                 {seg.shortDescription ? (
-                  <p className="mt-4 text-sm text-white/65">{seg.shortDescription}</p>
+                  <p className="relative mt-4 text-sm leading-relaxed text-white/65">
+                    {seg.shortDescription}
+                  </p>
                 ) : null}
 
                 {seg.categories.length > 0 ? (
-                  <ul className="mt-6 space-y-2 overflow-hidden border-t border-white/10 pt-5">
+                  <ul className="relative mt-6 flex flex-wrap gap-2 border-t border-white/10 pt-5">
                     {seg.categories.slice(0, 5).map((cat) => (
-                      <li key={cat._id} className="text-sm text-white/80">
+                      <li
+                        key={cat._id}
+                        className="rounded-pill border border-white/15 px-3 py-1 text-xs text-white/75 transition-colors duration-300 group-hover:border-white/30 group-hover:text-white/90"
+                      >
                         {cat.title}
                       </li>
                     ))}
                     {seg.categories.length > 5 ? (
-                      <li className="text-sm text-white/45">
-                        +{seg.categories.length - 5} more
+                      <li className="px-1 py-1 text-xs text-white/45">
+                        +{seg.categories.length - 5}
                       </li>
                     ) : null}
                   </ul>
@@ -128,21 +145,34 @@ className="group relative flex flex-col overflow-hidden rounded-card border bord
 
                 <Link
                   href={`/products/${seg.slug}`}
-                  className="mt-auto inline-flex items-center gap-2 pt-7 font-display text-sm font-medium text-white transition-colors hover:text-leaf-bright"
+                  className="relative mt-auto inline-flex items-center gap-2 pt-7 font-display text-sm font-medium text-white transition-colors hover:text-leaf-bright"
                 >
                   View range
                   <ArrowRight className="h-4 w-4 transition-transform duration-500 group-hover:translate-x-1.5" />
                 </Link>
               </article>
             ))}
+
+            {/* Closing card — the track ends on an action rather than
+                stopping dead after the last category. */}
+            <Link
+              href="/products"
+              className="group flex flex-col justify-center rounded-card border border-dashed border-white/25 p-7 transition-colors duration-500 hover:border-leaf-bright/60 hover:bg-white/[0.04] md:max-w-[560px] md:p-8 lg:h-[min(52vh,420px)] lg:w-[300px] lg:max-w-none lg:p-10"
+            >
+              <span className="font-display text-xl text-white lg:text-2xl">
+                See the full range
+              </span>
+              <span className="mt-4 text-sm text-white/60">
+                Every category in one place.
+              </span>
+              <span className="mt-7 inline-flex h-12 w-12 items-center justify-center rounded-pill border border-white/30 text-white transition-all duration-500 group-hover:border-leaf-bright group-hover:bg-leaf-bright group-hover:text-forest">
+                <ArrowRight className="h-5 w-5 transition-transform duration-500 group-hover:translate-x-0.5" />
+              </span>
+            </Link>
           </div>
         </div>
 
-        <Container className="hidden pb-10 pt-12 lg:block">
-          <p className="text-xs uppercase tracking-[0.18em] text-white/35">
-            Keep scrolling
-          </p>
-        </Container>
+     
       </div>
     </section>
   );
