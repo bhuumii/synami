@@ -145,17 +145,20 @@ export function VisionMissionGroup({
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.7, ease: EASE }}
-          className="max-w-[58ch]"
+          className="mx-auto max-w-[64ch] text-center"
         >
-          {eyebrow ? (
-            <p className="font-display text-xs uppercase tracking-[0.2em] text-leaf">
-              {eyebrow}
-            </p>
+        {eyebrow ? (
+            <span className="inline-flex items-center gap-2.5 rounded-pill border border-leaf/25 bg-leaf/[0.07] px-4 py-1.5">
+              <span aria-hidden className="h-1.5 w-1.5 rounded-pill bg-leaf" />
+              <span className="font-display text-xs font-medium uppercase tracking-[0.18em] text-leaf">
+                {eyebrow}
+              </span>
+            </span>
           ) : null}
-          <h2 className="mt-4 text-3xl lg:text-[length:var(--text-4xl)] lg:leading-[1.05]">
+          <h2 className="mt-5 text-3xl lg:text-[length:var(--text-4xl)] lg:leading-[1.05]">
             {heading}
           </h2>
-          <span aria-hidden className="mt-6 block h-[3px] w-14 bg-straw" />
+            <span aria-hidden className="mx-auto mt-6 block h-1 w-28 rounded-pill bg-straw md:w-36" />
           {intro ? <p className="mt-6 text-lg leading-relaxed">{intro}</p> : null}
         </motion.div>
 

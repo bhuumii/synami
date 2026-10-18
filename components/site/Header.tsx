@@ -259,7 +259,7 @@ export function Header({
                   <div className="grid grid-cols-4 divide-x divide-line">
                     {ABOUT_MENU.map((item) => (
                       <Link key={item.href} href={item.href} className="group p-7">
-                        <span className="font-display text-sm font-semibold text-navy transition-colors group-hover:text-leaf">
+                         <span className="link-wipe inline-block font-display text-sm font-semibold text-navy transition-colors group-hover:text-leaf">
                           {item.title}
                         </span>
                         <p className="mt-2 text-sm text-slate">{item.blurb}</p>
@@ -273,7 +273,7 @@ export function Header({
                   <div className={cn("grid divide-x divide-line", gridCols(capabilities.length))}>
                     {capabilities.map((item) => (
                       <Link key={item._id} href={`/capabilities/${item.slug}`} className="group p-7">
-                        <span className="font-display text-sm font-semibold text-navy transition-colors group-hover:text-leaf">
+                        <span className="link-wipe inline-block font-display text-sm font-semibold text-navy transition-colors group-hover:text-leaf">
                           {item.title}
                         </span>
                         {item.menuBlurb ? (
