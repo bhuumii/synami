@@ -32,6 +32,34 @@ export const productCategory = defineType({
     }),
 
     defineField({
+      name: "icon",
+      title: "Icon",
+      type: "string",
+      description: "Shown on this category's page and on its card.",
+      options: {
+        list: [
+          { title: "Bug — insecticides", value: "bug" },
+          { title: "Spray can — application", value: "spray" },
+          { title: "Leaf — general crop", value: "leaf" },
+          { title: "Sprout — growth, PGR", value: "sprout" },
+          { title: "Wheat — cereals, herbicides", value: "wheat" },
+          { title: "Droplets — liquids, SL/SC", value: "droplets" },
+          { title: "Rain cloud — foliar, irrigation", value: "rain" },
+          { title: "Sun — field conditions", value: "sun" },
+          { title: "Tree — perennials", value: "tree" },
+          { title: "Flask — formulation", value: "flask" },
+          { title: "Beaker — fertilizers", value: "beaker" },
+          { title: "Test tube — micronutrients", value: "testtube" },
+          { title: "Microscope — biologicals", value: "microscope" },
+          { title: "Atom — technicals", value: "atom" },
+          { title: "Shield — fungicides, protection", value: "shield" },
+          { title: "Recycle — sustainable", value: "recycle" },
+        ],
+      },
+      initialValue: "leaf",
+    }),
+
+    defineField({
       name: "slug",
       title: "URL",
       type: "slug",

@@ -11,6 +11,7 @@ export type NavCategory = {
   title: string;
   slug: string;
   shortDescription?: string;
+  icon?: string;
 };
 
 export type NavSegment = {

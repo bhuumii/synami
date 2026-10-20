@@ -38,7 +38,7 @@ export const productNavQuery = groq`
     shortDescription,
     "categories": *[_type == "productCategory" && segment._ref == ^._id]
       | order(order asc){
-        _id, title, "slug": slug.current, shortDescription
+        _id, title, "slug": slug.current, shortDescription, icon
       }
   }
 `;
@@ -78,13 +78,13 @@ export const segmentSlugsQuery = groq`
 
 export const segmentBySlugQuery = groq`
   *[_type == "productSegment" && slug.current == $segment][0]{
-    _id, title, "slug": slug.current,
+    _id, title, "slug": slug.current, icon, 
     heroImage{ ..., alt },
     shortDescription, description, seo,
 
     "categories": *[_type == "productCategory" && segment._ref == ^._id]
       | order(order asc){
-        _id, title, "slug": slug.current, shortDescription,
+        _id, title, "slug": slug.current, shortDescription, icon,
         heroImage{ ..., alt },
         "productCount": count(*[_type == "product" && category._ref == ^._id])
       }
@@ -106,7 +106,7 @@ export const categoryPathsQuery = groq`
 export const categoryBySlugQuery = groq`
   *[_type == "productCategory" && slug.current == $category
       && segment->slug.current == $segment][0]{
-    _id, title, "slug": slug.current,
+    _id, title, "slug": slug.current, icon,
     heroImage{ ..., alt },
     shortDescription, description, seo,
     segment->{ title, "slug": slug.current },
@@ -116,7 +116,13 @@ export const categoryBySlugQuery = groq`
         _id, title, brandName, "slug": slug.current,
         shortDescription, formulationType,
         heroImage{ ..., alt }
-      }
+      },
+
+    "siblings": *[_type == "productCategory"
+        && segment._ref == ^.segment._ref
+        && _id != ^._id] | order(order asc){
+      _id, title, "slug": slug.current, icon
+    }
   }
 `;
 
