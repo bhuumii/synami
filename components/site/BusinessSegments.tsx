@@ -105,13 +105,7 @@ export function BusinessSegments({
                   className="absolute inset-y-0 left-0 w-[3px] origin-top scale-y-0 bg-leaf-bright transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-y-100"
                 />
 
-                {/* Oversized ghost numeral, fades up on hover */}
-                <span
-                  aria-hidden
-                  className="pointer-events-none absolute -right-2 -top-6 font-display text-[7rem] font-semibold leading-none text-white/[0.04] transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:-translate-y-1 group-hover:text-white/[0.09]"
-                >
-                  {String(i + 1).padStart(2, "0")}
-                </span>
+             
 
               
 

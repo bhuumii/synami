@@ -15,6 +15,7 @@ import { infoPage } from "./infoPage";
 import { lead } from "./lead";
 import { jobApplication } from "./jobApplication";
 import { productsPage } from "./productsPage";
+import { legalPage } from "./legalPage";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -33,5 +34,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     infoPage,
     lead,
     jobApplication,
+    legalPage,
   ],
 };

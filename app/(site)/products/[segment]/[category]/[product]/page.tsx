@@ -273,8 +273,7 @@ export default async function ProductPage({
                   <span aria-hidden className="mt-5 block h-[3px] w-14 bg-straw" />
                 </div>
                 <p className="max-w-[46ch] text-sm text-slate">
-                  Always read the product label before use. Rates and approved
-                  uses vary by country.
+                  Always read the product label before use. 
                 </p>
               </div>
             </Reveal>

@@ -107,112 +107,110 @@ export function Footer({
         className="pointer-events-none absolute -left-40 -top-40 h-[520px] w-[520px] rounded-pill bg-leaf/[0.07] blur-3xl"
       />
 
-      <Container className="relative max-w-[1460px]">
-        <div className="grid gap-x-10 gap-y-12 py-16 sm:grid-cols-2 lg:grid-cols-12 lg:py-20">
-          {/* ---------- Brand ---------- */}
-          <div className="sm:col-span-2 lg:col-span-3">
-          <Image
-  src="/logo-tagline.png"
-  alt="Synami Agriscience"
-  width={2713}
-  height={830}
-  className="h-14 w-auto lg:h-[82px]"
-/>
+     <Container className="relative max-w-[1460px]">
+  <div className="grid gap-x-8 gap-y-12 py-16 sm:grid-cols-2 lg:grid-cols-[2fr_1.2fr_1fr_0.8fr_1.2fr] lg:gap-x-10 lg:py-20">
+    {/* ---------- Brand ---------- */}
+    <div className="sm:col-span-2 lg:col-span-1">
+      <Image
+        src="/logo-tagline.png"
+        alt="Synami Agriscience"
+        width={2713}
+        height={830}
+        className="h-14 w-auto lg:h-[82px]"
+      />
+      {settings?.footerTagline ? (
+        <p className="mt-7 max-w-[30ch] text-[15px] leading-relaxed">
+          {settings.footerTagline}
+        </p>
+      ) : null}
 
-            {settings?.footerTagline ? (
-              <p className="mt-7 max-w-[36ch] text-[15px] leading-relaxed">
-                {settings.footerTagline}
-              </p>
-            ) : null}
-
-            {socials.length > 0 ? (
-              <div className="mt-8">
-                <p className="font-display text-sm font-semibold text-navy">
-                  Follow us
-                </p>
-                <div className="mt-4 flex gap-3">
-                  {socials.map(({ icon: Icon, href, label }) => (
-                    <a
-                      key={label}
-                      href={href as string}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="rounded-pill border border-leaf/25 p-3 text-leaf transition-all duration-300 hover:-translate-y-0.5 hover:border-leaf hover:bg-leaf hover:text-white"
-                    >
-                      <Icon className="h-4 w-4" />
-                    </a>
-                  ))}
-                </div>
-              </div>
-            ) : null}
+      {socials.length > 0 ? (
+        <div className="mt-8">
+          <p className="font-display text-sm font-semibold text-navy">
+            Follow us
+          </p>
+          <div className="mt-4 flex gap-3">
+            {socials.map(({ icon: Icon, href, label }) => (
+              <a
+                key={label}
+                href={href as string}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className="rounded-pill border border-leaf/25 p-3 text-leaf transition-all duration-300 hover:-translate-y-0.5 hover:border-leaf hover:bg-leaf hover:text-white"
+              >
+                <Icon className="h-4 w-4" />
+              </a>
+            ))}
           </div>
+        </div>
+      ) : null}
+    </div>
 
-          {/* ---------- Products ---------- */}
-          <div className="lg:col-span-2">
-            <ColHeading>Products</ColHeading>
-            <ul className="mt-6 space-y-3.5">
-              {segments.map((seg) => (
-                <li key={seg._id}>
-                  <FooterLink href={`/products/${seg.slug}`}>{seg.title}</FooterLink>
-                </li>
+    {/* ---------- Products ---------- */}
+    <div>
+      <ColHeading>Products</ColHeading>
+      <ul className="mt-6 space-y-3.5">
+        {segments.map((seg) => (
+          <li key={seg._id}>
+            <FooterLink href={`/products/${seg.slug}`}>{seg.title}</FooterLink>
+          </li>
+        ))}
+        <li>
+          <FooterLink href="/products">All products</FooterLink>
+        </li>
+      </ul>
+    </div>
+
+    {/* ---------- About ---------- */}
+    <div>
+      <ColHeading>About Us</ColHeading>
+      <ul className="mt-6 space-y-3.5">
+        {ABOUT_LINKS.map((a) => (
+          <li key={a.href}>
+            <FooterLink href={a.href}>{a.title}</FooterLink>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* ---------- Insights ---------- */}
+    <div>
+      <ColHeading>Insights</ColHeading>
+      <ul className="mt-6 space-y-3.5">
+        {capabilities.map((item) => (
+          <li key={item._id}>
+            <FooterLink href={`/capabilities/${item.slug}`}>{item.title}</FooterLink>
+          </li>
+        ))}
+        {COMPANY_LINKS.map((c) => (
+          <li key={c.href}>
+            <FooterLink href={c.href}>{c.title}</FooterLink>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    {/* ---------- Contact ---------- */}
+    <div className="sm:col-span-2 lg:col-span-1">
+      <ColHeading>Contact</ColHeading>
+      <ul className="mt-6 space-y-5">
+        {emails.length > 0 ? (
+          <li className="flex gap-3">
+            <Mail className="mt-[3px] h-4 w-4 shrink-0 text-leaf" />
+            <div className="space-y-1.5">
+              {emails.map((e) => (
+                <a
+                  key={e.value}
+                  href={`mailto:${e.value}`}
+                  className="block text-[15px] text-stone transition-colors hover:text-leaf"
+                >
+                  {e.value}
+                </a>
               ))}
-              <li>
-                <FooterLink href="/products">All products</FooterLink>
-              </li>
-            </ul>
-          </div>
-
-          {/* ---------- About ---------- */}
-          <div className="lg:col-span-2">
-            <ColHeading>About Us</ColHeading>
-            <ul className="mt-6 space-y-3.5">
-              {ABOUT_LINKS.map((a) => (
-                <li key={a.href}>
-                  <FooterLink href={a.href}>{a.title}</FooterLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* ---------- Insights ---------- */}
-          <div className="lg:col-span-2">
-            <ColHeading>Insights</ColHeading>
-            <ul className="mt-6 space-y-3.5">
-              {capabilities.map((item) => (
-                <li key={item._id}>
-                  <FooterLink href={`/capabilities/${item.slug}`}>{item.title}</FooterLink>
-                </li>
-              ))}
-              {COMPANY_LINKS.map((c) => (
-                <li key={c.href}>
-                  <FooterLink href={c.href}>{c.title}</FooterLink>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* ---------- Contact ---------- */}
-          <div className="sm:col-span-2 lg:col-span-3">
-            <ColHeading>Contact</ColHeading>
-
-            <ul className="mt-6 space-y-5">
-              {emails.length > 0 ? (
-                <li className="flex gap-3">
-                  <Mail className="mt-[3px] h-4 w-4 shrink-0 text-leaf" />
-                  <div className="space-y-1.5">
-                    {emails.map((e) => (
-                      <a
-                        key={e.value}
-                        href={`mailto:${e.value}`}
-                        className="block text-[15px] text-stone transition-colors hover:text-leaf"
-                      >
-                        {e.value}
-                      </a>
-                    ))}
-                  </div>
-                </li>
-              ) : null}
+            </div>
+          </li>
+        ) : null}
 
               {phones.length > 0 ? (
                 <li className="flex gap-3">

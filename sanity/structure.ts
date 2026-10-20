@@ -3,9 +3,9 @@ import type { StructureResolver } from "sanity/structure";
 /**
  * Studio sidebar.
  *
- * The four About pages are singletons grouped in one folder, mirroring
- * the site's own About menu. Each opens straight into its own editor with
- * only the fields that page uses.
+ * Ordered the way the client works: the pages they edit, then the product
+ * tree in the order it must be filled, then what the site collects, then
+ * settings they touch once.
  */
 export const structure: StructureResolver = (S) =>
   S.list()
@@ -14,7 +14,9 @@ export const structure: StructureResolver = (S) =>
       S.listItem()
         .title("Home Page")
         .id("homePage")
-        .child(S.document().schemaType("homePage").documentId("homePage").title("Home Page")),
+        .child(
+          S.document().schemaType("homePage").documentId("homePage").title("Home Page")
+        ),
 
       S.listItem()
         .title("About")
@@ -27,7 +29,10 @@ export const structure: StructureResolver = (S) =>
                 .title("About Synami")
                 .id("aboutPage")
                 .child(
-                  S.document().schemaType("aboutPage").documentId("aboutPage").title("About Synami")
+                  S.document()
+                    .schemaType("aboutPage")
+                    .documentId("aboutPage")
+                    .title("About Synami")
                 ),
               S.listItem()
                 .title("Vision & Mission")
@@ -59,10 +64,11 @@ export const structure: StructureResolver = (S) =>
             ])
         ),
 
-      S.documentTypeListItem("infoPage").title("Insights & Legal Pages"),
+      S.documentTypeListItem("infoPage").title("Insights Pages"),
 
       S.divider(),
-     S.listItem()
+
+      S.listItem()
         .title("Products Page")
         .id("productsPage")
         .child(
@@ -73,7 +79,6 @@ export const structure: StructureResolver = (S) =>
         ),
 
       S.documentTypeListItem("productSegment").title("1 · Main Categories"),
-   
       S.documentTypeListItem("productCategory").title("2 · Categories"),
       S.documentTypeListItem("product").title("3 · Products"),
 
@@ -84,10 +89,15 @@ export const structure: StructureResolver = (S) =>
 
       S.divider(),
 
+      S.documentTypeListItem("legalPage").title("Legal Pages"),
+
       S.listItem()
         .title("Site Settings")
         .id("siteSettings")
         .child(
-          S.document().schemaType("siteSettings").documentId("siteSettings").title("Site Settings")
+          S.document()
+            .schemaType("siteSettings")
+            .documentId("siteSettings")
+            .title("Site Settings")
         ),
     ]);

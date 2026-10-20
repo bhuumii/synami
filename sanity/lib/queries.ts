@@ -245,9 +245,7 @@ export const capabilityBySlugQuery = groq`
    ============================================================ */
 
 export const legalPageBySlugQuery = groq`
-  *[_type == "infoPage" && section == "legal" && slug.current == $slug][0]{
-    title, eyebrow, intro,
-    sections[]{ heading, body },
-    seo
+  *[_type == "legalPage" && slug.current == $slug][0]{
+    title, intro, lastUpdated, body, seo
   }
 `;
