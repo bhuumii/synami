@@ -135,20 +135,14 @@ export default async function ProductPage({
             </div>
 
             <div>
-              {data.brandName ? (
-                <span className="font-display text-xs uppercase tracking-[0.18em] text-leaf">
-                  {data.brandName}
-                </span>
-              ) : null}
-
-              <h1 className="mt-3 font-display text-3xl font-semibold leading-[1.1] text-ink lg:text-[length:var(--text-4xl)]">
-                {data.title}
+               <h1 className="font-display text-3xl font-semibold leading-[1.1] text-ink lg:text-[length:var(--text-4xl)]">
+                {data.brandName || data.title}
               </h1>
 
-              {data.formulationType ? (
-                <span className="mt-5 inline-block rounded-pill border border-leaf/30 px-4 py-1.5 font-display text-sm font-medium text-leaf">
-                  {data.formulationType}
-                </span>
+              {data.brandName ? (
+                <p className="mt-4 font-display text-xl font-medium text-leaf lg:text-2xl">
+                  {data.title}
+                </p>
               ) : null}
 
               {data.shortDescription ? (
