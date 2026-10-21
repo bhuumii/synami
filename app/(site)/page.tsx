@@ -12,6 +12,7 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Reveal } from "@/components/ui/Reveal";
 import { Eyebrow } from "@/components/ui/Eyebrow";
+import { ScrollHighlightText } from "@/components/ui/ScrollHighlightText";
 
 export const revalidate = 3600;
 
@@ -22,6 +23,7 @@ export default async function Home() {
   ]);
 
   const body: string[] = home?.whoBody ?? [];
+  const [lead, ...rest] = body;
 
   return (
     <>
@@ -35,7 +37,7 @@ export default async function Home() {
       {/* ---------------- Who we are ---------------- */}
       <section className="bg-field py-20 md:py-28 lg:py-32">
         <Container>
-          <div className="grid gap-12 lg:grid-cols-[0.85fr_1.15fr] lg:gap-20">
+          <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
             <Reveal>
               <Eyebrow>{home?.whoEyebrow ?? "Who we are"}</Eyebrow>
               <h2 className="mt-5 text-3xl lg:text-[length:var(--text-4xl)] lg:leading-[1.05]">
@@ -47,33 +49,38 @@ export default async function Home() {
               />
             </Reveal>
 
-            <Reveal delay={0.1}>
-              {/* First paragraph set larger — it carries the idea, the rest
-                  support it. A uniform block of body text is what made this
-                  section read as filler. */}
-              {body.map((para: string, i: number) => (
-                <p
-                  key={i}
-                  className={
-                    i === 0
-                      ? "max-w-none text-xl leading-relaxed text-navy"
-                      : "mt-5 max-w-none text-[17px] leading-relaxed"
-                  }
-                >
-                  {para}
-                </p>
-              ))}
-
-              {home?.whoCta?.label ? (
-                <Button
-                  href={home.whoCta.href || "/about"}
-                  variant="outline"
-                  className="mt-9"
-                >
-                  {home.whoCta.label}
-                </Button>
+            <div>
+              {/* The lead paragraph lights up word by word as it passes
+                  through the viewport. Used here only — doing it to every
+                  paragraph would make the page tiring to read. */}
+              {lead ? (
+                <ScrollHighlightText
+                  text={lead}
+                  className="font-display text-xl font-medium leading-[1.55] text-navy lg:text-2xl lg:leading-[1.5]"
+                />
               ) : null}
-            </Reveal>
+
+              <Reveal delay={0.1}>
+                {rest.map((para: string, i: number) => (
+                  <p
+                    key={i}
+                    className="mt-6 max-w-none text-[17px] leading-relaxed"
+                  >
+                    {para}
+                  </p>
+                ))}
+
+                {home?.whoCta?.label ? (
+                  <Button
+                    href={home.whoCta.href || "/about"}
+                    variant="outline"
+                    className="mt-9"
+                  >
+                    {home.whoCta.label}
+                  </Button>
+                ) : null}
+              </Reveal>
+            </div>
           </div>
         </Container>
       </section>
