@@ -135,7 +135,14 @@ export default async function ProductPage({
             </div>
 
             <div>
-               <h1 className="font-display text-3xl font-semibold leading-[1.1] text-ink lg:text-[length:var(--text-4xl)]">
+             {/* Marker stroke behind the brand name. `group` is on the
+                  wrapper so the stroke reacts to the whole hero, not just
+                  the text itself. */}
+              <h1 className="group relative inline-block font-display text-3xl font-semibold leading-[1.12] text-navy lg:text-[length:var(--text-4xl)]">
+                <span
+                  aria-hidden
+                  className="absolute inset-x-0 bottom-[0.08em] -z-10 h-[0.36em] origin-left rounded-sm bg-leaf/15 transition-all duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:bg-leaf/25"
+                />
                 {data.brandName || data.title}
               </h1>
 

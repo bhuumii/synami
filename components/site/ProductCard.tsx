@@ -14,11 +14,14 @@ export type ProductCardData = {
 };
 
 /**
- * A single product in a grid.
+ * A product in a grid.
  *
- * Product names run long — "Azoxystrobin 11% + Tebuconazole 18.3% SC" is 40
- * characters — so the title wraps normally at a modest size and is never
- * truncated. Cutting a chemical name mid-formula makes it unreadable.
+ * Brand name leads, in the logo navy with a pale green marker stroke
+ * behind it that sweeps wider on hover. The chemical name sits under it
+ * as a subtitle.
+ *
+ * That order matters commercially: a distributor remembers the brand,
+ * then checks the composition. The card used to do the reverse.
  */
 export function ProductCard({
   product,
@@ -29,10 +32,12 @@ export function ProductCard({
   segmentSlug: string;
   categorySlug: string;
 }) {
+  const hasBrand = !!product.brandName;
+
   return (
     <Link
       href={`/products/${segmentSlug}/${categorySlug}/${product.slug}`}
-      className="lift group flex flex-col overflow-hidden rounded-card border border-line bg-paper"
+      className="lift group flex h-full flex-col overflow-hidden rounded-card border border-line bg-paper"
     >
       <div className="relative aspect-[4/3] overflow-hidden bg-field">
         {product.heroImage ? (
@@ -53,18 +58,27 @@ export function ProductCard({
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        {product.brandName ? (
-          <span className="font-display text-xs uppercase tracking-[0.16em] text-leaf">
-            {product.brandName}
-          </span>
-        ) : null}
-
-        <h3 className="mt-2 font-display text-base font-semibold leading-snug text-navy transition-colors group-hover:text-leaf">
-          {product.title}
+        {/* Brand name — the headline of the card */}
+        <h3 className="relative inline-block self-start font-display text-xl font-semibold leading-snug text-navy">
+          {/* Marker stroke, sitting behind the lower half of the text */}
+          <span
+            aria-hidden
+            className="absolute inset-x-0 bottom-[0.1em] -z-10 h-[0.42em] origin-left scale-x-[0.35] rounded-sm bg-leaf/15 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
+          />
+          {hasBrand ? product.brandName : product.title}
         </h3>
 
+        {/* Composition, as a subtitle */}
+        {hasBrand ? (
+          <p className="mt-1.5 font-display text-sm font-medium text-leaf">
+            {product.title}
+          </p>
+        ) : null}
+
         {product.shortDescription ? (
-          <p className="mt-3 text-sm text-stone">{product.shortDescription}</p>
+          <p className="mt-3 text-sm leading-relaxed text-stone">
+            {product.shortDescription}
+          </p>
         ) : null}
 
         <span className="mt-auto inline-flex items-center gap-1.5 pt-6 font-display text-sm font-medium text-leaf">
