@@ -8,6 +8,7 @@ import {
 } from "@/sanity/lib/queries";
 import type { NavSegment } from "@/lib/nav-types";
 import { WhatsAppButton } from "@/components/site/WhatsAppButton";
+import { OrganizationSchema } from "@/components/site/OrganizationSchema";
 
 /**
  * SITE LAYOUT — everything the public sees.
@@ -32,6 +33,8 @@ export default async function SiteLayout({
 
   return (
     <>
+     <OrganizationSchema settings={settings} />
+      <a href="#main" className="sr-only ..."></a>
       <a
         href="#main"
         className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-md focus:bg-navy focus:px-4 focus:py-2 focus:text-white"
