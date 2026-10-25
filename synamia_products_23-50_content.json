@@ -1,0 +1,2382 @@
+[
+  {
+    "_id": "product-hexaconazole-5-sc",
+    "_type": "product",
+    "title": "Hexaconazole 5% SC",
+    "brandName": "Torix",
+    "slug": {
+      "_type": "slug",
+      "current": "hexaconazole-5-sc"
+    },
+    "categoryTitle": "Fungicide",
+    "shortDescription": "A systemic triazole fungicide for managing susceptible fungal diseases on registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d01",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d0s1",
+            "text": "Torix contains hexaconazole 5% in a suspension concentrate formulation. Hexaconazole is a systemic triazole fungicide used to manage susceptible fungal diseases where the product is registered.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d02",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d0s2",
+            "text": "Use on approved crops and target diseases only. Follow the registered label for dosage, timing, spray intervals and safety precautions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m01",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m0s1",
+            "text": "Hexaconazole inhibits sterol biosynthesis in fungi by interfering with the C14-demethylase enzyme. This disrupts fungal cell-membrane development and restricts the growth of susceptible pathogens.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f00",
+        "_type": "feature",
+        "title": "Systemic fungicide",
+        "text": "The active ingredient is absorbed by plant tissues and can move within the plant following appropriate application."
+      },
+      {
+        "_key": "f01",
+        "_type": "feature",
+        "title": "Triazole chemistry",
+        "text": "Hexaconazole belongs to the triazole group and interferes with fungal sterol biosynthesis."
+      },
+      {
+        "_key": "f02",
+        "_type": "feature",
+        "title": "Suspension concentrate",
+        "text": "The SC formulation is designed for dilution in water and application according to label directions."
+      },
+      {
+        "_key": "f03",
+        "_type": "feature",
+        "title": "Disease-focused use",
+        "text": "Correct disease identification and timely, label-directed application are important for reliable management."
+      }
+    ],
+    "order": 23
+  },
+  {
+    "_id": "product-isoprothiolane-40-ec",
+    "_type": "product",
+    "title": "Isoprothiolane 40% EC",
+    "brandName": "Wildfire",
+    "slug": {
+      "_type": "slug",
+      "current": "isoprothiolane-40-ec"
+    },
+    "categoryTitle": "Fungicide",
+    "shortDescription": "A systemic fungicide formulation containing isoprothiolane for managing susceptible fungal diseases on registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d11",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d1s1",
+            "text": "Wildfire contains isoprothiolane 40% in an emulsifiable concentrate formulation. Isoprothiolane is used in crop protection against certain fungal diseases, particularly in registered rice disease-management programmes.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d12",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d1s2",
+            "text": "Confirm the approved crop and disease on the product label before use. Follow its application rate, timing, mixing directions and safety instructions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m11",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m1s1",
+            "text": "Isoprothiolane interferes with important physiological processes in susceptible fungi, including processes associated with lipid metabolism and fungal development. Its practical performance depends on the pathogen, crop and application conditions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f10",
+        "_type": "feature",
+        "title": "Systemic activity",
+        "text": "The active ingredient has systemic properties that support disease management when used according to its registered directions."
+      },
+      {
+        "_key": "f11",
+        "_type": "feature",
+        "title": "Specialised fungicide",
+        "text": "Isoprothiolane is used against particular fungal diseases rather than being a universal treatment for every pathogen."
+      },
+      {
+        "_key": "f12",
+        "_type": "feature",
+        "title": "Emulsifiable concentrate",
+        "text": "The EC formulation is intended to form an emulsion when diluted with water as directed on the label."
+      },
+      {
+        "_key": "f13",
+        "_type": "feature",
+        "title": "Label-led application",
+        "text": "Crop, disease, dose and application timing should always match the registered product instructions."
+      }
+    ],
+    "order": 24
+  },
+  {
+    "_id": "product-propineb-70-wp",
+    "_type": "product",
+    "title": "Propineb 70% WP",
+    "brandName": "Zenvex",
+    "slug": {
+      "_type": "slug",
+      "current": "propineb-70-wp"
+    },
+    "categoryTitle": "Fungicide",
+    "shortDescription": "A protective multi-site contact fungicide formulation for managing susceptible fungal diseases on registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d21",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d2s1",
+            "text": "Zenvex contains propineb 70% in a wettable powder formulation. Propineb is a dithiocarbamate fungicide used as a protective treatment against susceptible fungal diseases where registered.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d22",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d2s2",
+            "text": "Good spray coverage and appropriate timing are important for contact fungicides. Apply only to approved crops and diseases, following label directions and precautions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m21",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m2s1",
+            "text": "Propineb is a multi-site fungicide that interferes with several enzyme-related processes in fungal cells. Its multi-site activity disrupts normal fungal metabolism and helps protect treated plant surfaces against susceptible pathogens.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f20",
+        "_type": "feature",
+        "title": "Protective contact action",
+        "text": "The fungicide acts primarily on treated surfaces, making appropriate timing and coverage important."
+      },
+      {
+        "_key": "f21",
+        "_type": "feature",
+        "title": "Multi-site activity",
+        "text": "Propineb affects several processes in fungal cells rather than acting at only one specific biochemical target."
+      },
+      {
+        "_key": "f22",
+        "_type": "feature",
+        "title": "Wettable powder",
+        "text": "The WP formulation is dispersed in water before application according to label mixing instructions."
+      },
+      {
+        "_key": "f23",
+        "_type": "feature",
+        "title": "Coverage matters",
+        "text": "Uniform coverage of the intended plant surfaces supports the protective role of a contact fungicide."
+      }
+    ],
+    "order": 25
+  },
+  {
+    "_id": "product-pyraclostrobin-10-and-thifluzamide-10-sc",
+    "_type": "product",
+    "title": "Pyraclostrobin 10% + Thifluzamide 10% SC",
+    "brandName": "Tenzy",
+    "slug": {
+      "_type": "slug",
+      "current": "pyraclostrobin-10-and-thifluzamide-10-sc"
+    },
+    "categoryTitle": "Fungicide",
+    "shortDescription": "A combination fungicide containing pyraclostrobin and thifluzamide for label-approved management of susceptible fungal diseases.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d31",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d3s1",
+            "text": "Tenzy combines pyraclostrobin 10% and thifluzamide 10% in a suspension concentrate formulation. The active ingredients belong to different fungicide groups and interfere with fungal energy production through distinct biochemical targets.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d32",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d3s2",
+            "text": "Use only for registered crops and diseases. Follow the product label for dose, timing, application intervals and resistance-management recommendations.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m31",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m3s1",
+            "text": "Pyraclostrobin inhibits mitochondrial respiration at the cytochrome bc1 complex, restricting fungal energy production. Thifluzamide inhibits succinate dehydrogenase in the mitochondrial respiratory chain. Their different targets provide complementary fungicidal activity against susceptible pathogens.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f30",
+        "_type": "feature",
+        "title": "Dual-active formulation",
+        "text": "Combines pyraclostrobin and thifluzamide, which have different primary targets in fungal respiration."
+      },
+      {
+        "_key": "f31",
+        "_type": "feature",
+        "title": "Different biochemical targets",
+        "text": "The active ingredients affect separate parts of the mitochondrial energy-production process in susceptible fungi."
+      },
+      {
+        "_key": "f32",
+        "_type": "feature",
+        "title": "Suspension concentrate",
+        "text": "The SC formulation is designed for dilution in water and application as specified on the label."
+      },
+      {
+        "_key": "f33",
+        "_type": "feature",
+        "title": "Resistance-aware use",
+        "text": "Follow label directions on application limits and fungicide rotation as part of an integrated disease-management plan."
+      }
+    ],
+    "order": 26
+  },
+  {
+    "_id": "product-tebuconazole-10-and-sulphur-65-wg",
+    "_type": "product",
+    "title": "Tebuconazole 10% + Sulphur 65% WG",
+    "brandName": "Seiryu",
+    "slug": {
+      "_type": "slug",
+      "current": "tebuconazole-10-and-sulphur-65-wg"
+    },
+    "categoryTitle": "Fungicide",
+    "shortDescription": "A combination fungicide containing tebuconazole and sulphur for managing susceptible fungal diseases where registered.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d41",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d4s1",
+            "text": "Seiryu combines tebuconazole 10% and sulphur 65% in a water-dispersible granule formulation. Tebuconazole is a systemic triazole fungicide, while sulphur acts as a multi-site contact fungicide against susceptible pathogens.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d42",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d4s2",
+            "text": "The combination brings together different types of fungicidal activity. Use only on crops and diseases listed on the approved label and follow its safety and application directions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m41",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m4s1",
+            "text": "Tebuconazole inhibits fungal sterol biosynthesis by interfering with the C14-demethylase enzyme. Sulphur acts through multi-site effects on susceptible fungi and their cellular processes. The ingredients therefore contribute through different mechanisms.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f40",
+        "_type": "feature",
+        "title": "Two fungicidal components",
+        "text": "Combines systemic triazole chemistry with the protective contact activity of sulphur."
+      },
+      {
+        "_key": "f41",
+        "_type": "feature",
+        "title": "Sterol-biosynthesis inhibition",
+        "text": "Tebuconazole interferes with a process required for normal fungal cell-membrane development."
+      },
+      {
+        "_key": "f42",
+        "_type": "feature",
+        "title": "Contact protection",
+        "text": "Sulphur contributes contact activity against susceptible fungi on adequately treated surfaces."
+      },
+      {
+        "_key": "f43",
+        "_type": "feature",
+        "title": "Water-dispersible granules",
+        "text": "The WG formulation is dispersed in water for application according to label instructions."
+      }
+    ],
+    "order": 27
+  },
+  {
+    "_id": "product-tebuconazole-25-9-ec",
+    "_type": "product",
+    "title": "Tebuconazole 25.9% EC",
+    "brandName": "Velxy",
+    "slug": {
+      "_type": "slug",
+      "current": "tebuconazole-25-9-ec"
+    },
+    "categoryTitle": "Fungicide",
+    "shortDescription": "A systemic triazole fungicide formulation for managing susceptible fungal diseases on registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d51",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d5s1",
+            "text": "Velxy contains tebuconazole 25.9% in an emulsifiable concentrate formulation. Tebuconazole is a systemic triazole fungicide used against susceptible fungal pathogens in registered crop-protection programmes.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d52",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d5s2",
+            "text": "Use the product only for approved crop and disease combinations. Follow the specified dose, timing, spray intervals and resistance-management directions on the label.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m51",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m5s1",
+            "text": "Tebuconazole inhibits the fungal C14-demethylase enzyme involved in ergosterol biosynthesis. This interferes with the formation of normal fungal cell membranes and restricts the development of susceptible pathogens.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f50",
+        "_type": "feature",
+        "title": "Systemic fungicide",
+        "text": "The active ingredient is absorbed by plant tissues following appropriate application."
+      },
+      {
+        "_key": "f51",
+        "_type": "feature",
+        "title": "Triazole mode of action",
+        "text": "Tebuconazole inhibits sterol biosynthesis, a process required for normal fungal cell membranes."
+      },
+      {
+        "_key": "f52",
+        "_type": "feature",
+        "title": "Emulsifiable concentrate",
+        "text": "The EC formulation is designed for dilution and application as instructed on the product label."
+      },
+      {
+        "_key": "f53",
+        "_type": "feature",
+        "title": "Timely disease management",
+        "text": "Correct identification of the disease and application at the labelled stage are important for performance."
+      }
+    ],
+    "order": 28
+  },
+  {
+    "_id": "product-tebuconazole-50-and-trifloxystrobin-25-wg",
+    "_type": "product",
+    "title": "Tebuconazole 50% + Trifloxystrobin 25% WG",
+    "brandName": "Crusher",
+    "slug": {
+      "_type": "slug",
+      "current": "tebuconazole-50-and-trifloxystrobin-25-wg"
+    },
+    "categoryTitle": "Fungicide",
+    "shortDescription": "A combination fungicide pairing tebuconazole and trifloxystrobin for label-approved management of susceptible fungal diseases.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d61",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d6s1",
+            "text": "Crusher combines tebuconazole 50% and trifloxystrobin 25% in a water-dispersible granule formulation. These active ingredients belong to different fungicide groups and affect distinct processes in fungal cells.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d62",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d6s2",
+            "text": "Apply only to registered crops and target diseases. Follow label directions for dosage, timing, intervals and resistance management.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m61",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m6s1",
+            "text": "Tebuconazole inhibits fungal sterol biosynthesis by acting on the C14-demethylase enzyme. Trifloxystrobin inhibits mitochondrial respiration at the cytochrome bc1 complex. These distinct targets interfere with fungal membrane development and energy production, respectively.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f60",
+        "_type": "feature",
+        "title": "Combination fungicide",
+        "text": "Pairs two active ingredients with different primary biochemical targets in susceptible fungi."
+      },
+      {
+        "_key": "f61",
+        "_type": "feature",
+        "title": "Sterol-biosynthesis inhibition",
+        "text": "Tebuconazole disrupts a process required for normal fungal cell-membrane formation."
+      },
+      {
+        "_key": "f62",
+        "_type": "feature",
+        "title": "Respiration inhibition",
+        "text": "Trifloxystrobin interferes with mitochondrial energy production in susceptible fungal pathogens."
+      },
+      {
+        "_key": "f63",
+        "_type": "feature",
+        "title": "Water-dispersible granules",
+        "text": "The WG formulation is dispersed in water and applied according to the registered label."
+      }
+    ],
+    "order": 29
+  },
+  {
+    "_id": "product-thiophanate-methyl-70-wp",
+    "_type": "product",
+    "title": "Thiophanate Methyl 70% WP",
+    "brandName": "Daiko",
+    "slug": {
+      "_type": "slug",
+      "current": "thiophanate-methyl-70-wp"
+    },
+    "categoryTitle": "Fungicide",
+    "shortDescription": "A fungicide formulation containing thiophanate methyl for managing susceptible fungal diseases on registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d71",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d7s1",
+            "text": "Daiko contains thiophanate methyl 70% in a wettable powder formulation. Thiophanate methyl is a benzimidazole-related fungicide used against susceptible fungal pathogens where the product is registered.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d72",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d7s2",
+            "text": "Use only on approved crops and diseases. Follow the label for dosage, timing, application intervals and resistance-management guidance.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m71",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m7s1",
+            "text": "Thiophanate methyl is converted to an active benzimidazole-related compound that disrupts beta-tubulin function and microtubule formation in susceptible fungi. This interferes with cell division and fungal growth. Resistance management is important because cross-resistance can occur within this fungicide group.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f70",
+        "_type": "feature",
+        "title": "Fungal growth inhibition",
+        "text": "The active ingredient interferes with microtubule formation, a process involved in fungal cell division."
+      },
+      {
+        "_key": "f71",
+        "_type": "feature",
+        "title": "Benzimidazole-related chemistry",
+        "text": "Its mode of action differs from multi-site contact fungicides and requires careful resistance management."
+      },
+      {
+        "_key": "f72",
+        "_type": "feature",
+        "title": "Wettable powder formulation",
+        "text": "The WP formulation is dispersed in water according to the product's mixing instructions."
+      },
+      {
+        "_key": "f73",
+        "_type": "feature",
+        "title": "Responsible rotation",
+        "text": "Follow registered use directions and resistance-management guidance rather than relying repeatedly on one fungicide group."
+      }
+    ],
+    "order": 30
+  },
+  {
+    "_id": "product-tricyclazole-75-wp",
+    "_type": "product",
+    "title": "Tricyclazole 75% WP",
+    "brandName": "Genki",
+    "slug": {
+      "_type": "slug",
+      "current": "tricyclazole-75-wp"
+    },
+    "categoryTitle": "Fungicide",
+    "shortDescription": "A specialised fungicide formulation containing tricyclazole for managing susceptible rice blast disease where registered.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d81",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d8s1",
+            "text": "Genki contains tricyclazole 75% in a wettable powder formulation. Tricyclazole is primarily associated with management of rice blast caused by susceptible Magnaporthe species, where registered.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d82",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d8s2",
+            "text": "Confirm that the crop and disease are listed on the approved label. Follow the specified application timing, dosage and safety precautions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m81",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m8s1",
+            "text": "Tricyclazole interferes with melanin biosynthesis in susceptible blast fungi. Melanin is important for the pathogen's infection structure to penetrate plant tissue, so disruption of its formation reduces the pathogen's ability to establish infection.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f80",
+        "_type": "feature",
+        "title": "Rice blast management",
+        "text": "Tricyclazole is a specialised option for rice blast where the specific product use is registered."
+      },
+      {
+        "_key": "f81",
+        "_type": "feature",
+        "title": "Melanin-biosynthesis inhibition",
+        "text": "The active ingredient disrupts formation of fungal melanin required for normal infection-structure function."
+      },
+      {
+        "_key": "f82",
+        "_type": "feature",
+        "title": "Wettable powder",
+        "text": "The WP formulation is dispersed in water before application according to label instructions."
+      },
+      {
+        "_key": "f83",
+        "_type": "feature",
+        "title": "Disease-specific timing",
+        "text": "Use at the crop stage and timing specified on the approved label for the target disease."
+      }
+    ],
+    "order": 31
+  },
+  {
+    "_id": "product-atrazine-50-wp",
+    "_type": "product",
+    "title": "Atrazine 50% WP",
+    "brandName": "Aventor",
+    "slug": {
+      "_type": "slug",
+      "current": "atrazine-50-wp"
+    },
+    "categoryTitle": "Herbicide",
+    "shortDescription": "A selective triazine herbicide formulation for controlling susceptible weeds in registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d91",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d9s1",
+            "text": "Aventor contains atrazine 50% in a wettable powder formulation. Atrazine is a selective herbicide used in certain registered crops to control susceptible broadleaf weeds and some grasses.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d92",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d9s2",
+            "text": "Crop selectivity and performance depend on the crop, weed species, soil and application timing. Use only as permitted by the approved label and follow all restrictions and safety directions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m91",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m9s1",
+            "text": "Atrazine inhibits photosystem II in susceptible plants by binding to the D1 protein in the chloroplast electron-transport chain. This interrupts photosynthesis and causes susceptible weeds to decline. Selectivity depends on crop, dose and application conditions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f90",
+        "_type": "feature",
+        "title": "Selective weed control",
+        "text": "Atrazine can control susceptible weeds in specifically registered crops when applied according to the label."
+      },
+      {
+        "_key": "f91",
+        "_type": "feature",
+        "title": "Photosynthesis inhibition",
+        "text": "The active ingredient interferes with photosystem II, disrupting the weed's ability to produce energy through photosynthesis."
+      },
+      {
+        "_key": "f92",
+        "_type": "feature",
+        "title": "Wettable powder",
+        "text": "The WP formulation is mixed and dispersed in water according to the label directions."
+      },
+      {
+        "_key": "f93",
+        "_type": "feature",
+        "title": "Application precision",
+        "text": "Crop stage, soil conditions, dose and weed susceptibility are important for safe and effective use."
+      }
+    ],
+    "order": 32
+  },
+  {
+    "_id": "product-bispyribac-sodium-10-sc",
+    "_type": "product",
+    "title": "Bispyribac Sodium 10% SC",
+    "brandName": "Solvix",
+    "slug": {
+      "_type": "slug",
+      "current": "bispyribac-sodium-10-sc"
+    },
+    "categoryTitle": "Herbicide",
+    "shortDescription": "A selective herbicide formulation for managing susceptible grass and broadleaf weeds in registered crops, including rice where approved.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d101",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d10s1",
+            "text": "Solvix contains bispyribac sodium 10% in a suspension concentrate formulation. Bispyribac sodium is a selective herbicide used to manage susceptible weeds in registered cropping systems.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d102",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d10s2",
+            "text": "Use only for approved crops and weed species, and follow label directions for crop stage, dose, water volume and application timing.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m101",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m10s1",
+            "text": "Bispyribac sodium inhibits acetolactate synthase (ALS), an enzyme required for the synthesis of branched-chain amino acids. Susceptible weeds stop growing and gradually decline. Weed spectrum and crop safety depend on registered use conditions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f100",
+        "_type": "feature",
+        "title": "Selective herbicide",
+        "text": "Designed for use in specific registered crops against susceptible weed species."
+      },
+      {
+        "_key": "f101",
+        "_type": "feature",
+        "title": "ALS inhibition",
+        "text": "The active ingredient blocks an enzyme required for production of essential branched-chain amino acids in plants."
+      },
+      {
+        "_key": "f102",
+        "_type": "feature",
+        "title": "Suspension concentrate",
+        "text": "The SC formulation is designed for dilution in water and application according to the label."
+      },
+      {
+        "_key": "f103",
+        "_type": "feature",
+        "title": "Weed-stage management",
+        "text": "Correct weed identification and application at the recommended growth stage support better results."
+      }
+    ],
+    "order": 33
+  },
+  {
+    "_id": "product-fenoxaprop-p-ethyl-9-3-ec",
+    "_type": "product",
+    "title": "Fenoxaprop-p-ethyl 9.3% EC",
+    "brandName": "Decimator",
+    "slug": {
+      "_type": "slug",
+      "current": "fenoxaprop-p-ethyl-9-3-ec"
+    },
+    "categoryTitle": "Herbicide",
+    "shortDescription": "A selective post-emergence herbicide for managing susceptible grass weeds in registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d111",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d11s1",
+            "text": "Decimator contains fenoxaprop-p-ethyl 9.3% in an emulsifiable concentrate formulation. This selective herbicide is used against susceptible grass weeds in crops for which the product is registered.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d112",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d11s2",
+            "text": "Check the crop, weed spectrum and application stage on the approved label. Follow the recommended dose and precautions to protect the crop and avoid off-target injury.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m111",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m11s1",
+            "text": "Fenoxaprop-p-ethyl inhibits acetyl-CoA carboxylase (ACCase), an enzyme essential for fatty-acid synthesis in susceptible grasses. This disrupts the production of lipids required for cell membranes and growing tissues, leading to weed growth cessation and eventual death.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f110",
+        "_type": "feature",
+        "title": "Grass-weed control",
+        "text": "Targets susceptible grass weeds in registered cropping systems; it is not intended to control every weed type."
+      },
+      {
+        "_key": "f111",
+        "_type": "feature",
+        "title": "Post-emergence use",
+        "text": "Applied after weeds emerge, at the crop and weed stages specified on the product label."
+      },
+      {
+        "_key": "f112",
+        "_type": "feature",
+        "title": "ACCase inhibition",
+        "text": "The active ingredient disrupts fatty-acid synthesis in susceptible grass weeds."
+      },
+      {
+        "_key": "f113",
+        "_type": "feature",
+        "title": "Emulsifiable concentrate",
+        "text": "The EC formulation is diluted and applied according to the label's mixing and spraying directions."
+      }
+    ],
+    "order": 34
+  },
+  {
+    "_id": "product-glufosinate-ammonium-13-5-sl",
+    "_type": "product",
+    "title": "Glufosinate Ammonium 13.5% SL",
+    "brandName": "Vanduk",
+    "slug": {
+      "_type": "slug",
+      "current": "glufosinate-ammonium-13-5-sl"
+    },
+    "categoryTitle": "Herbicide",
+    "shortDescription": "A non-selective herbicide formulation for controlling susceptible emerged weeds in approved use situations.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d121",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d12s1",
+            "text": "Vanduk contains glufosinate ammonium 13.5% in a soluble liquid formulation. Glufosinate is a non-selective herbicide used against emerged weeds in situations permitted by its registered label.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d122",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d12s2",
+            "text": "Avoid contact with desirable crops and other non-target plants. Use only in approved locations and follow all label directions, protective measures and drift precautions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m121",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m12s1",
+            "text": "Glufosinate inhibits glutamine synthetase, an enzyme involved in nitrogen metabolism and ammonia detoxification in plants. This causes ammonia accumulation and disrupts photosynthetic function, leading to injury and death of susceptible treated vegetation.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f120",
+        "_type": "feature",
+        "title": "Non-selective weed control",
+        "text": "Can injure a wide range of treated plants, so protecting desirable vegetation is essential."
+      },
+      {
+        "_key": "f121",
+        "_type": "feature",
+        "title": "Acts on emerged weeds",
+        "text": "The product is used against weeds that are already present, according to the approved directions."
+      },
+      {
+        "_key": "f122",
+        "_type": "feature",
+        "title": "Glutamine-synthetase inhibition",
+        "text": "The active ingredient disrupts nitrogen metabolism and contributes to rapid physiological injury in susceptible plants."
+      },
+      {
+        "_key": "f123",
+        "_type": "feature",
+        "title": "Careful application",
+        "text": "Avoid spray drift and unintended contact with crops, trees and other non-target plants."
+      }
+    ],
+    "order": 35
+  },
+  {
+    "_id": "product-mesotrione-2-27-and-atrazine-22-7-sc",
+    "_type": "product",
+    "title": "Mesotrione 2.27% + Atrazine 22.7% SC",
+    "brandName": "Corbin",
+    "slug": {
+      "_type": "slug",
+      "current": "mesotrione-2-27-and-atrazine-22-7-sc"
+    },
+    "categoryTitle": "Herbicide",
+    "shortDescription": "A combination herbicide containing mesotrione and atrazine for managing susceptible weeds in registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d131",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d13s1",
+            "text": "Corbin combines mesotrione 2.27% and atrazine 22.7% in a suspension concentrate formulation. These herbicides act at different sites in plants and are used against susceptible weeds in registered cropping systems.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d132",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d13s2",
+            "text": "Crop safety and weed control depend on the crop, weed species, soil and timing. Use only as directed on the approved label and observe all restrictions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m131",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m13s1",
+            "text": "Mesotrione inhibits 4-hydroxyphenylpyruvate dioxygenase (HPPD), disrupting carotenoid formation and causing bleaching in susceptible weeds. Atrazine inhibits photosystem II and interrupts photosynthetic electron transport. The ingredients therefore interfere with different processes in plant growth.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f130",
+        "_type": "feature",
+        "title": "Dual-active combination",
+        "text": "Combines mesotrione and atrazine, which affect different processes in susceptible weeds."
+      },
+      {
+        "_key": "f131",
+        "_type": "feature",
+        "title": "Bleaching response",
+        "text": "HPPD inhibition by mesotrione disrupts carotenoid formation and can cause characteristic bleaching in susceptible plants."
+      },
+      {
+        "_key": "f132",
+        "_type": "feature",
+        "title": "Photosynthesis inhibition",
+        "text": "Atrazine interferes with photosystem II, reducing the ability of susceptible weeds to photosynthesise."
+      },
+      {
+        "_key": "f133",
+        "_type": "feature",
+        "title": "Label-led selectivity",
+        "text": "Use only in registered crops and follow crop-stage, soil and application restrictions carefully."
+      }
+    ],
+    "order": 36
+  },
+  {
+    "_id": "product-pendimethalin-30-ec",
+    "_type": "product",
+    "title": "Pendimethalin 30% EC",
+    "brandName": "Jasper",
+    "slug": {
+      "_type": "slug",
+      "current": "pendimethalin-30-ec"
+    },
+    "categoryTitle": "Herbicide",
+    "shortDescription": "A pre-emergence herbicide formulation for controlling susceptible annual grasses and certain broadleaf weeds in registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d141",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d14s1",
+            "text": "Jasper contains pendimethalin 30% in an emulsifiable concentrate formulation. Pendimethalin is a soil-applied herbicide used to suppress susceptible annual weeds as they germinate in registered crops.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d142",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d14s2",
+            "text": "Application timing and soil conditions are important. Follow the approved label for crop, dose, soil preparation and any required irrigation or incorporation directions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m141",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m14s1",
+            "text": "Pendimethalin inhibits microtubule formation and cell division in susceptible germinating weeds. This prevents normal root and shoot development, limiting establishment of weeds treated at the appropriate stage.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f140",
+        "_type": "feature",
+        "title": "Pre-emergence weed management",
+        "text": "Used to suppress susceptible weeds during germination when applied at the label-recommended timing."
+      },
+      {
+        "_key": "f141",
+        "_type": "feature",
+        "title": "Inhibits cell division",
+        "text": "The active ingredient disrupts microtubule formation, affecting normal growth of germinating weeds."
+      },
+      {
+        "_key": "f142",
+        "_type": "feature",
+        "title": "Emulsifiable concentrate",
+        "text": "The EC formulation is prepared for application according to the label's mixing directions."
+      },
+      {
+        "_key": "f143",
+        "_type": "feature",
+        "title": "Soil preparation matters",
+        "text": "Follow label instructions for soil condition and placement to support performance and crop safety."
+      }
+    ],
+    "order": 37
+  },
+  {
+    "_id": "product-pendimethalin-38-7-cs",
+    "_type": "product",
+    "title": "Pendimethalin 38.7% CS",
+    "brandName": "Dinova",
+    "slug": {
+      "_type": "slug",
+      "current": "pendimethalin-38-7-cs"
+    },
+    "categoryTitle": "Herbicide",
+    "shortDescription": "A capsule-suspension pendimethalin herbicide for label-approved pre-emergence management of susceptible annual weeds.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d151",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d15s1",
+            "text": "Dinova contains pendimethalin 38.7% in a capsule suspension formulation. Pendimethalin is a soil-applied herbicide used to control susceptible annual weeds as they germinate in registered crops.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d152",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d15s2",
+            "text": "Apply only to approved crops and follow label directions for timing, soil conditions, dose and any required incorporation or irrigation practices.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m151",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m15s1",
+            "text": "Pendimethalin disrupts microtubule formation and cell division in susceptible germinating weeds. This interferes with normal root and shoot development and prevents successful weed establishment when used at the recommended stage.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f150",
+        "_type": "feature",
+        "title": "Pre-emergence activity",
+        "text": "Targets susceptible weeds during germination when application timing follows the registered directions."
+      },
+      {
+        "_key": "f151",
+        "_type": "feature",
+        "title": "Growth-process inhibition",
+        "text": "The active ingredient disrupts microtubules needed for cell division and normal early weed development."
+      },
+      {
+        "_key": "f152",
+        "_type": "feature",
+        "title": "Capsule suspension",
+        "text": "The CS formulation contains the active ingredient in suspended capsules and must be used as directed on the label."
+      },
+      {
+        "_key": "f153",
+        "_type": "feature",
+        "title": "Timing and soil conditions",
+        "text": "Follow label guidance on application timing, soil preparation and crop safety."
+      }
+    ],
+    "order": 38
+  },
+  {
+    "_id": "product-pyroxasulfone-85-wg",
+    "_type": "product",
+    "title": "Pyroxasulfone 85% WG",
+    "brandName": "Pyroka",
+    "slug": {
+      "_type": "slug",
+      "current": "pyroxasulfone-85-wg"
+    },
+    "categoryTitle": "Herbicide",
+    "shortDescription": "A pre-emergence herbicide formulation for managing susceptible annual grasses and selected broadleaf weeds in registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d161",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d16s1",
+            "text": "Pyroka contains pyroxasulfone 85% in a water-dispersible granule formulation. Pyroxasulfone is a residual herbicide used to manage susceptible weeds as they germinate in registered cropping systems.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d162",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d16s2",
+            "text": "Its use depends on the crop, soil, weed spectrum and approved application method. Follow the product label for dose, timing, placement and safety precautions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m161",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m16s1",
+            "text": "Pyroxasulfone inhibits very-long-chain fatty-acid (VLCFA) synthesis in susceptible plants. This disrupts formation of essential lipids and normal growth of emerging shoots and roots, preventing successful establishment of susceptible weeds.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f160",
+        "_type": "feature",
+        "title": "Residual weed management",
+        "text": "Provides activity against susceptible weeds during germination when used according to registered directions."
+      },
+      {
+        "_key": "f161",
+        "_type": "feature",
+        "title": "VLCFA synthesis inhibition",
+        "text": "The active ingredient disrupts production of very-long-chain fatty acids needed for normal plant growth."
+      },
+      {
+        "_key": "f162",
+        "_type": "feature",
+        "title": "Water-dispersible granules",
+        "text": "The WG formulation is dispersed in water according to label mixing and application instructions."
+      },
+      {
+        "_key": "f163",
+        "_type": "feature",
+        "title": "Crop-specific use",
+        "text": "Correct crop selection, soil conditions and application timing are important for selectivity and performance."
+      }
+    ],
+    "order": 39
+  },
+  {
+    "_id": "product-quizalofop-ethyl-10-ec",
+    "_type": "product",
+    "title": "Quizalofop Ethyl 10% EC",
+    "brandName": "Shinkora",
+    "slug": {
+      "_type": "slug",
+      "current": "quizalofop-ethyl-10-ec"
+    },
+    "categoryTitle": "Herbicide",
+    "shortDescription": "A selective post-emergence herbicide for controlling susceptible grass weeds in registered broadleaf crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d171",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d17s1",
+            "text": "Shinkora contains quizalofop ethyl 10% in an emulsifiable concentrate formulation. Quizalofop ethyl is a selective herbicide used to control susceptible grass weeds in registered broadleaf crops.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d172",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d17s2",
+            "text": "Confirm the crop and target weeds on the approved label before use. Apply at the recommended weed stage and follow all dose, mixing and safety instructions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m171",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m17s1",
+            "text": "Quizalofop ethyl inhibits acetyl-CoA carboxylase (ACCase), an enzyme needed for fatty-acid synthesis in susceptible grasses. This disrupts lipid production and growth in developing tissues, leading to the gradual death of treated grass weeds.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f170",
+        "_type": "feature",
+        "title": "Selective grass-weed control",
+        "text": "Targets susceptible grasses in registered broadleaf crops and does not control all weed groups."
+      },
+      {
+        "_key": "f171",
+        "_type": "feature",
+        "title": "Post-emergence application",
+        "text": "Used after weeds emerge, at the crop and weed stages specified on the label."
+      },
+      {
+        "_key": "f172",
+        "_type": "feature",
+        "title": "ACCase inhibition",
+        "text": "The active ingredient disrupts fatty-acid synthesis in susceptible grass weeds."
+      },
+      {
+        "_key": "f173",
+        "_type": "feature",
+        "title": "Emulsifiable concentrate",
+        "text": "The EC formulation is diluted and applied as directed on the approved product label."
+      }
+    ],
+    "order": 40
+  },
+  {
+    "_id": "product-gibberellic-acid-0-001-l",
+    "_type": "product",
+    "title": "Gibberellic Acid 0.001% L",
+    "brandName": "Qorzen",
+    "slug": {
+      "_type": "slug",
+      "current": "gibberellic-acid-0-001-l"
+    },
+    "categoryTitle": "Plant Growth Regulator (PGR)",
+    "shortDescription": "A plant growth regulator formulation containing gibberellic acid for supporting specific growth processes where registered.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d181",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d18s1",
+            "text": "Qorzen contains gibberellic acid 0.001% in liquid formulation. Gibberellic acid is a plant growth regulator associated with processes such as cell elongation, germination and aspects of flowering or fruit development, depending on the crop and use.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d182",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d18s2",
+            "text": "Results depend on crop, growth stage and application conditions. Follow the registered label for approved uses, rate and timing.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m181",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m18s1",
+            "text": "Gibberellic acid is a plant hormone that activates growth-related signalling pathways. It can promote cell elongation and influence seed germination and developmental processes in responsive plants. The response varies with crop, concentration and stage of application.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f180",
+        "_type": "feature",
+        "title": "Growth regulation",
+        "text": "Gibberellic acid influences natural plant growth and development processes in responsive crops."
+      },
+      {
+        "_key": "f181",
+        "_type": "feature",
+        "title": "Cell elongation",
+        "text": "It can stimulate cell elongation, depending on the crop and the recommended application stage."
+      },
+      {
+        "_key": "f182",
+        "_type": "feature",
+        "title": "Developmental response",
+        "text": "Effects on germination, flowering or fruit development depend on the crop and registered use."
+      },
+      {
+        "_key": "f183",
+        "_type": "feature",
+        "title": "Stage-specific application",
+        "text": "Use the recommended dose and crop stage on the label to avoid inconsistent results."
+      }
+    ],
+    "order": 41
+  },
+  {
+    "_id": "product-gibberellic-acid-0-186-sp",
+    "_type": "product",
+    "title": "Gibberellic Acid 0.186% SP",
+    "brandName": "Mizento",
+    "slug": {
+      "_type": "slug",
+      "current": "gibberellic-acid-0-186-sp"
+    },
+    "categoryTitle": "Plant Growth Regulator (PGR)",
+    "shortDescription": "A soluble powder plant growth regulator containing gibberellic acid for registered crop-development applications.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d191",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d19s1",
+            "text": "Mizento contains gibberellic acid 0.186% in a soluble powder formulation. Gibberellic acid is a plant hormone used to influence selected growth and developmental processes in responsive crops.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d192",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d19s2",
+            "text": "The intended response depends on crop, dose and timing. Use only for approved applications and follow label directions for preparation, application stage and safety.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m191",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m19s1",
+            "text": "Gibberellic acid activates plant growth signalling pathways that regulate processes including cell elongation and seed germination. Crop responses vary with plant physiology, growth stage, environmental conditions and the applied concentration.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f190",
+        "_type": "feature",
+        "title": "Plant growth regulation",
+        "text": "Supports specific growth-related processes in responsive crops when used according to approved directions."
+      },
+      {
+        "_key": "f191",
+        "_type": "feature",
+        "title": "Gibberellic acid activity",
+        "text": "The active ingredient acts as a plant hormone involved in growth and development signalling."
+      },
+      {
+        "_key": "f192",
+        "_type": "feature",
+        "title": "Soluble powder",
+        "text": "The SP formulation is dissolved in water following the label's preparation instructions."
+      },
+      {
+        "_key": "f193",
+        "_type": "feature",
+        "title": "Correct timing",
+        "text": "Crop stage and application rate strongly influence the response; follow the registered directions."
+      }
+    ],
+    "order": 42
+  },
+  {
+    "_id": "product-paclobutrazol-23-sc",
+    "_type": "product",
+    "title": "Paclobutrazol 23% SC",
+    "brandName": "Genzaki",
+    "slug": {
+      "_type": "slug",
+      "current": "paclobutrazol-23-sc"
+    },
+    "categoryTitle": "Plant Growth Regulator (PGR)",
+    "shortDescription": "A plant growth regulator containing paclobutrazol for controlling selected vegetative growth processes in registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d201",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d20s1",
+            "text": "Genzaki contains paclobutrazol 23% in a suspension concentrate formulation. Paclobutrazol is a plant growth regulator used in specific registered crops to modify vegetative growth and influence plant development.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d202",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d20s2",
+            "text": "The response can vary significantly with crop, dose, application method and timing. Follow the approved label carefully and do not exceed the recommended rate.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m201",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m20s1",
+            "text": "Paclobutrazol inhibits gibberellin biosynthesis by interfering with oxidation steps in the terpenoid pathway. Reduced gibberellin production can limit shoot elongation and modify vegetative growth in responsive plants.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f200",
+        "_type": "feature",
+        "title": "Vegetative growth regulation",
+        "text": "Can reduce excessive shoot elongation in responsive crops when used for a registered purpose."
+      },
+      {
+        "_key": "f201",
+        "_type": "feature",
+        "title": "Gibberellin-biosynthesis inhibition",
+        "text": "The active ingredient interferes with production of gibberellins involved in shoot growth."
+      },
+      {
+        "_key": "f202",
+        "_type": "feature",
+        "title": "Suspension concentrate",
+        "text": "The SC formulation is prepared and applied according to the approved label."
+      },
+      {
+        "_key": "f203",
+        "_type": "feature",
+        "title": "Rate-sensitive response",
+        "text": "Crop response depends strongly on dose, timing and application method; precise label compliance is essential."
+      }
+    ],
+    "order": 43
+  },
+  {
+    "_id": "product-paclobutrazol-40-sc",
+    "_type": "product",
+    "title": "Paclobutrazol 40% SC",
+    "brandName": "zelvik",
+    "slug": {
+      "_type": "slug",
+      "current": "paclobutrazol-40-sc"
+    },
+    "categoryTitle": "Plant Growth Regulator (PGR)",
+    "shortDescription": "A concentrated paclobutrazol suspension concentrate for registered plant-growth regulation applications.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d211",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d21s1",
+            "text": "zelvik contains paclobutrazol 40% in a suspension concentrate formulation. Paclobutrazol is used in selected registered crops to regulate vegetative growth by influencing gibberellin production.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d212",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d21s2",
+            "text": "Because crop response is dose-sensitive, use only for label-approved crops and application methods. Follow all rate, timing and handling instructions carefully.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m211",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m21s1",
+            "text": "Paclobutrazol inhibits gibberellin biosynthesis, reducing the hormone signals that promote shoot elongation. The resulting growth response varies by crop species, application method, plant stage and growing conditions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f210",
+        "_type": "feature",
+        "title": "Plant growth regulation",
+        "text": "Used for specific registered growth-management purposes rather than as a general-purpose crop nutrient."
+      },
+      {
+        "_key": "f211",
+        "_type": "feature",
+        "title": "Reduced shoot elongation",
+        "text": "By inhibiting gibberellin biosynthesis, paclobutrazol can limit excessive vegetative extension in responsive plants."
+      },
+      {
+        "_key": "f212",
+        "_type": "feature",
+        "title": "Suspension concentrate",
+        "text": "The SC formulation should be mixed and applied according to the product label."
+      },
+      {
+        "_key": "f213",
+        "_type": "feature",
+        "title": "Precise dose required",
+        "text": "Concentration and application timing can strongly affect crop response; follow the registered directions exactly."
+      }
+    ],
+    "order": 44
+  },
+  {
+    "_id": "product-tricontanol-0-1-ew",
+    "_type": "product",
+    "title": "Tricontanol 0.1% EW",
+    "brandName": "tabron",
+    "slug": {
+      "_type": "slug",
+      "current": "tricontanol-0-1-ew"
+    },
+    "categoryTitle": "Plant Growth Regulator (PGR)",
+    "shortDescription": "A tricontanol-based plant growth regulator formulation for supporting growth and physiological activity in registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d221",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d22s1",
+            "text": "tabron contains tricontanol 0.1% in an emulsion, oil-in-water formulation. Tricontanol is used in plant growth-regulation products intended to support physiological processes in responsive crops.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d222",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d22s2",
+            "text": "Performance depends on crop, growing conditions and application stage. Follow the approved label for dosage, timing and compatibility guidance.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m221",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m22s1",
+            "text": "Tricontanol is associated with changes in plant physiological activity, including photosynthetic and metabolic processes. The precise crop response can vary with plant species, environmental conditions and application practice.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f220",
+        "_type": "feature",
+        "title": "Growth-support formulation",
+        "text": "Designed for registered applications intended to support normal crop growth and physiological activity."
+      },
+      {
+        "_key": "f221",
+        "_type": "feature",
+        "title": "Tricontanol active ingredient",
+        "text": "Contains tricontanol, a growth-regulation ingredient used in selected crop-management programmes."
+      },
+      {
+        "_key": "f222",
+        "_type": "feature",
+        "title": "EW formulation",
+        "text": "The emulsion, oil-in-water formulation is prepared and applied according to the label."
+      },
+      {
+        "_key": "f223",
+        "_type": "feature",
+        "title": "Crop-stage awareness",
+        "text": "Use at the specified growth stage and rate to support consistent, label-directed application."
+      }
+    ],
+    "order": 45
+  },
+  {
+    "_id": "product-tricontanol-0-1-ec",
+    "_type": "product",
+    "title": "Tricontanol 0.1% EC",
+    "brandName": "kenko",
+    "slug": {
+      "_type": "slug",
+      "current": "tricontanol-0-1-ec"
+    },
+    "categoryTitle": "Plant Growth Regulator (PGR)",
+    "shortDescription": "A tricontanol-based plant growth regulator in emulsifiable concentrate formulation for registered crop uses.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d231",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d23s1",
+            "text": "kenko contains tricontanol 0.1% in an emulsifiable concentrate formulation. Tricontanol is used in plant growth-regulation products intended to support physiological processes in responsive crops.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d232",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d23s2",
+            "text": "Use only for label-approved crops and purposes. Follow the recommended dose, timing, mixing instructions and safety precautions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m231",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m23s1",
+            "text": "Tricontanol is associated with changes in plant physiological activity and metabolic processes, including photosynthetic performance in responsive plants. The magnitude of the response depends on crop, environment and application conditions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f230",
+        "_type": "feature",
+        "title": "Plant growth support",
+        "text": "Intended for registered uses that support growth-related physiological activity in responsive crops."
+      },
+      {
+        "_key": "f231",
+        "_type": "feature",
+        "title": "Tricontanol-based formulation",
+        "text": "Contains tricontanol, an ingredient used in selected plant growth-regulation programmes."
+      },
+      {
+        "_key": "f232",
+        "_type": "feature",
+        "title": "Emulsifiable concentrate",
+        "text": "The EC formulation is diluted and applied following the label's instructions."
+      },
+      {
+        "_key": "f233",
+        "_type": "feature",
+        "title": "Application discipline",
+        "text": "Follow the approved crop stage, dose and timing for appropriate use."
+      }
+    ],
+    "order": 46
+  },
+  {
+    "_id": "product-biostimulant-liquid",
+    "_type": "product",
+    "title": "Biostimulant Liquid",
+    "brandName": "mevro",
+    "slug": {
+      "_type": "slug",
+      "current": "biostimulant-liquid"
+    },
+    "categoryTitle": "Biostimulant",
+    "shortDescription": "A liquid biostimulant formulation intended to support crop physiological processes and performance under suitable growing conditions.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d241",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d24s1",
+            "text": "mevro is a liquid biostimulant product intended to support crop growth and physiological activity. Biostimulants may help plants use nutrients efficiently or respond to environmental stresses, depending on the product's actual composition and approved claims.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d242",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d24s2",
+            "text": "Refer to the product label or technical datasheet for ingredients, crop suitability, dose and timing. Do not treat the product as a substitute for balanced nutrition or good crop management.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m241",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m24s1",
+            "text": "The mode of action depends on the specific active ingredients and composition of this biostimulant. Biostimulant products may influence nutrient-use efficiency, root activity or physiological responses, but product-specific effects should be described only after the composition is confirmed.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f240",
+        "_type": "feature",
+        "title": "Crop-support formulation",
+        "text": "Intended to complement crop-management practices and support plant physiological performance."
+      },
+      {
+        "_key": "f241",
+        "_type": "feature",
+        "title": "Liquid application format",
+        "text": "A liquid formulation can be convenient to measure and prepare according to label instructions."
+      },
+      {
+        "_key": "f242",
+        "_type": "feature",
+        "title": "Use with balanced nutrition",
+        "text": "Biostimulants complement rather than replace suitable fertilisation, irrigation and crop care."
+      },
+      {
+        "_key": "f243",
+        "_type": "feature",
+        "title": "Composition-led claims",
+        "text": "Confirm the ingredient list and approved claims before making specific claims about stress tolerance or yield."
+      }
+    ],
+    "order": 47
+  },
+  {
+    "_id": "product-mycorrhiza-biofertilizer",
+    "_type": "product",
+    "title": "Mycorrhiza Biofertilizer",
+    "brandName": "predator",
+    "slug": {
+      "_type": "slug",
+      "current": "mycorrhiza-biofertilizer"
+    },
+    "categoryTitle": "Biofertilizer",
+    "shortDescription": "A mycorrhizal biofertilizer intended to support beneficial root-fungus associations and nutrient acquisition in compatible crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d251",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d25s1",
+            "text": "predator is a mycorrhiza-based biofertilizer intended to support beneficial associations between plant roots and mycorrhizal fungi. These associations can help compatible plants explore soil and access certain nutrients, depending on the formulation and growing conditions.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d252",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d25s2",
+            "text": "Use according to the product label for crop compatibility, placement, dosage and storage. Avoid practices that may harm the beneficial organisms, and verify the product's organism identity and viable count from its technical information.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m251",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m25s1",
+            "text": "Mycorrhizal fungi colonise compatible plant roots and extend fine fungal hyphae into the surrounding soil. This can increase the soil volume explored by the root-fungus association and improve access to nutrients such as phosphorus. Results depend on viable organisms, crop compatibility and soil conditions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f250",
+        "_type": "feature",
+        "title": "Beneficial root association",
+        "text": "Mycorrhizal fungi can form symbiotic associations with compatible plant roots."
+      },
+      {
+        "_key": "f251",
+        "_type": "feature",
+        "title": "Nutrient acquisition support",
+        "text": "Fungal hyphae can help explore soil beyond the immediate root surface and access certain nutrients."
+      },
+      {
+        "_key": "f252",
+        "_type": "feature",
+        "title": "Biological soil support",
+        "text": "The product is intended to complement soil fertility and crop-management practices."
+      },
+      {
+        "_key": "f253",
+        "_type": "feature",
+        "title": "Viability matters",
+        "text": "Storage, handling, soil conditions and compatibility influence the performance of living microbial products."
+      }
+    ],
+    "order": 48
+  },
+  {
+    "_id": "product-humic-flakes",
+    "_type": "product",
+    "title": "Humic Flakes",
+    "brandName": "maverlick",
+    "slug": {
+      "_type": "slug",
+      "current": "humic-flakes"
+    },
+    "categoryTitle": "Soil Conditioner",
+    "shortDescription": "A humic-substance soil conditioner in flake form intended to support soil properties and nutrient-management practices.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d261",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d26s1",
+            "text": "maverlick is a humic-flake soil conditioner intended to complement soil and nutrient management. Humic substances are used in agricultural products to support soil properties and interactions between soil and nutrients.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d262",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d26s2",
+            "text": "The exact performance depends on composition, solubility, application rate and soil conditions. Refer to the product label or technical datasheet for guaranteed analysis and recommended use.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m261",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m26s1",
+            "text": "Humic substances can interact with soil minerals and organic matter and influence nutrient availability and soil physical properties. The magnitude and type of response depend on the product's humic content, composition, soil characteristics and application practice.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f260",
+        "_type": "feature",
+        "title": "Humic-substance formulation",
+        "text": "Provides humic material intended to complement soil-management and nutrient-management practices."
+      },
+      {
+        "_key": "f261",
+        "_type": "feature",
+        "title": "Soil-property support",
+        "text": "Humic substances can influence soil interactions and properties depending on soil type and product composition."
+      },
+      {
+        "_key": "f262",
+        "_type": "feature",
+        "title": "Flake format",
+        "text": "The flake form is handled and applied according to the product's solubility and label directions."
+      },
+      {
+        "_key": "f263",
+        "_type": "feature",
+        "title": "Analysis-guided use",
+        "text": "Check the guaranteed composition and application recommendations before making specific nutrient or yield claims."
+      }
+    ],
+    "order": 49
+  },
+  {
+    "_id": "product-humic-powder",
+    "_type": "product",
+    "title": "Humic Powder",
+    "brandName": "shinobi",
+    "slug": {
+      "_type": "slug",
+      "current": "humic-powder"
+    },
+    "categoryTitle": "Soil Conditioner",
+    "shortDescription": "A humic-substance soil conditioner in powder form intended to complement soil improvement and nutrient-management programmes.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "d271",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d27s1",
+            "text": "shinobi is a humic-powder soil conditioner intended for use as part of a soil and nutrient-management programme. Humic substances can interact with soil components and influence nutrient availability and certain soil properties.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "d272",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "d27s2",
+            "text": "Use according to the product's guaranteed analysis and label directions. Application rate and performance depend on the composition, soil type and crop-management conditions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "m271",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "m27s1",
+            "text": "Humic substances interact with organic matter, minerals and nutrients in soil. Depending on composition and conditions, they may influence nutrient retention, nutrient availability and soil physical characteristics. Specific claims require confirmation from the product's technical datasheet.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f270",
+        "_type": "feature",
+        "title": "Humic-substance support",
+        "text": "Provides humic material to complement routine soil and nutrient management."
+      },
+      {
+        "_key": "f271",
+        "_type": "feature",
+        "title": "Nutrient interactions",
+        "text": "Humic substances can interact with nutrients and soil components, with effects depending on product and soil conditions."
+      },
+      {
+        "_key": "f272",
+        "_type": "feature",
+        "title": "Powder formulation",
+        "text": "The powder format should be stored, measured and applied according to label instructions."
+      },
+      {
+        "_key": "f273",
+        "_type": "feature",
+        "title": "Soil-specific results",
+        "text": "Performance varies with soil properties and product composition; use the guaranteed analysis to guide application."
+      }
+    ],
+    "order": 50
+  }
+]

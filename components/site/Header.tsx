@@ -17,12 +17,7 @@ export type CapabilityLink = {
   menuBlurb?: string;
 };
 
-/**
- * The About menu is a FIXED four-page structure, not CMS-driven.
- * Each one is its own route with its own layout, so adding a fifth would
- * mean adding a route file anyway — a Sanity-driven list would only be
- * able to produce links to pages that don't exist.
- */
+
 const ABOUT_MENU = [
   { href: "/about", title: "About Synami", blurb: "Who we are and how we work" },
   { href: "/about/vision-mission", title: "Vision & Mission", blurb: "Where we're going and why" },
@@ -30,8 +25,7 @@ const ABOUT_MENU = [
   { href: "/about/founders-message", title: "Founder's Message", blurb: "A note from our founder" },
 ];
 
-/** First guess, so the header doesn't flash the wrong style before the
- *  DOM check below runs. The DOM check is what actually decides. */
+
 function guessDarkHero(pathname: string) {
   return pathname === "/" || /^\/products\/[^/]+(\/[^/]+)?$/.test(pathname);
 }
@@ -53,8 +47,7 @@ export function Header({
   const [openSegment, setOpenSegment] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  /* Is there a dark hero on this page? If not, the header stays solid from
-     the top — otherwise white text on a light page is invisible. */
+
   useEffect(() => {
     const check = () =>
       setHasDarkHero(!!document.querySelector('[data-hero="dark"]'));
@@ -94,8 +87,6 @@ export function Header({
     };
   }, [mobileOpen]);
 
-  /* Short delay before closing, so the cursor can cross the gap between
-     the trigger and the panel without the menu snapping shut. */
   const open = (name: string) => {
     if (closeTimer.current) clearTimeout(closeTimer.current);
     setOpenMenu(name);

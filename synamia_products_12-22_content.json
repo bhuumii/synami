@@ -1,0 +1,937 @@
+[
+  {
+    "_id": "product-indoxacarb-5-and-fipronil-5-sc",
+    "_type": "product",
+    "title": "Indoxacarb 5% + Fipronil 5% SC",
+    "brandName": "Dominator",
+    "slug": {
+      "_type": "slug",
+      "current": "indoxacarb-5-and-fipronil-5-sc"
+    },
+    "categoryTitle": "Insecticide",
+    "shortDescription": "A dual-active insecticide combining indoxacarb and fipronil for complementary action against susceptible insect pests.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Dominator combines indoxacarb and fipronil in a suspension concentrate formulation. The active ingredients act at different insect nerve targets and are intended for use where this combination is registered.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b002",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s002",
+            "text": "Use only on approved crops and target pests, following the label for dose, timing, protective equipment and resistance management.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Indoxacarb acts primarily through contact and ingestion and disrupts sodium-channel function in insects, impairing nerve-signal transmission. Fipronil acts on insect GABA-gated chloride channels, disrupting normal nerve activity. These distinct target sites provide complementary insecticidal action.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f01",
+        "_type": "feature",
+        "title": "Dual-active combination",
+        "text": "Combines indoxacarb and fipronil, which act at different insect nerve targets to provide complementary insecticidal activity."
+      },
+      {
+        "_key": "f02",
+        "_type": "feature",
+        "title": "Contact and ingestion activity",
+        "text": "The active ingredients can act through contact and feeding exposure against susceptible pests when used as directed."
+      },
+      {
+        "_key": "f03",
+        "_type": "feature",
+        "title": "Two distinct target sites",
+        "text": "Different modes of action can contribute to a broader control approach within an integrated resistance-management programme."
+      },
+      {
+        "_key": "f04",
+        "_type": "feature",
+        "title": "Suspension concentrate",
+        "text": "The SC formulation is designed for dilution in water and application according to the product label."
+      }
+    ],
+    "order": 12
+  },
+  {
+    "_id": "product-lambda-cyhalothrin-4-9-cs",
+    "_type": "product",
+    "title": "Lambda-Cyhalothrin 4.9% CS",
+    "brandName": "Zairox",
+    "slug": {
+      "_type": "slug",
+      "current": "lambda-cyhalothrin-4-9-cs"
+    },
+    "categoryTitle": "Insecticide",
+    "shortDescription": "A capsule-suspension pyrethroid insecticide designed for contact and stomach action against susceptible insect pests.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Zairox contains lambda-cyhalothrin 4.9% in a capsule suspension (CS) formulation. Lambda-cyhalothrin is a synthetic pyrethroid that affects the nervous system of susceptible insects.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b002",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s002",
+            "text": "Use only for registered crops and pests, and follow label directions for application, safety and resistance management.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Lambda-cyhalothrin acts on voltage-gated sodium channels in insect nerve membranes, delaying their closure and causing repetitive nerve impulses. This disruption can lead to rapid knockdown and eventual death of susceptible insects. It acts mainly through contact and ingestion.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f01",
+        "_type": "feature",
+        "title": "Pyrethroid insecticide",
+        "text": "Contains lambda-cyhalothrin, a pyrethroid active ingredient that acts on insect nerve signalling."
+      },
+      {
+        "_key": "f02",
+        "_type": "feature",
+        "title": "Contact and stomach action",
+        "text": "Can affect susceptible pests through direct contact and ingestion of treated material when applied as directed."
+      },
+      {
+        "_key": "f03",
+        "_type": "feature",
+        "title": "Capsule suspension",
+        "text": "The CS formulation contains active ingredient in suspended capsules and is intended for dilution and application as directed."
+      },
+      {
+        "_key": "f04",
+        "_type": "feature",
+        "title": "Useful within IPM",
+        "text": "Can be one component of integrated pest management alongside monitoring, cultural practices and suitable resistance-management measures."
+      }
+    ],
+    "order": 13
+  },
+  {
+    "_id": "product-lambda-cyhalothrin-9-5-and-thiamethoxam-12-6-zc",
+    "_type": "product",
+    "title": "Lambda-Cyhalothrin 9.5% + Thiamethoxam 12.6% ZC",
+    "brandName": "Yuzen",
+    "slug": {
+      "_type": "slug",
+      "current": "lambda-cyhalothrin-9-5-and-thiamethoxam-12-6-zc"
+    },
+    "categoryTitle": "Insecticide",
+    "shortDescription": "A dual-active ZC insecticide combining a pyrethroid and a neonicotinoid for complementary action against susceptible insect pests.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Yuzen combines lambda-cyhalothrin and thiamethoxam in a ZC formulation. The two active ingredients belong to different insecticide groups and affect insect nervous-system function in different ways.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b002",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s002",
+            "text": "Use only against target pests on registered crops and follow all label directions, including dose, timing and resistance-management guidance.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Lambda-cyhalothrin affects voltage-gated sodium channels in insect nerves, disrupting normal signal transmission. Thiamethoxam acts on nicotinic acetylcholine receptors in the insect nervous system. Their different target sites provide complementary activity against susceptible pests.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f01",
+        "_type": "feature",
+        "title": "Two complementary ingredients",
+        "text": "Combines lambda-cyhalothrin and thiamethoxam, which act at different sites in the insect nervous system."
+      },
+      {
+        "_key": "f02",
+        "_type": "feature",
+        "title": "Different insecticide groups",
+        "text": "The active ingredients belong to distinct mode-of-action groups, making label-guided resistance management important."
+      },
+      {
+        "_key": "f03",
+        "_type": "feature",
+        "title": "Contact and systemic contribution",
+        "text": "Lambda-cyhalothrin provides contact activity, while thiamethoxam has systemic properties; their contribution depends on pest and application conditions."
+      },
+      {
+        "_key": "f04",
+        "_type": "feature",
+        "title": "ZC formulation",
+        "text": "The ZC formulation combines capsule-suspension and suspension-concentrate technologies and should be applied as directed."
+      }
+    ],
+    "order": 14
+  },
+  {
+    "_id": "product-thiamethoxam-1-and-chlorantraniliprole-0-5-gr",
+    "_type": "product",
+    "title": "Thiamethoxam 1% + Chlorantraniliprole 0.5% GR",
+    "brandName": "Katsuro",
+    "slug": {
+      "_type": "slug",
+      "current": "thiamethoxam-1-and-chlorantraniliprole-0-5-gr"
+    },
+    "categoryTitle": "Insecticide",
+    "shortDescription": "A granular insecticide combining thiamethoxam and chlorantraniliprole for label-approved management of susceptible crop pests.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Katsuro combines thiamethoxam 1% and chlorantraniliprole 0.5% in a granular formulation. The active ingredients act on different insect targets and are intended for use where this combination is registered.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b002",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s002",
+            "text": "Apply granules using the placement and rate specified on the approved label. Confirm the registered crop and target pest before use.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Thiamethoxam acts on nicotinic acetylcholine receptors in the insect nervous system, disrupting nerve transmission. Chlorantraniliprole activates insect ryanodine receptors, causing uncontrolled calcium release from muscle cells, paralysis and death in susceptible insects.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f01",
+        "_type": "feature",
+        "title": "Dual mode of action",
+        "text": "Combines thiamethoxam and chlorantraniliprole, which affect different physiological targets in insects."
+      },
+      {
+        "_key": "f02",
+        "_type": "feature",
+        "title": "Granular delivery",
+        "text": "The GR formulation is designed for application in granular form using the placement and method specified on the label."
+      },
+      {
+        "_key": "f03",
+        "_type": "feature",
+        "title": "Nervous-system activity",
+        "text": "Thiamethoxam disrupts insect nerve signalling through nicotinic acetylcholine receptors."
+      },
+      {
+        "_key": "f04",
+        "_type": "feature",
+        "title": "Muscle-targeting activity",
+        "text": "Chlorantraniliprole acts on ryanodine receptors in insect muscle, leading to loss of normal muscle control in susceptible pests."
+      }
+    ],
+    "order": 15
+  },
+  {
+    "_id": "product-thiamethoxam-17-5-and-chlorantraniliprole-8-8-sc",
+    "_type": "product",
+    "title": "Thiamethoxam 17.5% + Chlorantraniliprole 8.8% SC",
+    "brandName": "Zensora",
+    "slug": {
+      "_type": "slug",
+      "current": "thiamethoxam-17-5-and-chlorantraniliprole-8-8-sc"
+    },
+    "categoryTitle": "Insecticide",
+    "shortDescription": "A suspension concentrate insecticide combining thiamethoxam and chlorantraniliprole for complementary control of susceptible insect pests.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Zensora combines thiamethoxam 17.5% and chlorantraniliprole 8.8% in a suspension concentrate formulation. Its active ingredients act on different insect physiological targets and may support pest-management programmes where registered.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b002",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s002",
+            "text": "Use only on approved crops and target pests. Follow label directions for dilution, timing, dose, protective equipment and resistance management.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Thiamethoxam acts on nicotinic acetylcholine receptors in the insect nervous system, interfering with normal nerve transmission. Chlorantraniliprole activates ryanodine receptors, causing uncontrolled calcium release in insect muscles and resulting in paralysis and death in susceptible pests.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f01",
+        "_type": "feature",
+        "title": "Two active ingredients",
+        "text": "Combines thiamethoxam and chlorantraniliprole for complementary insecticidal action against susceptible target pests."
+      },
+      {
+        "_key": "f02",
+        "_type": "feature",
+        "title": "Distinct target sites",
+        "text": "The ingredients act on insect nerve receptors and muscle calcium regulation respectively, rather than sharing the same primary target."
+      },
+      {
+        "_key": "f03",
+        "_type": "feature",
+        "title": "Suspension concentrate",
+        "text": "The SC formulation is intended to be diluted with water and applied using the method described on the approved label."
+      },
+      {
+        "_key": "f04",
+        "_type": "feature",
+        "title": "Fits label-led pest management",
+        "text": "Can be considered within an integrated programme when the crop, pest and application timing match registered directions."
+      }
+    ],
+    "order": 16
+  },
+  {
+    "_id": "product-thiamethoxam-75-sg",
+    "_type": "product",
+    "title": "Thiamethoxam 75% SG",
+    "brandName": "Taikon",
+    "slug": {
+      "_type": "slug",
+      "current": "thiamethoxam-75-sg"
+    },
+    "categoryTitle": "Insecticide",
+    "shortDescription": "A water-soluble granule insecticide containing thiamethoxam for managing susceptible insect pests on registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Taikon contains thiamethoxam 75% in a soluble granule (SG) formulation. Thiamethoxam is a neonicotinoid insecticide that affects nerve-signal transmission in susceptible insects and has systemic properties.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b002",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s002",
+            "text": "Prepare and apply only as specified on the approved label. Use the recommended dose for registered crops and pests, following resistance-management and pollinator-protection directions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Thiamethoxam acts on nicotinic acetylcholine receptors in the insect nervous system, disrupting normal transmission of nerve impulses. Affected susceptible insects may stop feeding and subsequently die. Its systemic properties allow movement within treated plants, subject to application method and crop conditions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f01",
+        "_type": "feature",
+        "title": "Systemic insecticide",
+        "text": "Thiamethoxam has systemic properties and can move within plants following appropriate application, depending on crop and use conditions."
+      },
+      {
+        "_key": "f02",
+        "_type": "feature",
+        "title": "Nervous-system target",
+        "text": "It acts on nicotinic acetylcholine receptors in insects, disrupting normal nerve signalling."
+      },
+      {
+        "_key": "f03",
+        "_type": "feature",
+        "title": "Soluble granule formulation",
+        "text": "The SG formulation is designed to dissolve in water before application as directed on the approved label."
+      },
+      {
+        "_key": "f04",
+        "_type": "feature",
+        "title": "Label-guided application",
+        "text": "Correct crop selection, dose and timing are important for performance, safety and responsible resistance management."
+      }
+    ],
+    "order": 17
+  },
+  {
+    "_id": "product-tolfenpyrad-15-ec",
+    "_type": "product",
+    "title": "Tolfenpyrad 15% EC",
+    "brandName": "Crossfire",
+    "slug": {
+      "_type": "slug",
+      "current": "tolfenpyrad-15-ec"
+    },
+    "categoryTitle": "Insecticide",
+    "shortDescription": "An emulsifiable concentrate insecticide containing tolfenpyrad for label-approved management of susceptible insect pests.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Crossfire contains tolfenpyrad 15% in an emulsifiable concentrate (EC) formulation. Tolfenpyrad is a contact insecticide with a distinct biochemical target and can be used against susceptible pests where registered.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b002",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s002",
+            "text": "Apply only to crops and target pests listed on the product label. Follow dilution instructions, application timing, protective measures and restrictions for safe use.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Tolfenpyrad inhibits mitochondrial complex I in the insect respiratory chain, interfering with cellular energy production. This disruption affects normal insect function and can lead to mortality in susceptible pests. Performance varies with pest species and conditions, so use strictly according to approved directions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f01",
+        "_type": "feature",
+        "title": "Distinct biochemical target",
+        "text": "Tolfenpyrad interferes with mitochondrial energy production, providing a mode of action different from many common insecticide groups."
+      },
+      {
+        "_key": "f02",
+        "_type": "feature",
+        "title": "Contact activity",
+        "text": "The active ingredient acts primarily through contact against susceptible pests when adequate coverage and label directions are followed."
+      },
+      {
+        "_key": "f03",
+        "_type": "feature",
+        "title": "Emulsifiable concentrate",
+        "text": "The EC formulation is designed to form an emulsion when diluted in water, following the label's mixing instructions."
+      },
+      {
+        "_key": "f04",
+        "_type": "feature",
+        "title": "Resistance-aware use",
+        "text": "Integrate insecticides according to approved resistance-management guidance rather than repeatedly relying on the same mode of action."
+      }
+    ],
+    "order": 18
+  },
+  {
+    "_id": "product-azoxystrobin-11-and-tebuconazole-18-3-sc",
+    "_type": "product",
+    "title": "Azoxystrobin 11% + Tebuconazole 18.3% SC",
+    "brandName": "Vexora",
+    "slug": {
+      "_type": "slug",
+      "current": "azoxystrobin-11-and-tebuconazole-18-3-sc"
+    },
+    "categoryTitle": "Fungicide",
+    "shortDescription": "A combination fungicide pairing azoxystrobin and tebuconazole to support management of susceptible fungal diseases on registered crops.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Vexora combines azoxystrobin 11% and tebuconazole 18.3% in a suspension concentrate formulation. The active ingredients belong to different fungicide groups and act at different sites in fungal cells.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b002",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s002",
+            "text": "Use only for diseases and crops listed on the approved label. Follow recommended rates, intervals and resistance-management instructions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Azoxystrobin inhibits mitochondrial respiration at the fungal cytochrome bc1 complex, disrupting energy production. Tebuconazole is a triazole DMI fungicide that inhibits sterol biosynthesis, affecting fungal cell-membrane development. Their distinct targets provide complementary disease-management activity against susceptible fungi.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f01",
+        "_type": "feature",
+        "title": "Combination fungicide",
+        "text": "Pairs azoxystrobin and tebuconazole, two active ingredients with different primary biochemical targets in fungi."
+      },
+      {
+        "_key": "f02",
+        "_type": "feature",
+        "title": "Two modes of action",
+        "text": "The ingredients interfere with fungal respiration and sterol biosynthesis respectively, supporting a multi-target approach when used as directed."
+      },
+      {
+        "_key": "f03",
+        "_type": "feature",
+        "title": "Suspension concentrate",
+        "text": "The SC formulation is designed for dilution in water and application according to the approved label."
+      },
+      {
+        "_key": "f04",
+        "_type": "feature",
+        "title": "Resistance-management role",
+        "text": "Use within a broader disease-management programme and follow label guidance on application limits and fungicide rotation."
+      }
+    ],
+    "order": 19
+  },
+  {
+    "_id": "product-azoxystrobin-18-2-and-difenoconazole-11-4-sc",
+    "_type": "product",
+    "title": "Azoxystrobin 18.2% + Difenoconazole 11.4% SC",
+    "brandName": "Nexaro",
+    "slug": {
+      "_type": "slug",
+      "current": "azoxystrobin-18-2-and-difenoconazole-11-4-sc"
+    },
+    "categoryTitle": "Fungicide",
+    "shortDescription": "A dual-active suspension concentrate fungicide combining azoxystrobin and difenoconazole for label-approved management of susceptible fungal diseases.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Nexaro combines azoxystrobin 18.2% and difenoconazole 11.4% in a suspension concentrate formulation. The ingredients represent different fungicide groups and act on separate processes involved in fungal growth and survival.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b002",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s002",
+            "text": "Select the product only where the crop and disease are covered by its approved label. Follow the specified dose, timing, spray interval and resistance-management directions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Azoxystrobin inhibits mitochondrial respiration in fungi at the cytochrome bc1 complex, limiting energy production. Difenoconazole inhibits sterol biosynthesis through the fungal CYP51 enzyme, disrupting normal cell-membrane formation. The combination acts on distinct biochemical processes in susceptible fungal pathogens.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f01",
+        "_type": "feature",
+        "title": "Two active ingredients",
+        "text": "Combines azoxystrobin and difenoconazole for complementary activity against susceptible fungal pathogens."
+      },
+      {
+        "_key": "f02",
+        "_type": "feature",
+        "title": "Distinct fungicide targets",
+        "text": "The ingredients affect mitochondrial respiration and sterol biosynthesis, respectively, rather than sharing one primary target."
+      },
+      {
+        "_key": "f03",
+        "_type": "feature",
+        "title": "SC formulation",
+        "text": "The suspension concentrate is designed to be diluted and applied using the label's mixing and application instructions."
+      },
+      {
+        "_key": "f04",
+        "_type": "feature",
+        "title": "Integrated disease management",
+        "text": "Combine label-directed use with crop monitoring, sanitation and suitable fungicide rotation to support responsible disease management."
+      }
+    ],
+    "order": 20
+  },
+  {
+    "_id": "product-chlorothalonil-75-wp",
+    "_type": "product",
+    "title": "Chlorothalonil 75% WP",
+    "brandName": "Dazora",
+    "slug": {
+      "_type": "slug",
+      "current": "chlorothalonil-75-wp"
+    },
+    "categoryTitle": "Fungicide",
+    "shortDescription": "A protective contact fungicide containing chlorothalonil for label-approved prevention and management of susceptible fungal diseases.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Dazora contains chlorothalonil 75% in a wettable powder (WP) formulation. Chlorothalonil is a multi-site contact fungicide used primarily as a protective treatment where the product is registered.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b002",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s002",
+            "text": "Thorough coverage and application at the label-recommended timing are important. Use only on registered crops and diseases, and follow mixing, protective-equipment and environmental precautions.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Chlorothalonil acts at multiple sites in fungal cells, reacting with thiol-containing compounds and disrupting enzyme-related processes. This multi-site activity interferes with normal fungal metabolism and growth. As a contact protectant, it relies on coverage of plant surfaces and label-directed timing.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f01",
+        "_type": "feature",
+        "title": "Multi-site contact fungicide",
+        "text": "Chlorothalonil affects multiple cellular processes in fungi, distinguishing it from fungicides with a single specific biochemical target."
+      },
+      {
+        "_key": "f02",
+        "_type": "feature",
+        "title": "Protective disease management",
+        "text": "It is used primarily as a protective treatment, so application timing before or at the labelled disease stage is important."
+      },
+      {
+        "_key": "f03",
+        "_type": "feature",
+        "title": "Wettable powder formulation",
+        "text": "The WP formulation is dispersed in water for spraying according to the approved mixing directions."
+      },
+      {
+        "_key": "f04",
+        "_type": "feature",
+        "title": "Coverage matters",
+        "text": "Even coverage of intended plant surfaces helps the contact fungicide perform as intended; follow the label's water-volume guidance."
+      }
+    ],
+    "order": 21
+  },
+  {
+    "_id": "product-dimethomorph-50-wp",
+    "_type": "product",
+    "title": "Dimethomorph 50% WP",
+    "brandName": "Rontik",
+    "slug": {
+      "_type": "slug",
+      "current": "dimethomorph-50-wp"
+    },
+    "categoryTitle": "Fungicide",
+    "shortDescription": "A fungicide containing dimethomorph for management of susceptible oomycete diseases where the product is registered.",
+    "description": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Rontik contains dimethomorph 50% in a wettable powder formulation. Dimethomorph is used against susceptible oomycete pathogens, including certain downy mildew and late blight organisms, where the specific crop use is registered.",
+            "marks": []
+          }
+        ]
+      },
+      {
+        "_type": "block",
+        "_key": "b002",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s002",
+            "text": "Use only for crops and diseases listed on the approved label. Apply at the recommended timing and rate, and follow resistance-management guidance.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "modeOfAction": [
+      {
+        "_type": "block",
+        "_key": "b001",
+        "style": "normal",
+        "markDefs": [],
+        "children": [
+          {
+            "_type": "span",
+            "_key": "s001",
+            "text": "Dimethomorph disrupts cell-wall formation in susceptible oomycetes, interfering with normal development of the pathogen. It is associated with activity against oomycete groups rather than all fungi. Correct disease identification, application timing and label-directed resistance management are important.",
+            "marks": []
+          }
+        ]
+      }
+    ],
+    "featuresBenefits": [
+      {
+        "_key": "f01",
+        "_type": "feature",
+        "title": "Targeted oomycete activity",
+        "text": "Dimethomorph is used against susceptible oomycete pathogens, including certain organisms responsible for downy mildew and late blight."
+      },
+      {
+        "_key": "f02",
+        "_type": "feature",
+        "title": "Disrupts cell-wall formation",
+        "text": "Its mode of action interferes with cell-wall development in susceptible pathogens, affecting their normal growth."
+      },
+      {
+        "_key": "f03",
+        "_type": "feature",
+        "title": "Wettable powder formulation",
+        "text": "The WP formulation is dispersed in water before application, following the label's mixing and spraying directions."
+      },
+      {
+        "_key": "f04",
+        "_type": "feature",
+        "title": "Disease-specific use",
+        "text": "Match the product to the diagnosed disease and registered crop, and follow label guidance on timing and fungicide rotation."
+      }
+    ],
+    "order": 22
+  }
+]
