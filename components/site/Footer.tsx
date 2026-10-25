@@ -101,7 +101,7 @@ export function Footer({
   const phones = [settings?.phone, settings?.phoneAlt].filter(Boolean) as string[];
 
   return (
-    <footer className="relative overflow-hidden bg-sage-deep text-stone">
+    <footer className="relative overflow-hidden border-t border-leaf/20 bg-sage-deep text-stone">
       <div
         aria-hidden
         className="pointer-events-none absolute -left-40 -top-40 h-[520px] w-[520px] rounded-pill bg-leaf/[0.07] blur-3xl"
