@@ -164,7 +164,7 @@ export default async function SegmentPage({
                     {cat.heroImage ? (
                       <span
                         aria-hidden
-                        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-[0.07]"
+                        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-700 group-hover:opacity-[0.09]"
                       >
                         <Image
                           src={urlFor(cat.heroImage as never)
