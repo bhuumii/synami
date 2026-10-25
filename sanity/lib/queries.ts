@@ -19,7 +19,8 @@ export const siteSettingsQuery = groq`
     mapEmbedUrl, mapLinkUrl,
     contactImage{ ..., alt },
     careersImage{ ..., alt },
-    linkedin, facebook, instagram, youtube, footerTagline, whatsappNumber, whatsappMessage,
+    whatsappNumber, whatsappMessage,
+    linkedin, facebook, instagram, youtube, footerTagline
   }
 `;
 
@@ -27,8 +28,8 @@ export const siteSettingsQuery = groq`
  * PRODUCT NAVIGATION.
  *
  * Drives the mega menu, the mobile drawer, the homepage cards and the
- * footer — all from one fetch. Add a Main Category in the Studio and it
- * appears in all four with no code change.
+ * footer from one fetch. Main categories and categories keep their manual
+ * `order` field — the client controls those by hand.
  */
 export const productNavQuery = groq`
   *[_type == "productSegment"] | order(order asc){
@@ -36,6 +37,7 @@ export const productNavQuery = groq`
     title,
     "slug": slug.current,
     shortDescription,
+    icon,
     "categories": *[_type == "productCategory" && segment._ref == ^._id]
       | order(order asc){
         _id, title, "slug": slug.current, shortDescription, icon
@@ -49,6 +51,35 @@ export const capabilityNavQuery = groq`
     _id, title, "slug": slug.current, menuBlurb
   }
 `;
+
+/**
+ * SEARCH INDEX.
+ *
+ * Everything searchable in one compact payload, fetched once by the
+ * browser and filtered locally. Returns only what the results list
+ * renders — titles, slugs and parent names.
+ */
+export const searchIndexQuery = groq`{
+  "segments": *[_type == "productSegment" && defined(slug.current)]
+    | order(title asc){
+      _id, title, "slug": slug.current, icon
+    },
+
+  "categories": *[_type == "productCategory" && defined(slug.current)
+      && defined(segment->slug.current)] | order(title asc){
+      _id, title, "slug": slug.current, icon,
+      "segmentTitle": segment->title,
+      "segmentSlug": segment->slug.current
+    },
+
+  "products": *[_type == "product" && defined(slug.current)
+      && defined(category->slug.current)] | order(title asc){
+      _id, title, brandName, "slug": slug.current, formulationType,
+      "categoryTitle": category->title,
+      "categorySlug": category->slug.current,
+      "segmentSlug": category->segment->slug.current
+    }
+}`;
 
 /* ============================================================
    HOME
@@ -69,6 +100,19 @@ export const homePageQuery = groq`
 `;
 
 /* ============================================================
+   PRODUCTS INDEX
+   ============================================================ */
+
+export const productsPageQuery = groq`
+  *[_type == "productsPage"][0]{
+    title, eyebrow, intro,
+    heroImage{ ..., alt },
+    listingHeading, body,
+    seo
+  }
+`;
+
+/* ============================================================
    P1 — MAIN CATEGORY
    ============================================================ */
 
@@ -78,7 +122,7 @@ export const segmentSlugsQuery = groq`
 
 export const segmentBySlugQuery = groq`
   *[_type == "productSegment" && slug.current == $segment][0]{
-    _id, title, "slug": slug.current, icon, 
+    _id, title, "slug": slug.current, icon,
     heroImage{ ..., alt },
     shortDescription, description, seo,
 
@@ -112,7 +156,7 @@ export const categoryBySlugQuery = groq`
     segment->{ title, "slug": slug.current },
 
     "products": *[_type == "product" && category._ref == ^._id]
-      | order(order asc, title asc){
+      | order(title asc){
         _id, title, brandName, "slug": slug.current,
         shortDescription, formulationType,
         heroImage{ ..., alt }
@@ -130,17 +174,6 @@ export const categoryBySlugQuery = groq`
    P3 — PRODUCT
    ============================================================ */
 
-export const productsPageQuery = groq`
-  *[_type == "productsPage"][0]{
-    title, eyebrow, intro,
-    heroImage{ ..., alt },
-    listingHeading, body,
-    seo
-  }
-`;
-
-
-
 export const productPathsQuery = groq`
   *[_type == "product" && defined(slug.current)
       && defined(category->slug.current)
@@ -151,6 +184,11 @@ export const productPathsQuery = groq`
   }
 `;
 
+/**
+ * `siblings` returns EVERY product in the category, alphabetically. The
+ * page picks the window around the current one — the previous and the
+ * next two — which GROQ can't express.
+ */
 export const productBySlugQuery = groq`
   *[_type == "product" && slug.current == $product
       && category->slug.current == $category][0]{
@@ -169,10 +207,10 @@ export const productBySlugQuery = groq`
       segment->{ title, "slug": slug.current }
     },
 
-    "related": *[_type == "product"
-        && category._ref == ^.category._ref
-        && _id != ^._id] | order(order asc, title asc)[0...3]{
-      _id, title, "slug": slug.current, shortDescription, formulationType,
+    "siblings": *[_type == "product" && category._ref == ^.category._ref]
+      | order(title asc){
+      _id, title, brandName, "slug": slug.current,
+      shortDescription, formulationType,
       heroImage{ ..., alt }
     }
   }

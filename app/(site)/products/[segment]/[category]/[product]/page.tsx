@@ -33,7 +33,7 @@ type Product = {
     slug: string;
     segment: { title: string; slug: string };
   };
-  related: ProductCardData[];
+    siblings: ProductCardData[];
 };
 
 export async function generateStaticParams() {
@@ -89,6 +89,18 @@ export default async function ProductPage({
     product,
   });
   if (!data) notFound();
+   /* Show what sits around this product in the alphabetical list — the one
+     before and the two after — rather than always the first three. On a
+     long list, product 15 suggesting products 1-3 is useless.
+     Wraps at both ends so you always get three. */
+  const all = data.siblings ?? [];
+  const here = all.findIndex((p) => p.slug === product);
+  const nearby =
+    all.length <= 1
+      ? []
+      : [-1, 1, 2]
+          .map((off) => all[(here + off + all.length * 2) % all.length])
+          .filter((p, i, arr) => p && p.slug !== product && arr.indexOf(p) === i);
 
   return (
     <>
@@ -319,7 +331,7 @@ export default async function ProductPage({
       ) : null}
 
       {/* ================= Related ================= */}
-      {data.related?.length ? (
+      {nearby.length ? (
         <section className="bg-field py-16 md:py-20 lg:py-24">
           <Container>
             <div className="flex items-baseline justify-between gap-6">
@@ -333,7 +345,7 @@ export default async function ProductPage({
             </div>
 
             <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {data.related.map((p) => (
+              {nearby.map((p) => (
                 <ProductCard
                   key={p._id}
                   product={p}

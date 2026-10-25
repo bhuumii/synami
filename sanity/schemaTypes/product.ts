@@ -193,24 +193,23 @@ export const product = defineType({
       of: [cropRowMember],
     }),
 
-    defineField({
-      name: "order",
-      title: "Display order",
-      type: "number",
-      group: "main",
-      description: "Optional. Lower numbers appear first within the category.",
-    }),
+
 
     defineField({ name: "seo", title: "SEO", type: "seo", group: "meta" }),
   ],
 
-  orderings: [
+   orderings: [
     {
-      title: "Category, then order",
+      title: "Name (A–Z)",
+      name: "titleAsc",
+      by: [{ field: "title", direction: "asc" }],
+    },
+    {
+      title: "Category, then name",
       name: "byCategory",
       by: [
         { field: "category.title", direction: "asc" },
-        { field: "order", direction: "asc" },
+        { field: "title", direction: "asc" },
       ],
     },
   ],

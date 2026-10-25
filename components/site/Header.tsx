@@ -5,10 +5,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
-import { Menu, X, ChevronDown, ArrowLeft } from "lucide-react";
+import { Menu, X, ChevronDown, ArrowLeft, Search  } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Container } from "@/components/ui/Container";
 import type { NavSegment } from "@/lib/nav-types";
+import { SearchDialog } from "@/components/site/SearchDialog";
 
 export type CapabilityLink = {
   _id: string;
@@ -39,6 +40,7 @@ export function Header({
 }) {
   const pathname = usePathname();
 
+  const [searchOpen, setSearchOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [hasDarkHero, setHasDarkHero] = useState(() => guessDarkHero(pathname));
   const [openMenu, setOpenMenu] = useState<string | null>(null);
@@ -74,6 +76,17 @@ export function Header({
       if (e.key === "Escape") {
         setOpenMenu(null);
         setMobileOpen(false);
+      }
+    };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, []);
+
+   useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setSearchOpen(true);
       }
     };
     window.addEventListener("keydown", onKey);
@@ -126,10 +139,10 @@ export function Header({
         >
           <Link href="/" className="flex items-center py-1" aria-label="Synami Agriscience, home">
             <Image
-              src={dark ? "/logo.png" : "/logo-white.png"}
+              src={dark ? "/logo.svg" : "/logo-white.svg"}
               alt="Synami Agriscience"
               width={1357}
-              height={351}
+              height={307}
               priority
               className="h-9 w-auto"
             />
@@ -178,6 +191,20 @@ export function Header({
             })}
           </nav>
 
+            <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            aria-label="Search"
+            className={cn(
+              "ml-2 hidden rounded-pill p-2.5 transition-colors duration-300 xl:inline-flex",
+              dark
+                ? "text-navy hover:bg-field hover:text-leaf"
+                : "text-white/90 hover:bg-white/15 hover:text-white"
+            )}
+          >
+            <Search className="h-[18px] w-[18px]" />
+          </button>
+
           <Link
             href="/contact"
             className={cn(
@@ -187,6 +214,15 @@ export function Header({
           >
             Send enquiry
           </Link>
+
+          <button
+            type="button"
+            onClick={() => setSearchOpen(true)}
+            aria-label="Search"
+            className={cn("rounded-pill p-2.5 xl:hidden", dark ? "text-navy" : "text-white")}
+          >
+            <Search className="h-5 w-5" />
+          </button>
 
           <button
             type="button"
@@ -502,6 +538,7 @@ export function Header({
           </motion.div>
         )}
       </AnimatePresence>
+       <SearchDialog open={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }
