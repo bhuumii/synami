@@ -49,12 +49,6 @@ export async function generateMetadata(): Promise<Metadata> {
 
 /**
  * /products — the index.
- *
- * Rows alternate image side down the page, so three entries read as a
- * sequence rather than three identical blocks. Each carries its
- * medallion, and the categories inside it appear as chips with their own
- * medallions — so the icon system is visible two levels deep from one
- * screen.
  */
 export default async function ProductsPage() {
   const [page, segments] = await Promise.all([
@@ -143,7 +137,7 @@ export default async function ProductsPage() {
                             </p>
                           ) : null}
 
-                          {/* Categories, each with its own medallion */}
+                          {/* Categories*/}
                           {seg.categories.length > 0 ? (
                             <ul className="mt-7 flex flex-wrap gap-2.5">
                               {seg.categories.map((cat) => (

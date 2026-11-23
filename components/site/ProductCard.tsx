@@ -39,14 +39,14 @@ export function ProductCard({
       href={`/products/${segmentSlug}/${categorySlug}/${product.slug}`}
       className="lift group flex h-full flex-col overflow-hidden rounded-card border border-line bg-paper"
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-field">
+      <div className="relative aspect-[4/5] overflow-hidden bg-field">
         {product.heroImage ? (
           <Image
-            src={urlFor(product.heroImage as never).width(800).height(600).fit("crop").url()}
+            src={urlFor(product.heroImage as never).width(700).url()}
             alt={product.heroImage.alt || product.title}
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1240px) 50vw, 33vw"
-            className="object-cover transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
+            className="object-contain p-5 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-[1.04]"
           />
         ) : null}
 
@@ -58,9 +58,9 @@ export function ProductCard({
       </div>
 
       <div className="flex flex-1 flex-col p-6">
-        {/* Brand name — the headline of the card */}
+   
         <h3 className="relative inline-block self-start font-display text-xl font-semibold leading-snug text-navy">
-          {/* Marker stroke, sitting behind the lower half of the text */}
+    
           <span
             aria-hidden
             className="absolute inset-x-0 bottom-[0.1em] -z-10 h-[0.42em] origin-left scale-x-[0.35] rounded-sm bg-leaf/15 transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"
@@ -68,7 +68,7 @@ export function ProductCard({
           {hasBrand ? product.brandName : product.title}
         </h3>
 
-        {/* Composition, as a subtitle */}
+     
         {hasBrand ? (
           <p className="mt-1.5 font-display text-sm font-medium text-leaf">
             {product.title}

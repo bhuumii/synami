@@ -65,18 +65,10 @@ export async function generateMetadata({
   };
 }
 
-/* Bumps RichText paragraphs up from body size. The product page is read
-   by someone evaluating a purchase, not skimming — larger type earns its
-   space here. */
 const PROSE = "[&_p]:text-lg [&_p]:leading-relaxed [&_p]:max-w-none";
 
 /**
  * P3 — an individual product.
- *
- * Every section uses the same two-column rhythm: a label or heading on
- * the left, content filling the rest. That stops text stranding itself in
- * the middle of a 1240px page, which is what happens when a narrow
- * container is centred inside a wide one.
  */
 export default async function ProductPage({
   params,
@@ -89,10 +81,7 @@ export default async function ProductPage({
     product,
   });
   if (!data) notFound();
-   /* Show what sits around this product in the alphabetical list — the one
-     before and the two after — rather than always the first three. On a
-     long list, product 15 suggesting products 1-3 is useless.
-     Wraps at both ends so you always get three. */
+
   const all = data.siblings ?? [];
   const here = all.findIndex((p) => p.slug === product);
   const nearby =
@@ -131,25 +120,22 @@ export default async function ProductPage({
           </nav>
 
           <div className="mt-9 grid items-center gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
-            {/* Plain bordered panel. The leaf shape and offset slab belong
-                on editorial pages; a pack shot just needs to be seen. */}
-            <div className="group relative aspect-square overflow-hidden rounded-card border border-line bg-paper transition-shadow duration-500 hover:shadow-[var(--shadow-lift)]">
+       
+             <div className="group relative mx-auto aspect-[7/10] w-full max-w-[380px] overflow-hidden rounded-card border border-line bg-paper transition-shadow duration-500 hover:shadow-[var(--shadow-lift)] lg:mx-0">
               {data.heroImage ? (
                 <Image
-                  src={urlFor(data.heroImage as never).width(1000).height(1000).fit("crop").url()}
+                  src={urlFor(data.heroImage as never).width(900).url()}
                   alt={data.heroImage.alt || data.title}
                   fill
                   priority
                   sizes="(max-width: 1024px) 100vw, 40vw"
-                  className="object-contain p-10 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
+                  className="object-contain p-6 transition-transform duration-700 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-105"
                 />
               ) : null}
             </div>
 
             <div>
-             {/* Marker stroke behind the brand name. `group` is on the
-                  wrapper so the stroke reacts to the whole hero, not just
-                  the text itself. */}
+          
               <h1 className="group relative inline-block font-display text-3xl font-semibold leading-[1.12] text-navy lg:text-[length:var(--text-4xl)]">
                 <span
                   aria-hidden
@@ -240,8 +226,7 @@ export default async function ProductPage({
         <section className="bg-paper py-16 md:py-20 lg:py-24">
           <Container>
             <div className="grid gap-10 lg:grid-cols-[0.55fr_1.45fr] lg:gap-16">
-              {/* Sticky, like Why Synami on the homepage — the heading
-                  holds while the cards scroll past it. */}
+
               <div className="lg:sticky lg:top-32 lg:self-start">
                 <h2 className="text-2xl lg:text-3xl">Features &amp; benefits</h2>
                 <span aria-hidden className="mt-5 block h-[3px] w-14 bg-straw" />
@@ -330,7 +315,7 @@ export default async function ProductPage({
         </section>
       ) : null}
 
-      {/* ================= Related ================= */}
+     
       {nearby.length ? (
         <section className="bg-field py-16 md:py-20 lg:py-24">
           <Container>

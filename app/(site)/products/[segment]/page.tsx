@@ -57,14 +57,6 @@ export async function generateMetadata({
 
 /**
  * P1 — a main category page.
- *
- * Categories are now icon cards rather than photo cards. A medallion
- * carries the idea faster than a stock field photograph does, and it
- * means the page works before the client has sourced imagery for every
- * category — which they haven't.
- *
- * The photo still appears, but as a quiet wash behind the card that
- * surfaces on hover, so it supports the card instead of being the card.
  */
 export default async function SegmentPage({
   params,
@@ -159,8 +151,7 @@ export default async function SegmentPage({
                     href={`/products/${data.slug}/${cat.slug}`}
                     className="lift group relative flex h-full flex-col overflow-hidden rounded-card border border-line bg-paper p-7 transition-colors duration-500 hover:border-leaf/35 hover:bg-field/60"
                   >
-                    {/* The photo sits behind as a faint wash and lifts
-                        slightly on hover. Present, but not the subject. */}
+
                     {cat.heroImage ? (
                       <span
                         aria-hidden
@@ -186,7 +177,7 @@ export default async function SegmentPage({
 
                     <h3 className="relative mt-6 font-display text-xl font-semibold text-navy transition-colors duration-300 group-hover:text-leaf">
                       {cat.title}
-                      {/* Underline wipes in from the left on hover */}
+          
                       <span
                         aria-hidden
                         className="mt-2 block h-[2px] w-full origin-left scale-x-0 bg-leaf transition-transform duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:scale-x-100"

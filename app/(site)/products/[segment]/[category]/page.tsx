@@ -55,12 +55,6 @@ export async function generateMetadata({
 
 /**
  * P2 — a product category.
- *
- * Three additions over the plain listing it was: the category medallion
- * in the hero, a product count, and a switcher for the other categories
- * in the same range. That last one matters most — someone browsing
- * Insecticides who actually wants Fungicides previously had to go back
- * up two levels.
  */
 export default async function CategoryPage({
   params,

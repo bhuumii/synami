@@ -6,11 +6,7 @@ import { Container } from "@/components/ui/Container";
 
 /**
  * Page header.
- *
- * With an image it's a full-bleed hero under the forest overlay, matching
- * the product pages. Without one it's a pale green block with dark text —
- * which is better than a grey placeholder box, and means the client can
- * publish a page before they've sourced photography.
+
  */
 export function PageHero({
   title,
